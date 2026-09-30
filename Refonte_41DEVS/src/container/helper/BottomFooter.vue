@@ -1,4 +1,4 @@
-<script lang="js" scoped>
+<script setup lang="js">
 import logo_footer from '../../asset/icons/ic_41DEVSFooter.svg'
 </script>
 
@@ -6,7 +6,7 @@ import logo_footer from '../../asset/icons/ic_41DEVSFooter.svg'
     <div class="flex justify-between items-center py-10">
         <!--First Column-->
         <div id="FirstCol" class="gap-y-5 grid">
-            <div class="w-85 border-0"><img :src="logo_footer" class="w-85 h-15 border" loading=""></div>
+            <div class="border-0"><img :src="logo_footer" class="border"></div>
             <div class="grid gap-y-1">
                 <div class="" id="footer-text">Contacter-nous et notre conseiller clientele vous</div>
                 <div class="" id="footer-text">répondra avec des questions sur votre projet.</div>
@@ -57,6 +57,7 @@ import logo_footer from '../../asset/icons/ic_41DEVSFooter.svg'
 </template>
 
 <style scoped>
+
 #footer-text {
     font-family: 'PP Neue Montreal';
     font-weight: 400;
