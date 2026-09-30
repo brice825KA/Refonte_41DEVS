@@ -1,12 +1,12 @@
 <script lang="js" scoped>
-import logo_footer from '../../asset/icons/ic_41DEVSFooter-ezgif.com-png-to-svg-converter.svg'
+import logo_footer from '../../asset/icons/Logo.svg'
 </script>
 
 <template>
     <div class="flex justify-between items-center py-10">
         <!--First Column-->
         <div id="FirstCol" class="gap-y-5 grid">
-            <div class="w-85 border-0"><img :src="logo_footer" class="w-85 h-15 border"></div>
+            <div class="w-85 border-0"><img :src="logo_footer" class="w-85 h-15 border" loading=""></div>
             <div class="grid gap-y-1">
                 <div class="" id="footer-text">Contacter-nous et notre conseiller clientele vous</div>
                 <div class="" id="footer-text">répondra avec des questions sur votre projet.</div>

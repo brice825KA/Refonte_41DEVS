@@ -1,21 +1,20 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-//import Home from '../views/home.vue'
-//import particular from '../component/conteneur/particular/particular.vue'
-//import companies from '../component/conteneur/companies/companies.vue'
-//import prices from '../component/conteneur/prices/prices.vue'
+import accueil from '@/container/component/accueil/accueil.vue'
+import companies from '@/container/component/companies/companies.vue'
+import industries from '@/container/component/industries/industries.vue'
 
 const routes = [
   {
     path: '/',
-    //component: companies
+    component: accueil
   },
   {
-    path: '/particular',
-    //component: particular
+    path: '/companies',
+    component: companies
   },
   {
-    path: '/prices',
-    //component: prices
+    path: '/industries',
+    component: industries
   },
 ]
 
