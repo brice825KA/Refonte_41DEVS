@@ -1,5 +1,5 @@
 <script lang="js" scoped>
-import logo_footer from '../../asset/icons/Logo.svg'
+import logo_footer from '../../asset/icons/ic_41DEVSFooter.svg'
 </script>
 
 <template>
