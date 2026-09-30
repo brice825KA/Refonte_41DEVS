@@ -4,7 +4,7 @@ import TopFooter from './TopFooter.vue';
 </script>
 
 <template>
-    <div class="px-50 bg-[#0C0020]">
+    <div class="px-25 bg-[#0C0020]">
         <TopFooter/>
         <BottomFooter/>
     </div>
