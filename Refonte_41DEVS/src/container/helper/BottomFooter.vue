@@ -49,7 +49,7 @@ import logo_footer from '../../asset/icons/ic_41DEVSFooter.svg'
     <div class="py-10 border-t border-[#FFFFFF29]">
         <div class="flex gap-12.5">
             <div class="" id="footer-text">© 41DEVS 2024. Tous droits réservés</div>
-            <div class="" id="footer-text"><a hreh="#">Termes de services</a></div>
+            <div class="" id="footer-text"><a href="#">Termes de services</a></div>
             <div class="" id="footer-text"><a href="#">Polices de cookies</a></div>
             <div class="" id="footer-text"><a href="#">Politique de confidentialité</a></div>
         </div>

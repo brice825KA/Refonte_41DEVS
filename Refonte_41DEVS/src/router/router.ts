@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import accueil from '@/container/component/accueil/accueil.vue'
 import companies from '@/container/component/companies/companies.vue'
 import industries from '@/container/component/industries/industries.vue'
+import contact from '@/container/component/contact/contact.vue'
 
 const routes = [
   {
@@ -16,6 +17,10 @@ const routes = [
     path: '/industries',
     component: industries
   },
+  {
+    path: '/contact',
+    component: contact
+  }
 ]
 
 const router = createRouter({
