@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import middlesponsors from './Middle_acceuil_Sponsors.vue'
+import expertises from './expertises.vue'
+
 const items = [
   'Entreprises',
   'Institutions',
@@ -15,7 +18,7 @@ const items = [
             v-slot="{ item }"
             orientation="vertical"
             loop
-            :autoplay="{ delay: 5000, pauseOnHover: true }"
+            :autoplay="{ delay: 2000, pauseOnHover: false }"
             :items="items"
             :ui="{ container: 'h-50' }"
             class="flex justify-center items-center"
@@ -24,4 +27,6 @@ const items = [
             </UCarousel>
         </div>
     </div>
+    <middlesponsors />
+    <expertises />
 </template>
