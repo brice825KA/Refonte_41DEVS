@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import exp1 from '@/asset/images/img_expertises1.webp'
-import exp2 from '@/asset/images/img_expertises2.webp'
-import exp3 from '@/asset/images/img_expertises3.webp'
+import exp1 from '@/asset/images/img_acceuil1.webp'
+import exp2 from '@/asset/images/img_acceuil2.webp'
+import exp3 from '@/asset/images/img_acceuil3.webp'
 
 const sente1 = [
     "L’optimisation des processus par le numérique",
@@ -30,11 +30,11 @@ const sente3 = [
 </script>
 
 <template>
-    <div class="mx-70 py-20 grid gap-25">
+    <div class="mx-65 justify-center py-15 grid gap-25">
         <div class="flex gap-2 font-[Neue Haas Grotesk Display Pro] font-semibold text-6xl text-[#000000]">Nos<div class="text-[#5C308C]">expertises</div></div>
         <!--First Expertise-->
         <div class="">
-            <div class="flex items-center gap-20" id="exp1">
+            <div class="flex items-center gap-15" id="exp1">
                 <div class=""><img :src="exp1" alt="Expertise 1" /></div>
                 <div class="flex gap-10">
                     <div class="h w-0.5 bg-black " id="div"></div>
@@ -54,7 +54,7 @@ const sente3 = [
         </div>
         <!--Second Expertise-->
         <div class="">
-            <div class="flex items-center gap-20" id="exp2">
+            <div class="flex items-center gap-25" id="exp2">
                 <div class="flex gap-10">
                     <div class="h w-0.5 bg-black " id="div"></div>
                     <div class="">
@@ -74,13 +74,13 @@ const sente3 = [
         </div>
         <!--Third Expertise-->
         <div class="">
-            <div class="flex items-center gap-20" id="exp3">
+            <div class="flex items-center gap-25" id="exp3">
                 <div class=""><img :src="exp3" alt="Expertise 3" /></div>
                 <div class="flex gap-10">
                     <div class="h w-0.5 bg-black " id="div"></div>
                     <div class="">
                         <div class="grid gap-10">
-                            <div class="font-family-[Neue Haas Grotesk Display Pro] font-semibold text-5xl text-[#000000] grid gap-2"><div>Accompagnement et mise en place</div><div>de solutions digitales</div></div>
+                            <div class="font-family-[Neue Haas Grotesk Display Pro] font-semibold text-5xl text-[#000000] grid gap-2"><div>Infrastructure</div><div>informatique</div></div>
                             <div class="font-family-[PP Neue Montreal] font-normal text-xl text-[#171F30] grid gap-1">
                                 <div v-for="(line, key) in sente3" :key="key" class="block">
                                     {{ line }}
