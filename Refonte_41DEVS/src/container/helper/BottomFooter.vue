@@ -6,7 +6,7 @@ import logo_footer from '../../asset/icons/ic_41DEVSFooter.svg'
     <div class="flex justify-between items-center py-10">
         <!--First Column-->
         <div id="FirstCol" class="gap-y-5 grid">
-            <div class="border-0"><img :src="logo_footer" class="border"></div>
+            <div class="border-none transition delay-150 duration-300 ease-in-out"><img :src="logo_footer" class="border"></div>
             <div class="grid gap-y-1">
                 <div class="" id="footer-text">Contacter-nous et notre conseiller clientele vous</div>
                 <div class="" id="footer-text">répondra avec des questions sur votre projet.</div>
