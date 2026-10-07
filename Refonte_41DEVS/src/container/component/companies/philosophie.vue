@@ -40,8 +40,8 @@ const secondtext = [
 <template>
     <div class="bg-[#F7F7FC] grid gap-15 py-20">
         <div class="font-family-[Neue Haas Grotesk Display Pro] font-semibold text-6xl text-[#000000] px-55">Notre philosophie</div>
-        <div class="flex justify-center gap-40">
-            <div class="grid gap-5" v-for="(item, index) in firstText" :key="index">
+        <div class="flex justify-center gap-10">
+            <div class="grid gap-10 rounded-2xl bg-[#FFFFFF] p-10 hover:bg-purple-400" v-for="(item, index) in firstText" :key="index">
                 <div class="w-25.25 h-[73.58px]"><img :src="philo[index]" alt="" class="w-full h-auto"/></div>
                 <div class="grid gap-5">
                     <div class="font-family-[Neue Haas Grotesk Display Pro] font-semibold text-3xl text-[#000000]">{{ item }}</div>
