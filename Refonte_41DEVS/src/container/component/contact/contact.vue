@@ -80,10 +80,10 @@ onMounted(updateScrollbar)
 </script>
 
 <template>
-    <div class="py-15 px-25 flex gap-65 bg-[linear-gradient(110deg,#f5efff_0%,#fff_68%)]">
+    <div class="py-8 sm:py-12 lg:py-15 px-4 sm:px-8 md:px-14 lg:px-20 xl:px-25 flex flex-col lg:flex-row gap-10 lg:gap-16 xl:gap-32 2xl:gap-65 bg-[linear-gradient(110deg,#f5efff_0%,#fff_68%)] overflow-hidden">
         <div
             id="FirstCol"
-            class="grid w-full max-w-105 grid-cols-[80px_4px_minmax(0,1fr)] items-stretch gap-10 px-5 py-6 text-[#17131d] font-['PP_Neue_Montreal',Arial,sans-serif] max-sm:grid-cols-[72px_4px_minmax(0,1fr)] max-sm:gap-3 max-sm:px-3.5 max-sm:py-4"
+            class="grid w-full max-w-full lg:max-w-105 grid-cols-[80px_4px_minmax(0,1fr)] items-stretch gap-6 sm:gap-10 px-4 sm:px-5 py-6 text-[#17131d] font-['PP_Neue_Montreal',Arial,sans-serif] max-sm:grid-cols-[72px_4px_minmax(0,1fr)] max-sm:gap-3 max-sm:px-3.5 max-sm:py-4 shrink-0"
         >
             <div class="flex flex-col items-start gap-4.5 pt-1" aria-label="Sélection du pays">
                 <div
@@ -124,53 +124,69 @@ onMounted(updateScrollbar)
 
             <div class="flex flex-col gap-5.5 text-xs leading-[1.55]">
                 <section>
-                    <h2 class="m-0 font-['PP_Neue_Montreal',Arial,sans-serif] text-2xl font-normal leading-9 text-black">Contactez-nous</h2>
-                    <a class="block font-['PP_Neue_Montreal',Arial,sans-serif] text-2xl font-normal leading-9 tracking-[0%] text-[#676767] no-underline" href="tel:+22900000000">+229 00,00 00 00</a>
-                    <a class="block font-['PP_Neue_Montreal',Arial,sans-serif] text-2xl font-normal leading-9 tracking-[0%] text-[#676767] no-underline" href="mailto:contact@41devs.com">contact@41devs.com</a>
+                    <h2 class="m-0 font-['PP_Neue_Montreal',Arial,sans-serif] text-xl sm:text-2xl font-normal leading-normal sm:leading-9 text-black">Contactez-nous</h2>
+                    <a class="block font-['PP_Neue_Montreal',Arial,sans-serif] text-xl sm:text-2xl font-normal leading-normal sm:leading-9 tracking-[0%] text-[#676767] no-underline hover:text-purple-700 transition-colors" href="tel:+22900000000">+229 00,00 00 00</a>
+                    <a class="block font-['PP_Neue_Montreal',Arial,sans-serif] text-xl sm:text-2xl font-normal leading-normal sm:leading-9 tracking-[0%] text-[#676767] no-underline hover:text-purple-700 transition-colors" href="mailto:contact@41devs.com">contact@41devs.com</a>
                 </section>
 
                 <section>
-                    <h2 class="m-0 font-['PP_Neue_Montreal',Arial,sans-serif] text-2xl font-normal leading-9 text-black">Notre adresse</h2>
-                    <p class="m-0 font-['PP_Neue_Montreal',Arial,sans-serif] text-2xl font-normal leading-9 tracking-[0%] text-[#676767]">Gbèdjiromèdé,</p>
-                    <p class="m-0 font-['PP_Neue_Montreal',Arial,sans-serif] text-2xl font-normal leading-9 tracking-[0%] text-[#676767]">Imm SYECA, 2ème étage</p>
+                    <h2 class="m-0 font-['PP_Neue_Montreal',Arial,sans-serif] text-xl sm:text-2xl font-normal leading-normal sm:leading-9 text-black">Notre adresse</h2>
+                    <p class="m-0 font-['PP_Neue_Montreal',Arial,sans-serif] text-xl sm:text-2xl font-normal leading-normal sm:leading-9 tracking-[0%] text-[#676767]">Gbèdjiromèdé,</p>
+                    <p class="m-0 font-['PP_Neue_Montreal',Arial,sans-serif] text-xl sm:text-2xl font-normal leading-normal sm:leading-9 tracking-[0%] text-[#676767]">Imm SYECA, 2ème étage</p>
                 </section>
 
                 <section>
-                    <h2 class="m-0 font-['PP_Neue_Montreal',Arial,sans-serif] text-2xl font-normal leading-9 text-black">Nos réseaux</h2>
-                    <p class="m-0 font-['PP_Neue_Montreal',Arial,sans-serif] text-2xl font-normal leading-9 tracking-[0%] text-[#676767]">Facebook</p>
-                    <p class="m-0 font-['PP_Neue_Montreal',Arial,sans-serif] text-2xl font-normal leading-9 tracking-[0%] text-[#676767]">LinkedIn</p>
-                    <p class="m-0 font-['PP_Neue_Montreal',Arial,sans-serif] text-2xl font-normal leading-9 tracking-[0%] text-[#676767]">Dribble</p>
-                    <p class="m-0 font-['PP_Neue_Montreal',Arial,sans-serif] text-2xl font-normal leading-9 tracking-[0%] text-[#676767]">Instagram</p>
+                    <h2 class="m-0 font-['PP_Neue_Montreal',Arial,sans-serif] text-xl sm:text-2xl font-normal leading-normal sm:leading-9 text-black">Nos réseaux</h2>
+                    <p class="m-0 font-['PP_Neue_Montreal',Arial,sans-serif] text-xl sm:text-2xl font-normal leading-normal sm:leading-9 tracking-[0%] text-[#676767]">Facebook</p>
+                    <p class="m-0 font-['PP_Neue_Montreal',Arial,sans-serif] text-xl sm:text-2xl font-normal leading-normal sm:leading-9 tracking-[0%] text-[#676767]">LinkedIn</p>
+                    <p class="m-0 font-['PP_Neue_Montreal',Arial,sans-serif] text-xl sm:text-2xl font-normal leading-normal sm:leading-9 tracking-[0%] text-[#676767]">Dribble</p>
+                    <p class="m-0 font-['PP_Neue_Montreal',Arial,sans-serif] text-xl sm:text-2xl font-normal leading-normal sm:leading-9 tracking-[0%] text-[#676767]">Instagram</p>
                 </section>
             </div>
         </div>
-        <div class="grid gap-y-5" id="SecondCol">
-            <div class="font-family-[Neue Haas Grotesk Display Pro] font-semibold text-7xl leading-20 text-[#000000]">
-                <div class="">Travaillons ensemble</div>
-                <div class="">sur votre projet</div>
+
+        <div class="grid gap-y-5 w-full min-w-0 flex-1" id="SecondCol">
+            <div class="font-family-[Neue Haas Grotesk Display Pro] font-semibold text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight lg:leading-20 text-[#000000]">
+                <div>Travaillons ensemble</div>
+                <div>sur votre projet</div>
             </div>
-            <div class="grid gap-y-10">
-
-                <div class="font-family-[PP Neue Montreal] font-normal text-2xl leading-9 text-[#676767] w-225">
-                    <div class="">Contactez-nous, et l'un de nos conseillers clientèle vous répondra</div>
-                    <div class="">pour discuter de votre projet</div>
+            <div class="grid gap-y-6 sm:gap-y-10">
+                <div class="font-family-[PP Neue Montreal] font-normal text-base sm:text-xl lg:text-2xl leading-relaxed lg:leading-9 text-[#676767] w-full max-w-225">
+                    <div>Contactez-nous, et l'un de nos conseillers clientèle vous répondra</div>
+                    <div>pour discuter de votre projet</div>
                 </div>
 
-                <div class="grid gap-y-5">
-                    <div class="font-family-[PP Neue Montreal] font-normal text-2xl leading-9 text-[#000000] w-225">Quel est votre nom</div>
-                    <div class=""><input type="text" placeholder="Nom et prénoms" class="w-full border-0 border-b border-[#c9c9c9] text-4xl font-['PP_Neue_Montreal',Arial,sans-serif] outline-none"></div>
+                <div class="grid gap-y-3 sm:gap-y-5">
+                    <div class="font-family-[PP Neue Montreal] font-normal text-lg sm:text-xl lg:text-2xl leading-relaxed lg:leading-9 text-[#000000] w-full max-w-225">
+                        Quel est votre nom
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Nom et prénoms" class="w-full border-0 border-b border-[#c9c9c9] text-xl sm:text-2xl md:text-3xl lg:text-4xl py-2 font-['PP_Neue_Montreal',Arial,sans-serif] outline-none focus:border-[#5C308C] transition-colors bg-transparent">
+                    </div>
                 </div>
 
-                <div class="grid gap-y-5">
-                    <div class="font-family-[PP Neue Montreal] font-normal text-2xl leading-9 text-[#000000] w-225">Quel est votre organisation</div>
-                    <div class=""><input type="text" placeholder="Organisation/Entreprise" class="w-full border-0 border-b border-[#c9c9c9] text-4xl font-['PP_Neue_Montreal',Arial,sans-serif] outline-none"></div>
+                <div class="grid gap-y-3 sm:gap-y-5">
+                    <div class="font-family-[PP Neue Montreal] font-normal text-lg sm:text-xl lg:text-2xl leading-relaxed lg:leading-9 text-[#000000] w-full max-w-225">
+                        Quel est votre organisation
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Organisation/Entreprise" class="w-full border-0 border-b border-[#c9c9c9] text-xl sm:text-2xl md:text-3xl lg:text-4xl py-2 font-['PP_Neue_Montreal',Arial,sans-serif] outline-none focus:border-[#5C308C] transition-colors bg-transparent">
+                    </div>
                 </div>
 
-                <div class="grid gap-y-5">
-                    <div class="font-family-[PP Neue Montreal] font-normal text-2xl leading-9 text-[#000000] w-225 ">Parler nous de votre projet</div>
-                    <div class=""><textarea placeholder="Message" class="h-49 w-full resize-none border-0 border-b border-[#c9c9c9] text-4xl font-['PP_Neue_Montreal',Arial,sans-serif] outline-none"></textarea></div>
+                <div class="grid gap-y-3 sm:gap-y-5">
+                    <div class="font-family-[PP Neue Montreal] font-normal text-lg sm:text-xl lg:text-2xl leading-relaxed lg:leading-9 text-[#000000] w-full max-w-225">
+                        Parlez-nous de votre projet
+                    </div>
+                    <div>
+                        <textarea placeholder="Message" class="h-32 sm:h-40 lg:h-49 w-full resize-none border-0 border-b border-[#c9c9c9] text-xl sm:text-2xl md:text-3xl lg:text-4xl py-2 font-['PP_Neue_Montreal',Arial,sans-serif] outline-none focus:border-[#5C308C] transition-colors bg-transparent"></textarea>
+                    </div>
                 </div>
-                <div><button type="submit" class="bg-[#5C308C] text-2xl text-[#FFFFFF] rounded-2xl py-5 px-19"><RouterLink to='#'>Envoyer</RouterLink></button></div>
+                <div>
+                    <button type="submit" class="w-full sm:w-auto bg-[#5C308C] hover:bg-[#492272] transition-colors text-lg sm:text-xl lg:text-2xl text-[#FFFFFF] rounded-2xl py-3.5 sm:py-4 lg:py-5 px-8 sm:px-12 lg:px-19 cursor-pointer">
+                        Envoyer
+                    </button>
+                </div>
             </div>
         </div>
     </div>

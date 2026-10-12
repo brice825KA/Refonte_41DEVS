@@ -7,6 +7,3 @@ import Middle from './middle_indus.vue'
     <Myheader />
     <Middle />
 </template>
-
-<style scoped>
-</style>

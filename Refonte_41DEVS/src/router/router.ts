@@ -7,19 +7,36 @@ import contact from '@/container/component/contact/contact.vue'
 const routes = [
   {
     path: '/',
+    name: 'accueil',
+    alias: ['/accueil', '/accueuil'],
     component: accueil
   },
   {
+    path: '/accueil',
+    redirect: '/'
+  },
+  {
+    path: '/accueuil',
+    redirect: '/'
+  },
+  {
     path: '/companies',
+    name: 'companies',
     component: companies
   },
   {
     path: '/industries',
+    name: 'industries',
     component: industries
   },
   {
     path: '/contact',
+    name: 'contact',
     component: contact
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/'
   }
 ]
 

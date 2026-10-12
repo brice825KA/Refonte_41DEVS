@@ -9,6 +9,3 @@ import etude from './etude.vue'
     <etude />
     <philosophie />
 </template>
-
-<style scoped>
-</style>

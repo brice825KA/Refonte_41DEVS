@@ -9,5 +9,3 @@ import { RouterView } from 'vue-router'
   <RouterView />
   <MyFooter/>
 </template>
-
-<style scoped></style>
