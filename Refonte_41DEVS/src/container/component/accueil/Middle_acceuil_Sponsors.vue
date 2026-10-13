@@ -12,36 +12,29 @@ const sponsors = [
     sponsors4,
     sponsors5
 ]
-
-const sente = [
-    "L'innovation est au coeur de notre métier. Grâce aux meilleures",
-    "technologies sur le marché et aux expertises acquises sur des",
-    "années, nous accompagnons la transformation digitale des",
-    "entreprises de tous secteurs."
-]
 </script>
 
 <template>
-    <div class="text-black grid justify-center items-center gap-8 py-8 sm:py-12 lg:py-15 px-4 sm:px-8 md:px-12 lg:px-16 mx-4 sm:mx-8 md:mx-16 lg:mx-32 xl:mx-70 bg-[rgba(255,255,255,1)] border-none shadow-xl rounded-2xl md:rounded-3xl">
-        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 sm:gap-8 lg:gap-10">
-            <div class="font-family-[Neue Haas Grotesk Display Pro] font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl shrink-0">
-                <div class="flex flex-wrap items-center gap-x-2">
-                    <span>Avec l'</span>
-                    <span class="text-purple-900">innovation,</span>
-                    <span>nous</span>
+    <div class="mx-4 sm:mx-8 md:mx-16 lg:mx-28 xl:mx-65 bg-white shadow-xl rounded-2xl md:rounded-3xl px-6 sm:px-10 md:px-14 lg:px-18 py-10 sm:py-14 lg:py-16 my-8 sm:my-12">
+        <!-- Top text row: Title on left, Paragraph on right -->
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 lg:gap-12 xl:gap-16">
+            <!-- Left Headline -->
+            <div class="font-['Neue_Haas_Grotesk_Display_Pro',sans-serif] font-bold text-3xl sm:text-4xl md:text-5xl lg:text-[50px] xl:text-[56px] leading-[1.12] text-black shrink-0 tracking-tight">
+                <div class="sm:whitespace-nowrap">
+                    Avec l'<span class="text-[#5C308C]">innovation,</span> nous
                 </div>
-                <div>nous façonnons l'Afrique de</div>
-                <div>demain</div>
+                <div class="sm:whitespace-nowrap">façonnons l'Afrique de</div>
+                <div>demain.</div>
             </div>
 
-            <div class="font-family-[Neue Haas Grotesk Display Pro] font-normal text-sm sm:text-base md:text-lg lg:text-xl">
-                <div v-for="(line, key) in sente" :key="key" class="block">
-                    {{ line }}
-                </div>
-            </div>
+            <!-- Right Paragraph (608px width as shown in design) -->
+            <p class="font-['PP_Neue_Montreal',sans-serif] font-normal text-base sm:text-lg lg:text-[20px] leading-relaxed lg:leading-[32px] text-[#222222] max-w-[608px]">
+                L'innovation est au coeur de notre métier. Grâce aux meilleures technologies sur le marché et aux expertises acquises sur des années, nous accompagnons la transformation digitale des entreprises de tous secteurs.
+            </p>
         </div>
 
-        <div class="flex flex-wrap items-center justify-center lg:justify-between gap-6 sm:gap-10 md:gap-16 lg:gap-30 pt-4">
+        <!-- Sponsors logos row -->
+        <div class="flex flex-wrap items-center justify-between gap-6 sm:gap-8 lg:gap-10 w-full pt-10 sm:pt-14 lg:pt-16">
             <div 
                 v-for="sponsor in sponsors" 
                 :key="sponsor"
