@@ -161,7 +161,7 @@ onMounted(updateScrollbar)
                         Quel est votre nom
                     </div>
                     <div>
-                        <input type="text" placeholder="Nom et prénoms" class="w-full border-0 border-b border-[#c9c9c9] text-xl sm:text-2xl md:text-3xl lg:text-4xl py-2 font-['PP_Neue_Montreal',Arial,sans-serif] outline-none focus:border-[#5C308C] transition-colors bg-transparent">
+                        <input type="text" placeholder="Nom et prénoms" class="w-full border-0 border-b border-[#c9c9c9] text-xl sm:text-2xl md:text-3xl lg:text-4xl py-2 font-['PP_Neue_Montreal',Arial,sans-serif] outline-none focus:border-[#5C308C] transition-colors bg-transparent text-black">
                     </div>
                 </div>
 
@@ -170,7 +170,7 @@ onMounted(updateScrollbar)
                         Quel est votre organisation
                     </div>
                     <div>
-                        <input type="text" placeholder="Organisation/Entreprise" class="w-full border-0 border-b border-[#c9c9c9] text-xl sm:text-2xl md:text-3xl lg:text-4xl py-2 font-['PP_Neue_Montreal',Arial,sans-serif] outline-none focus:border-[#5C308C] transition-colors bg-transparent">
+                        <input type="text" placeholder="Organisation/Entreprise" class="w-full border-0 border-b border-[#c9c9c9] text-xl sm:text-2xl md:text-3xl lg:text-4xl py-2 font-['PP_Neue_Montreal',Arial,sans-serif] outline-none focus:border-[#5C308C] transition-colors bg-transparent text-black">
                     </div>
                 </div>
 
