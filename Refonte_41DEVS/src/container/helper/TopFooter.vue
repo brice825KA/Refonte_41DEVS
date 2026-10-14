@@ -6,21 +6,29 @@ import headerIcon from '@/asset/icons/ic_header_acceuil.svg'
     <div class="bg-[#0C0020] justify-center items-center py-6 sm:py-10">
         <div class="relative isolate overflow-hidden bg-gradient-to-b from-[#0a0314] via-[#1a0736] to-[#5914bd] items-center justify-center text-center rounded-2xl sm:rounded-3xl lg:rounded-4xl py-14 sm:py-24 md:py-36 lg:py-50 px-4 sm:px-8 grid gap-6 sm:gap-8 lg:gap-10">
             <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-40 sm:opacity-75 lg:opacity-100" aria-hidden="true">
-                <div class="absolute bottom-0 inset-y-0 -left-6 w-[calc(var(--icon-size)*3)] [--icon-size:clamp(60px,8vw,105px)] overflow-hidden">
-                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)-px)] top-[70%] w-[var(--icon-size)] h-auto" alt="">
-                    <img :src="headerIcon" class="absolute left-0 top-[80%] w-[var(--icon-size)] h-auto" alt="">
-                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)-30px)] top-[80%] w-[var(--icon-size)] h-auto" alt="">
-                    <img :src="headerIcon" class="absolute left-0 top-[90%] w-[var(--icon-size)] h-auto" alt="">
-                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)-30px)] top-[90%] w-[var(--icon-size)] h-auto" alt="">
-                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)*2-60px)] top-[90%] w-[var(--icon-size)] h-auto" alt="">
+                <!-- Left icons cluster (staircase from edge inwards) -->
+                <div class="absolute bottom-0 inset-y-0 left-0 w-[calc(var(--icon-size)*2.6)] [--icon-size:clamp(110px,14vw,230px)] overflow-hidden">
+                    <!-- Top row (1 cube on the edge) -->
+                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)*-0.18)] top-[44%] w-[var(--icon-size)] h-auto" alt="">
+                    <!-- Middle row (2 cubes: edge + inward) -->
+                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)*-0.18)] top-[68%] w-[var(--icon-size)] h-auto" alt="">
+                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)*0.44)] top-[68%] w-[var(--icon-size)] h-auto" alt="">
+                    <!-- Bottom row (3 cubes: edge + middle + inner) -->
+                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)*-0.18)] top-[91%] w-[var(--icon-size)] h-auto" alt="">
+                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)*0.44)] top-[91%] w-[var(--icon-size)] h-auto" alt="">
+                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)*1.06)] top-[91%] w-[var(--icon-size)] h-auto" alt="">
                 </div>
-                <div class="absolute inset-y-0 -right-6 w-[calc(var(--icon-size)*3)] [--icon-size:clamp(60px,8vw,105px)] overflow-hidden scale-x-[-1]">
-                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)-px)] top-[70%] w-[var(--icon-size)] h-auto" alt="">
-                    <img :src="headerIcon" class="absolute left-0 top-[80%] w-[var(--icon-size)] h-auto" alt="">
-                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)-30px)] top-[80%] w-[var(--icon-size)] h-auto" alt="">
-                    <img :src="headerIcon" class="absolute left-0 top-[90%] w-[var(--icon-size)] h-auto" alt="">
-                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)-30px)] top-[90%] w-[var(--icon-size)] h-auto" alt="">
-                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)*2-60px)] top-[90%] w-[var(--icon-size)] h-auto" alt="">
+                <!-- Right icons cluster (mirrored) -->
+                <div class="absolute inset-y-0 right-0 w-[calc(var(--icon-size)*2.6)] [--icon-size:clamp(110px,14vw,230px)] overflow-hidden scale-x-[-1]">
+                    <!-- Top row (1 cube on the edge) -->
+                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)*-0.18)] top-[44%] w-[var(--icon-size)] h-auto" alt="">
+                    <!-- Middle row (2 cubes: edge + inward) -->
+                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)*-0.18)] top-[68%] w-[var(--icon-size)] h-auto" alt="">
+                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)*0.44)] top-[68%] w-[var(--icon-size)] h-auto" alt="">
+                    <!-- Bottom row (3 cubes: edge + middle + inner) -->
+                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)*-0.18)] top-[91%] w-[var(--icon-size)] h-auto" alt="">
+                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)*0.44)] top-[91%] w-[var(--icon-size)] h-auto" alt="">
+                    <img :src="headerIcon" class="absolute left-[calc(var(--icon-size)*1.06)] top-[91%] w-[var(--icon-size)] h-auto" alt="">
                 </div>
             </div>
             <div class="relative z-10 justify-center items-center font-family-[Neue Haas Grotesk Display Pro] font-semibold text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-[#FFFFFF]">

@@ -179,7 +179,7 @@ onMounted(updateScrollbar)
                         Parlez-nous de votre projet
                     </div>
                     <div>
-                        <textarea placeholder="Message" class="h-32 sm:h-40 lg:h-49 w-full resize-none border-0 border-b border-[#c9c9c9] text-xl sm:text-2xl md:text-3xl lg:text-4xl py-2 font-['PP_Neue_Montreal',Arial,sans-serif] outline-none focus:border-[#5C308C] transition-colors bg-transparent"></textarea>
+                        <textarea placeholder="Message" class="h-32 sm:h-40 lg:h-49 w-full resize-none border-0 border-b border-[#c9c9c9] text-xl sm:text-2xl md:text-3xl lg:text-4xl py-2 font-['PP_Neue_Montreal',Arial,sans-serif] outline-none focus:border-[#5C308C] transition-colors bg-transparent text-black"></textarea>
                     </div>
                 </div>
                 <div>
