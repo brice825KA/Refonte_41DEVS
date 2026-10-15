@@ -1,5 +1,15 @@
-<script setup lang="js">
+<script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { sendContactMessage } from '@/services/firebase'
+
+const router = useRouter()
+
+const fullName = ref('')
+const organization = ref('')
+const message = ref('')
+const isSubmitting = ref(false)
+const validationError = ref('')
 
 const countries = [
     { code: 'CI', name: "Côte d'Ivoire", flag: '🇨🇮' },
@@ -61,8 +71,8 @@ const countries = [
     { code: 'VN', name: 'Vietnam', flag: '🇻🇳' },
 ]
 
-const selectedCountry = ref(countries[0])
-const countryList = ref(null)
+const selectedCountry = ref({ code: 'CI', name: "Côte d'Ivoire", flag: '🇨🇮' })
+const countryList = ref<HTMLElement | null>(null)
 const scrollbarThumbHeight = ref(35)
 const scrollbarThumbTop = ref(0)
 
@@ -74,6 +84,58 @@ function updateScrollbar() {
     scrollbarThumbHeight.value = Math.max(visibleRatio * 100, 12)
     scrollbarThumbTop.value = (list.scrollTop / (list.scrollHeight - list.clientHeight)) *
         (100 - scrollbarThumbHeight.value) || 0
+}
+
+async function handleSubmit() {
+    validationError.value = ''
+
+    if (!fullName.value.trim()) {
+        validationError.value = 'Veuillez saisir votre nom et prénom.'
+        return
+    }
+
+    if (!message.value.trim()) {
+        validationError.value = 'Veuillez nous parler de votre projet.'
+        return
+    }
+
+    isSubmitting.value = true
+
+    try {
+        const result = await sendContactMessage({
+            fullName: fullName.value,
+            organization: organization.value,
+            message: message.value,
+            country: selectedCountry.value ? {
+                code: selectedCountry.value.code,
+                name: selectedCountry.value.name,
+                flag: selectedCountry.value.flag,
+            } : undefined
+        })
+
+        if (result.success) {
+            router.push({
+                path: '/contact/status',
+                query: { status: 'success' }
+            })
+        } else {
+            router.push({
+                path: '/contact/status',
+                query: {
+                    status: 'error',
+                    error: result.error || 'Impossible d\'enregistrer vos informations.'
+                }
+            })
+        }
+    } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : 'Une erreur inattendue est survenue.'
+        router.push({
+            path: '/contact/status',
+            query: { status: 'error', error: msg }
+        })
+    } finally {
+        isSubmitting.value = false
+    }
 }
 
 onMounted(updateScrollbar)
@@ -150,44 +212,76 @@ onMounted(updateScrollbar)
                 <div>Travaillons ensemble</div>
                 <div>sur votre projet</div>
             </div>
-            <div class="grid gap-y-6 sm:gap-y-10">
+            <form @submit.prevent="handleSubmit" class="grid gap-y-6 sm:gap-y-10">
                 <div class="font-family-[PP Neue Montreal] font-normal text-base sm:text-xl lg:text-2xl leading-relaxed lg:leading-9 text-[#676767] w-full max-w-225">
                     <div>Contactez-nous, et l'un de nos conseillers clientèle vous répondra</div>
                     <div>pour discuter de votre projet</div>
                 </div>
 
                 <div class="grid gap-y-3 sm:gap-y-5">
-                    <div class="font-family-[PP Neue Montreal] font-normal text-lg sm:text-xl lg:text-2xl leading-relaxed lg:leading-9 text-[#000000] w-full max-w-225">
-                        Quel est votre nom
-                    </div>
+                    <label for="contact-name" class="font-family-[PP Neue Montreal] font-normal text-lg sm:text-xl lg:text-2xl leading-relaxed lg:leading-9 text-[#000000] w-full max-w-225">
+                        Quel est votre nom <span class="text-purple-600">*</span>
+                    </label>
                     <div>
-                        <input type="text" placeholder="Nom et prénoms" class="w-full border-0 border-b border-[#c9c9c9] text-xl sm:text-2xl md:text-3xl lg:text-4xl py-2 font-['PP_Neue_Montreal',Arial,sans-serif] outline-none focus:border-[#5C308C] transition-colors bg-transparent text-black">
+                        <input
+                            id="contact-name"
+                            v-model="fullName"
+                            type="text"
+                            required
+                            placeholder="Nom et prénoms"
+                            class="w-full border-0 border-b border-[#c9c9c9] text-xl sm:text-2xl md:text-3xl lg:text-4xl py-2 font-['PP_Neue_Montreal',Arial,sans-serif] outline-none focus:border-[#5C308C] transition-colors bg-transparent text-black"
+                        >
                     </div>
                 </div>
 
                 <div class="grid gap-y-3 sm:gap-y-5">
-                    <div class="font-family-[PP Neue Montreal] font-normal text-lg sm:text-xl lg:text-2xl leading-relaxed lg:leading-9 text-[#000000] w-full max-w-225">
+                    <label for="contact-org" class="font-family-[PP Neue Montreal] font-normal text-lg sm:text-xl lg:text-2xl leading-relaxed lg:leading-9 text-[#000000] w-full max-w-225">
                         Quel est votre organisation
-                    </div>
+                    </label>
                     <div>
-                        <input type="text" placeholder="Organisation/Entreprise" class="w-full border-0 border-b border-[#c9c9c9] text-xl sm:text-2xl md:text-3xl lg:text-4xl py-2 font-['PP_Neue_Montreal',Arial,sans-serif] outline-none focus:border-[#5C308C] transition-colors bg-transparent text-black">
+                        <input
+                            id="contact-org"
+                            v-model="organization"
+                            type="text"
+                            placeholder="Organisation/Entreprise"
+                            class="w-full border-0 border-b border-[#c9c9c9] text-xl sm:text-2xl md:text-3xl lg:text-4xl py-2 font-['PP_Neue_Montreal',Arial,sans-serif] outline-none focus:border-[#5C308C] transition-colors bg-transparent text-black"
+                        >
                     </div>
                 </div>
 
                 <div class="grid gap-y-3 sm:gap-y-5">
-                    <div class="font-family-[PP Neue Montreal] font-normal text-lg sm:text-xl lg:text-2xl leading-relaxed lg:leading-9 text-[#000000] w-full max-w-225">
-                        Parlez-nous de votre projet
-                    </div>
+                    <label for="contact-msg" class="font-family-[PP Neue Montreal] font-normal text-lg sm:text-xl lg:text-2xl leading-relaxed lg:leading-9 text-[#000000] w-full max-w-225">
+                        Parlez-nous de votre projet <span class="text-purple-600">*</span>
+                    </label>
                     <div>
-                        <textarea placeholder="Message" class="h-32 sm:h-40 lg:h-49 w-full resize-none border-0 border-b border-[#c9c9c9] text-xl sm:text-2xl md:text-3xl lg:text-4xl py-2 font-['PP_Neue_Montreal',Arial,sans-serif] outline-none focus:border-[#5C308C] transition-colors bg-transparent text-black"></textarea>
+                        <textarea
+                            id="contact-msg"
+                            v-model="message"
+                            required
+                            placeholder="Message"
+                            class="h-32 sm:h-40 lg:h-49 w-full resize-none border-0 border-b border-[#c9c9c9] text-xl sm:text-2xl md:text-3xl lg:text-4xl py-2 font-['PP_Neue_Montreal',Arial,sans-serif] outline-none focus:border-[#5C308C] transition-colors bg-transparent text-black"
+                        ></textarea>
                     </div>
                 </div>
+
+                <div v-if="validationError" class="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-base font-medium">
+                    {{ validationError }}
+                </div>
+
                 <div>
-                    <button type="submit" class="w-full sm:w-auto bg-[#5C308C] hover:bg-[#492272] transition-colors text-lg sm:text-xl lg:text-2xl text-[#FFFFFF] rounded-2xl py-3.5 sm:py-4 lg:py-5 px-8 sm:px-12 lg:px-19 cursor-pointer">
-                        Envoyer
+                    <button
+                        type="submit"
+                        :disabled="isSubmitting"
+                        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#5C308C] hover:bg-[#492272] disabled:opacity-60 disabled:cursor-not-allowed transition-all text-lg sm:text-xl lg:text-2xl text-[#FFFFFF] rounded-2xl py-3.5 sm:py-4 lg:py-5 px-8 sm:px-12 lg:px-19 cursor-pointer shadow-[0_4px_20px_rgba(92,48,140,0.3)]"
+                    >
+                        <svg v-if="isSubmitting" class="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <span>{{ isSubmitting ? 'Envoi en cours...' : 'Envoyer' }}</span>
                     </button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </template>

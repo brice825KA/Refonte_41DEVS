@@ -3,6 +3,7 @@ import accueil from '@/container/component/accueil/accueil.vue'
 import companies from '@/container/component/companies/companies.vue'
 import industries from '@/container/component/industries/industries.vue'
 import contact from '@/container/component/contact/contact.vue'
+import ContactStatus from '@/container/component/contact/ContactStatus.vue'
 
 const routes = [
   {
@@ -33,6 +34,12 @@ const routes = [
     path: '/contact',
     name: 'contact',
     component: contact
+  },
+  {
+    path: '/contact/status',
+    name: 'contact-status',
+    alias: ['/contact-status', '/contact/confirmation'],
+    component: ContactStatus
   },
   {
     path: '/:pathMatch(.*)*',
