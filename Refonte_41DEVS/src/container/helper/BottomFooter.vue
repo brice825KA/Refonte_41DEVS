@@ -1,11 +1,45 @@
 <script setup lang="js">
+import { onMounted, onUnmounted, ref } from 'vue'
 import logo_footer from '../../asset/icons/ic_41DEVSFooter.svg'
+import footer_arrow from '../../asset/icons/is_fleche_footer.png'
+
+const footerSection = ref(null)
+const isFooterVisible = ref(false)
+let footerObserver = null
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+onMounted(() => {
+    if (!footerSection.value) return
+
+    footerObserver = new IntersectionObserver(([entry]) => {
+        isFooterVisible.value = entry?.isIntersecting ?? false
+    })
+    footerObserver.observe(footerSection.value)
+})
+
+onUnmounted(() => {
+    footerObserver?.disconnect()
+})
 </script>
 
 <template>
-    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10 py-8 lg:py-10">
-        <!--First Column-->
-        <div id="FirstCol" class="gap-y-5 grid">
+    <section ref="footerSection" class="relative">
+        <button
+            v-if="isFooterVisible"
+            type="button"
+            class="back-to-top absolute right-0 top-0 z-10 flex items-center justify-center rounded-full transition-transform hover:scale-105"
+            aria-label="Retour en haut de la page"
+            @click="scrollToTop"
+        >
+            <img :src="footer_arrow" alt="" class="h-6 w-6">
+        </button>
+
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10 py-8 lg:py-10">
+            <!--First Column-->
+            <div id="FirstCol" class="gap-y-5 grid">
             <div class="border-none transition delay-150 duration-300 ease-in-out">
                 <img :src="logo_footer" class="h-8 sm:h-10 w-auto" alt="41DEVS">
             </div>
@@ -19,17 +53,17 @@ import logo_footer from '../../asset/icons/ic_41DEVSFooter.svg'
                 </div>
                 <div class="font-['PP_Neue_Montreal'] font-normal text-sm sm:text-base lg:text-lg text-[#FFFFFFB5]">(00229) 96 730 496 / 94 876 363</div>
             </div>
-        </div>
+            </div>
 
-        <!--Second Column-->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-15 w-full lg:w-auto" id="SecondCol">
+            <!--Second Column-->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-15 w-full lg:w-auto" id="SecondCol">
             <div class="" id="first-down">
                 <div class="font-['PP_Neue_Montreal'] font-medium text-xl sm:text-2xl text-[#FFFFFF] pb-1.5">Adresse</div>
                 <div class="grid gap-y-1">
                     <div class="font-['PP_Neue_Montreal'] font-normal text-sm sm:text-base lg:text-lg text-[#FFFFFFB5]">Contactez-nous et notre</div>
                     <div class="font-['PP_Neue_Montreal'] font-normal text-sm sm:text-base lg:text-lg text-[#FFFFFFB5]">conseiller clientèle vous répondra</div>
+                    </div>
                 </div>
-            </div>
 
             <div class="" id="second-down">
                 <div class="font-['PP_Neue_Montreal'] font-medium text-xl sm:text-2xl text-[#FFFFFF] pb-1.5">Liens Rapides</div>
@@ -50,10 +84,10 @@ import logo_footer from '../../asset/icons/ic_41DEVSFooter.svg'
                 <div class="font-['PP_Neue_Montreal'] font-medium text-xl sm:text-2xl text-[#FFFFFF] pb-1.5">Suivez-nous</div>
                 <div class="grid gap-y-1">
                     <div class="font-['PP_Neue_Montreal'] font-normal text-sm sm:text-base lg:text-lg text-[#FFFFFFB5]">
-                        <a href="#" class="hover:text-white transition-colors">Linkedin</a>
+                        <a href="https://www.linkedin.com/company/41devs/posts/?feedView=all" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Linkedin</a>
                     </div>
                     <div class="font-['PP_Neue_Montreal'] font-normal text-sm sm:text-base lg:text-lg text-[#FFFFFFB5]">
-                        <a href="#" class="hover:text-white transition-colors">Facebook</a>
+                        <a href="https://www.facebook.com/41Devs" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Facebook</a>
                     </div>
                     <div class="font-['PP_Neue_Montreal'] font-normal text-sm sm:text-base lg:text-lg text-[#FFFFFFB5]">
                         <a href="#" class="hover:text-white transition-colors">Dribble</a>
@@ -62,9 +96,9 @@ import logo_footer from '../../asset/icons/ic_41DEVSFooter.svg'
                         <a href="#" class="hover:text-white transition-colors">Instagram</a>
                     </div>
                 </div>
-            </div>
+                </div>
         </div>
-    </div>
+        </div>
 
     <!-- Copyright and Policies -->
     <div class="py-6 sm:py-8 lg:py-10 border-t border-[#FFFFFF29]">
@@ -81,4 +115,15 @@ import logo_footer from '../../asset/icons/ic_41DEVSFooter.svg'
             </div>
         </div>
     </div>
+    </section>
 </template>
+
+<style scoped>
+.back-to-top {
+    width: 72px;
+    height: 72px;
+    border: 0.79px solid rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(3.1648354530334473px);
+}
+</style>
