@@ -36,13 +36,13 @@ const sente3 = [
 
         <!--First Expertise-->
         <div>
-            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-15" id="exp1">
+            <div class="flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-25" id="exp1">
                 <div class="w-full max-w-lg lg:max-w-none lg:w-1/2">
                     <img :src="exp1" alt="Expertise 1" class="w-full h-auto rounded-2xl shadow-sm object-cover" />
                 </div>
                 <div class="flex gap-4 sm:gap-6 lg:gap-10 w-full lg:w-1/2">
-                    <div class="hidden sm:block w-0.5 bg-black shrink-0 self-stretch" id="div"></div>
-                    <div class="w-full">
+                    <div class="expertise-divider hidden sm:block self-stretch shrink-0"></div>
+                    <div class="expertise-copy w-full">
                         <div class="grid gap-6 lg:gap-10">
                             <div class="font-family-[Neue Haas Grotesk Display Pro] font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#000000] grid gap-1 sm:gap-2">
                                 <div>Etude et optimisation</div>
@@ -64,10 +64,10 @@ const sente3 = [
 
         <!--Second Expertise-->
         <div>
-            <div class="flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-25" id="exp2">
+            <div class="flex flex-col-reverse lg:flex-row items-center lg:items-stretch gap-8 lg:gap-25" id="exp2">
                 <div class="flex gap-4 sm:gap-6 lg:gap-10 w-full lg:w-1/2">
-                    <div class="hidden sm:block w-0.5 bg-black shrink-0 self-stretch" id="div"></div>
-                    <div class="w-full">
+                    <div class="expertise-divider hidden sm:block self-stretch shrink-0"></div>
+                    <div class="expertise-copy w-full">
                         <div class="grid gap-6 lg:gap-10">
                             <div class="font-family-[Neue Haas Grotesk Display Pro] font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#000000] grid gap-1 sm:gap-2">
                                 <div>Conception et développement</div>
@@ -92,13 +92,13 @@ const sente3 = [
 
         <!--Third Expertise-->
         <div>
-            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-25" id="exp3">
+            <div class="flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-25" id="exp3">
                 <div class="w-full max-w-lg lg:max-w-none lg:w-1/2">
                     <img :src="exp3" alt="Expertise 3" class="w-full h-auto rounded-2xl shadow-sm object-cover" />
                 </div>
                 <div class="flex gap-4 sm:gap-6 lg:gap-10 w-full lg:w-1/2">
-                    <div class="hidden sm:block w-0.5 bg-black shrink-0 self-stretch" id="div"></div>
-                    <div class="w-full">
+                    <div class="expertise-divider hidden sm:block self-stretch shrink-0"></div>
+                    <div class="expertise-copy w-full">
                         <div class="grid gap-6 lg:gap-10">
                             <div class="font-family-[Neue Haas Grotesk Display Pro] font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#000000] grid gap-1 sm:gap-2">
                                 <div>Infrastructure</div>
@@ -119,3 +119,19 @@ const sente3 = [
         </div>
     </div>
 </template>
+
+<style scoped>
+.expertise-divider {
+    width: 1px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.19);
+}
+
+@media (min-width: 1024px) {
+    .expertise-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+</style>

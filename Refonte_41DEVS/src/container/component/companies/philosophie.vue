@@ -45,12 +45,12 @@ const secondtext = [
             <div 
                 v-for="(item, index) in firstText" 
                 :key="index"
-                class="grid gap-6 sm:gap-8 lg:gap-10 rounded-2xl bg-[#FFFFFF] p-6 sm:p-8 lg:p-10 transition-colors duration-300 ease-in hover:bg-purple-400 shadow-sm"
+                class="grid gap-6 sm:gap-8 lg:gap-10 rounded-2xl border-0 bg-[#FFFFFF] p-6 sm:p-8 lg:p-10 transition-colors duration-300 ease-in hover:bg-purple-400 shadow-none"
             >
                 <div class="w-20 sm:w-25.25 h-auto">
                     <img :src="philo[index]" alt="" class="w-full h-auto"/>
                 </div>
-                <div class="grid gap-3 sm:gap-5">
+                <div class="grid gap-3 sm:gap-4 lg:gap-5">
                     <div class="font-family-[Neue Haas Grotesk Display Pro] font-semibold text-2xl sm:text-3xl text-[#000000]">
                         {{ item }}
                     </div>

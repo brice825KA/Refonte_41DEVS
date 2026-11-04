@@ -3,6 +3,7 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 import headerIcon from '@/asset/icons/ic_header_acceuil.svg'
 import middlesponsors from './Middle_acceuil_Sponsors.vue'
 import expertises from './expertises.vue'
+import ProjectsSection from './ProjectsSection.vue'
 
 const items = [
   'Entreprises',
@@ -171,4 +172,5 @@ onBeforeUnmount(() => {
     </div>
     <middlesponsors />
     <expertises />
+    <ProjectsSection />
 </template>

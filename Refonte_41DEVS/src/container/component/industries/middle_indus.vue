@@ -1,69 +1,209 @@
 <script lang="js" setup>
-import indus1 from '@/asset/icons/ic_industries3.svg'
-import indus2 from '@/asset/icons/ic_industries1.svg'
-import indus3 from '@/asset/icons/ic_industries2.svg'
+import insuranceIcon from '@/asset/icons/ic_industries3.svg'
+import financeIcon from '@/asset/icons/ic_industries1.svg'
+import publicIcon from '@/asset/icons/ic_industries2.svg'
+import healthIcon from '@/asset/icons/ic_industries4.svg'
+import entertainmentIcon from '@/asset/icons/ic_industries5.svg'
+import securityIcon from '@/asset/icons/ic_industries6.svg'
 
-import indus4 from '@/asset/icons/ic_industries4.svg'
-import indus5 from '@/asset/icons/ic_industries5.svg'
-import indus6 from '@/asset/icons/ic_industries6.svg'
+import insuranceBackdrop from '@/asset/icons/ic_industries_transparent6.svg'
+import financeBackdrop from '@/asset/icons/ic_industries_transparent1.svg'
+import publicBackdrop from '@/asset/icons/ic_industries_transparent2.svg'
+import healthBackdrop from '@/asset/icons/ic_industries_transparent3.svg'
+import entertainmentBackdrop from '@/asset/icons/ic_industries_transparent4.svg'
+import securityBackdrop from '@/asset/icons/ic_industries_transparent5.svg'
 
-const textligne1 = [
-    ['Assurance'],
-    ['Banque et', 'Finances'],
-    ['Secteur public'],
-]
-
-const textligne2_and_color = [
-    ['Santé et Industrie', 'pharmaceutique'],
-    ['Divertissement'],
-    ['Sécurité'],
-]
-
-const color_ligne1 = [
-    'rgba(196, 161, 239, 1)',
-    'rgba(173, 221, 254, 1)',
-    'rgba(243, 222, 120, 1)'
-]
-
-const color_ligne2 = [
-    'rgba(99, 198, 119, 1)',
-    'rgba(255, 226, 238, 1)',
-    'rgba(95, 1, 211, 1)'
+const industries = [
+    {
+        name: ['Assurance'],
+        color: 'rgba(196, 161, 239, 1)',
+        textColor: '#fff',
+        icon: insuranceIcon,
+        backdrop: insuranceBackdrop,
+        layout: 'insurance',
+    },
+    {
+        name: ['Banque et', 'Finances'],
+        color: 'rgba(173, 221, 254, 1)',
+        textColor: '#000',
+        icon: financeIcon,
+        backdrop: financeBackdrop,
+        layout: 'finance',
+    },
+    {
+        name: ['Secteur public'],
+        color: 'rgba(243, 222, 120, 1)',
+        textColor: '#000',
+        icon: publicIcon,
+        backdrop: publicBackdrop,
+        layout: 'public',
+    },
+    {
+        name: ['Santé et Industrie', 'pharmaceutique'],
+        color: 'rgba(99, 198, 119, 1)',
+        textColor: '#fff',
+        icon: healthIcon,
+        backdrop: healthBackdrop,
+        layout: 'health',
+    },
+    {
+        name: ['Divertissement'],
+        color: 'rgba(255, 226, 238, 1)',
+        textColor: '#000',
+        icon: entertainmentIcon,
+        backdrop: entertainmentBackdrop,
+        layout: 'entertainment',
+    },
+    {
+        name: ['Sécurité'],
+        color: 'rgba(95, 1, 211, 1)',
+        textColor: '#fff',
+        icon: securityIcon,
+        backdrop: securityBackdrop,
+        layout: 'security',
+    },
 ]
 </script>
 
 <template>
-    <div class="grid gap-6 sm:gap-8 lg:gap-10 py-8 sm:py-10 px-4 sm:px-8 md:px-14 lg:px-25">
-        <div id="first-line">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 justify-center items-center">
-                <div 
-                    v-for="(text, index) in textligne1" 
-                    :key="index" 
-                    class="flex aspect-auto sm:aspect-square flex-row items-center justify-between gap-4 p-5 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl backdrop-blur-[4px] shadow-[0px_3px_20px_4px_rgba(248,245,255,0.56)] min-h-[140px]" 
-                    :style="{ backgroundColor: color_ligne1[index], color: index === 0 ? 'rgba(255, 255, 255, 1)' : 'rgba(0, 0, 0, 1)' }"
-                >
-                    <div class="font-family-[Neue Haas Grotesk Display Pro] font-semibold text-xl sm:text-2xl md:text-3xl lg:text-[38.89px] leading-tight lg:leading-[44.72px] text-left">
-                        <div v-for="(line, lineIndex) in text" :key="lineIndex">{{ line }}</div>
-                    </div>
-                    <img :src="index === 0 ? indus1 : index === 1 ? indus2 : indus3" alt="" class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 shrink-0 object-contain" />
-                </div>
-            </div>
+    <section class="grid gap-6 sm:gap-8 lg:gap-10 py-8 sm:py-10 px-4 sm:px-8 md:px-14 lg:px-25">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+            <article
+                v-for="industry in industries"
+                :key="industry.layout"
+                class="industry-card aspect-auto sm:aspect-square min-h-[140px] border-0 rounded-none shadow-none"
+                :class="industry.layout"
+                :style="{ backgroundColor: industry.color, color: industry.textColor }"
+            >
+                <img :src="industry.backdrop" alt="" aria-hidden="true" class="industry-backdrop">
+                <img :src="industry.icon" alt="" aria-hidden="true" class="industry-icon">
+                <h2 class="industry-title">
+                    <span v-for="line in industry.name" :key="line" class="block">{{ line }}</span>
+                </h2>
+            </article>
         </div>
-
-        <div id="second-line">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 justify-center items-center">
-                <div 
-                    v-for="(text, index) in textligne2_and_color" 
-                    :key="index" 
-                    class="flex aspect-auto sm:aspect-square flex-row items-center justify-between gap-4 p-5 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl backdrop-blur-[4px] shadow-[0px_3px_20px_4px_rgba(248,245,255,0.56)] min-h-[140px]" 
-                    :style="{ backgroundColor: color_ligne2[index], color: index === 1 ? 'rgba(0, 0, 0, 1)' : 'rgba(255, 255, 255, 1)' }"
-                >
-                    <div class="font-family-[Neue Haas Grotesk Display Pro] font-semibold text-xl sm:text-2xl md:text-3xl lg:text-[38.89px] leading-tight lg:leading-[44.72px] text-left">
-                        <div v-for="(line, lineIndex) in text" :key="lineIndex">{{ line }}</div>
-                    </div>
-                    <img :src="index === 0 ? indus4 : index === 1 ? indus5 : indus6" alt="" class="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 shrink-0 object-contain" />
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
 </template>
+
+<style scoped>
+.industry-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.industry-title {
+    position: absolute;
+    z-index: 2;
+    top: 26%;
+    left: 7.5%;
+    max-width: 75%;
+    margin: 0;
+    font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+    font-size: 38.89px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 44.72px;
+    letter-spacing: 0;
+}
+
+@media (max-width: 1023px) {
+    .industry-title {
+        font-size: 24px;
+        line-height: 1.2;
+    }
+}
+
+@media (max-width: 639px) {
+    .industry-title {
+        font-size: 20px;
+    }
+}
+
+.industry-backdrop,
+.industry-icon {
+    position: absolute;
+    height: auto;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.industry-backdrop {
+    z-index: 0;
+}
+
+.industry-icon {
+    z-index: 1;
+}
+
+.insurance .industry-backdrop {
+    top: 37%;
+    right: -2%;
+    width: 34%;
+}
+
+.insurance .industry-icon {
+    top: 12%;
+    right: -1%;
+    width: 38%;
+}
+
+.finance .industry-backdrop {
+    top: 35%;
+    right: -4%;
+    width: 39%;
+}
+
+.finance .industry-icon {
+    top: 10%;
+    right: -1%;
+    width: 39%;
+}
+
+.public .industry-backdrop {
+    top: 36%;
+    right: -2%;
+    width: 38%;
+}
+
+.public .industry-icon {
+    top: 12%;
+    right: -4%;
+    width: 39%;
+}
+
+.health .industry-backdrop {
+    top: 38%;
+    right: -2%;
+    width: 39%;
+}
+
+.health .industry-icon {
+    top: 10%;
+    right: -5%;
+    width: 36%;
+}
+
+.entertainment .industry-backdrop {
+    top: 39%;
+    right: -1%;
+    width: 36%;
+}
+
+.entertainment .industry-icon {
+    top: 12%;
+    right: -1%;
+    width: 37%;
+}
+
+.security .industry-backdrop {
+    top: 37%;
+    right: -5%;
+    width: 38%;
+}
+
+.security .industry-icon {
+    top: 12%;
+    right: -4%;
+    width: 38%;
+}
+</style>
