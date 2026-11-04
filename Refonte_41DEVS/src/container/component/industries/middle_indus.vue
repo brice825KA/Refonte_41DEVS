@@ -15,6 +15,7 @@ import securityBackdrop from '@/asset/icons/ic_industries_transparent5.svg'
 
 const industries = [
     {
+        slug: 'assurance',
         name: ['Assurance'],
         color: 'rgba(196, 161, 239, 1)',
         textColor: '#fff',
@@ -23,6 +24,7 @@ const industries = [
         layout: 'insurance',
     },
     {
+        slug: 'banque-finance',
         name: ['Banque et', 'Finances'],
         color: 'rgba(173, 221, 254, 1)',
         textColor: '#000',
@@ -31,6 +33,7 @@ const industries = [
         layout: 'finance',
     },
     {
+        slug: 'secteur-public',
         name: ['Secteur public'],
         color: 'rgba(243, 222, 120, 1)',
         textColor: '#000',
@@ -39,6 +42,7 @@ const industries = [
         layout: 'public',
     },
     {
+        slug: 'sante-pharmaceutique',
         name: ['Santé et Industrie', 'pharmaceutique'],
         color: 'rgba(99, 198, 119, 1)',
         textColor: '#fff',
@@ -47,6 +51,7 @@ const industries = [
         layout: 'health',
     },
     {
+        slug: 'divertissement',
         name: ['Divertissement'],
         color: 'rgba(255, 226, 238, 1)',
         textColor: '#000',
@@ -55,6 +60,7 @@ const industries = [
         layout: 'entertainment',
     },
     {
+        slug: 'securite',
         name: ['Sécurité'],
         color: 'rgba(95, 1, 211, 1)',
         textColor: '#fff',
@@ -68,19 +74,20 @@ const industries = [
 <template>
     <section class="grid gap-6 sm:gap-8 lg:gap-10 py-8 sm:py-10 px-4 sm:px-8 md:px-14 lg:px-25">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
-            <article
+            <RouterLink
                 v-for="industry in industries"
                 :key="industry.layout"
+                :to="`/industries/${industry.slug}`"
                 class="industry-card aspect-auto sm:aspect-square min-h-[140px] border-0 rounded-none shadow-none"
                 :class="industry.layout"
                 :style="{ backgroundColor: industry.color, color: industry.textColor }"
             >
                 <img :src="industry.backdrop" alt="" aria-hidden="true" class="industry-backdrop">
                 <img :src="industry.icon" alt="" aria-hidden="true" class="industry-icon">
-                <h2 class="industry-title">
+                <span class="industry-title">
                     <span v-for="line in industry.name" :key="line" class="block">{{ line }}</span>
-                </h2>
-            </article>
+                </span>
+            </RouterLink>
         </div>
     </section>
 </template>

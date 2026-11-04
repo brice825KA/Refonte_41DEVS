@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, type RouteLocationNormalized } from 'vue-router'
 import accueil from '@/container/component/accueil/accueil.vue'
 import companies from '@/container/component/companies/companies.vue'
 import industries from '@/container/component/industries/industries.vue'
@@ -29,6 +29,23 @@ const routes = [
     path: '/industries',
     name: 'industries',
     component: industries
+  },
+  {
+    path: '/industries/:slug',
+    name: 'industry-detail',
+    component: () => import('@/container/component/industries/IndustryDetail.vue'),
+    beforeEnter: (to: RouteLocationNormalized) => {
+      const validSlugs = [
+        'assurance',
+        'banque-finance',
+        'secteur-public',
+        'sante-pharmaceutique',
+        'divertissement',
+        'securite'
+      ]
+
+      return validSlugs.includes(String(to.params.slug)) || { name: 'industries' }
+    }
   },
   {
     path: '/contact',
