@@ -144,8 +144,8 @@ const industries = [
 
 .insurance .industry-backdrop {
     top: 37%;
-    right: -2%;
-    width: 34%;
+    right: -3%;
+    width: 38%;
 }
 
 .insurance .industry-icon {
@@ -155,8 +155,8 @@ const industries = [
 }
 
 .finance .industry-backdrop {
-    top: 35%;
-    right: -4%;
+    top: 38%;
+    right: 7%;
     width: 39%;
 }
 
@@ -167,8 +167,8 @@ const industries = [
 }
 
 .public .industry-backdrop {
-    top: 36%;
-    right: -2%;
+    top: 37%;
+    right: 9%;
     width: 38%;
 }
 
@@ -179,8 +179,8 @@ const industries = [
 }
 
 .health .industry-backdrop {
-    top: 38%;
-    right: -2%;
+    top: 43%;
+    right: -6%;
     width: 39%;
 }
 
@@ -191,9 +191,9 @@ const industries = [
 }
 
 .entertainment .industry-backdrop {
-    top: 39%;
-    right: -1%;
-    width: 36%;
+    top: 43%;
+    right: -4%;
+    width: 33%;
 }
 
 .entertainment .industry-icon {
@@ -203,8 +203,8 @@ const industries = [
 }
 
 .security .industry-backdrop {
-    top: 37%;
-    right: -5%;
+    top: 40%;
+    right: -8%;
     width: 38%;
 }
 

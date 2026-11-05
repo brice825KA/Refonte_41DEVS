@@ -45,7 +45,7 @@ const secondtext = [
             <div 
                 v-for="(item, index) in firstText" 
                 :key="index"
-                class="grid gap-6 sm:gap-8 lg:gap-10 rounded-2xl border-0 bg-[#FFFFFF] p-6 sm:p-8 lg:p-10 transition-colors duration-300 ease-in hover:bg-purple-400 shadow-none"
+                class="grid gap-6 sm:gap-8 lg:gap-10 border-0 bg-[#FFFFFF] p-6 sm:p-8 lg:p-10 shadow-none"
             >
                 <div class="w-20 sm:w-25.25 h-auto">
                     <img :src="philo[index]" alt="" class="w-full h-auto"/>
