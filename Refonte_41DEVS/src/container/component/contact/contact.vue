@@ -142,7 +142,7 @@ onMounted(updateScrollbar)
 </script>
 
 <template>
-    <div class="py-8 sm:py-12 lg:py-15 px-4 sm:px-8 md:px-14 lg:px-20 xl:px-25 flex flex-col lg:flex-row gap-10 lg:gap-16 xl:gap-32 2xl:gap-65 bg-[linear-gradient(110deg,#f5efff_0%,#fff_68%)] overflow-hidden">
+    <div class="pt-28 pb-8 sm:pt-32 sm:pb-12 lg:pt-36 lg:pb-15 px-4 sm:px-8 md:px-14 lg:px-20 xl:px-25 flex flex-col lg:flex-row gap-10 lg:gap-16 xl:gap-32 2xl:gap-65 bg-[linear-gradient(110deg,#f5efff_0%,#fff_68%)] overflow-hidden">
         <div
             id="FirstCol"
             class="grid w-full max-w-full lg:max-w-105 grid-cols-[80px_4px_minmax(0,1fr)] items-stretch gap-6 sm:gap-10 px-4 sm:px-5 py-6 text-[#17131d] font-['PP_Neue_Montreal',Arial,sans-serif] max-sm:grid-cols-[72px_4px_minmax(0,1fr)] max-sm:gap-3 max-sm:px-3.5 max-sm:py-4 shrink-0"

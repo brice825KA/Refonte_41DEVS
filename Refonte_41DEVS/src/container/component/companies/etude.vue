@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { RouterLink } from 'vue-router'
 import etude1 from '@/asset/images/img_expertise1.webp'
 import etude2 from '@/asset/images/img_expertise2.webp'
 import etude3 from '@/asset/images/img_expertise3.webp'
@@ -14,6 +15,11 @@ const expertiseTitles = [
     'Ingénierie et Développement de logiciels',
     'Infrastructure informatique'
 ]
+
+const expertiseRoutes: Record<number, string> = {
+    1: '/companies/ingenierie-developpement',
+    2: '/companies/infrastructure-informatique'
+}
 </script>
 
 <template>
@@ -26,6 +32,12 @@ const expertiseTitles = [
             <img :src="item" :alt="expertiseTitles[index]" class="w-full h-auto object-cover"/>
             <div class="expertise-image-shade" aria-hidden="true"></div>
             <h2 class="expertise-image-title">{{ expertiseTitles[index] }}</h2>
+            <RouterLink
+                v-if="expertiseRoutes[index]"
+                :to="expertiseRoutes[index]"
+                class="expertise-card-link"
+                :aria-label="`Découvrir ${expertiseTitles[index]}`"
+            />
         </div>
     </div>
 </template>
@@ -50,5 +62,20 @@ const expertiseTitles = [
     font-size: clamp(1rem, 1.6vw, 1.4rem);
     font-weight: 600;
     line-height: 1.2;
+}
+
+.expertise-card-link {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+}
+
+.expertise-card:has(.expertise-card-link) {
+    cursor: pointer;
+}
+
+.expertise-card:has(.expertise-card-link):focus-within {
+    outline: 2px solid #9c4feb;
+    outline-offset: 3px;
 }
 </style>

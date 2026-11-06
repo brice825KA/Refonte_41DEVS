@@ -1,9 +1,12 @@
 <script lang="js" setup>
-import { onMounted, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
 import ic_headers from "@/asset/icons/ic_41DEVS.svg"
 
+const route = useRoute()
 const isMobileMenuOpen = ref(false)
 const isScrolled = ref(false)
+const isContactPage = computed(() => route.name === 'contact')
 
 function updateScrollState() {
     isScrolled.value = window.scrollY > 0
@@ -24,7 +27,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <nav class="transition-colors duration-300" :class="{ 'nav-scrolled': isScrolled }">
+    <nav class="transition-colors duration-300" :class="{ 'nav-scrolled': isScrolled, 'nav-contact-page': isContactPage }">
         <div class="flex items-center justify-between py-4 sm:py-6 lg:py-5 px-10 sm:px-8 md:px-14 lg:px-20">
             <!-- Logo leading to Accueil -->
             <div class="shrink-0">
@@ -121,6 +124,16 @@ onUnmounted(() => {
     color: #584074;
 }
 
+.nav-contact-page:not(.nav-scrolled) .nav-link {
+    color: #584074;
+}
+
+.nav-contact-page:not(.nav-scrolled) .nav-links-pill {
+    border-color: rgba(92, 47, 140, 0.14);
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 2px 12px rgba(34, 18, 54, 0.08);
+}
+
 .nav-contact-button {
     background-color: #fff;
     color: #000;
@@ -128,6 +141,15 @@ onUnmounted(() => {
 
 .nav-contact-button:hover {
     background-color: #eee;
+}
+
+.nav-contact-page:not(.nav-scrolled) .nav-contact-button {
+    background-color: #5c2f8c;
+    color: #fff;
+}
+
+.nav-contact-page:not(.nav-scrolled) .nav-contact-button:hover {
+    background-color: #492272;
 }
 
 .nav-scrolled .nav-contact-button {

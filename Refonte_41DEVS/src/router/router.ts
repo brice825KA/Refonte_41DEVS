@@ -21,6 +21,16 @@ const routes = [
     redirect: '/'
   },
   {
+    path: '/companies/:expertise',
+    name: 'company-expertise-detail',
+    component: () => import('@/container/component/companies/ExpertiseDetail.vue'),
+    beforeEnter: (to: RouteLocationNormalized) => {
+      const validExpertises = ['ingenierie-developpement', 'infrastructure-informatique']
+
+      return validExpertises.includes(String(to.params.expertise)) || { name: 'companies' }
+    }
+  },
+  {
     path: '/companies',
     name: 'companies',
     component: companies

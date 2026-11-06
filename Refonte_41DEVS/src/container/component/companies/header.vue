@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div class="bg-[#0C0020] items-center justify-center grid gap-6 sm:gap-8 lg:gap-10 py-8 sm:py-12 lg:py-16 px-4 sm:px-8">
+    <div class="bg-[#0C0020] items-center justify-center grid gap-6 sm:gap-8 lg:gap-10 pt-28 pb-8 sm:pt-32 sm:pb-12 lg:pt-36 lg:pb-16 px-4 sm:px-8">
         <div class="flex justify-center font-['PP_Neue_Montreal',sans-serif] font-normal text-base sm:text-lg md:text-xl lg:text-2xl text-white" id="top-bottom">
             Expertises
         </div>
