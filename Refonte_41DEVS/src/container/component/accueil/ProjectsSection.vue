@@ -17,7 +17,7 @@ const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
 </script>
 
 <template>
-  <section class="projects-section px-5 py-12 text-white sm:px-8 sm:py-16 lg:px-10 lg:py-20">
+  <section class="projects-section px-5 pt-12 pb-8 text-white sm:px-8 sm:pt-16 sm:pb-10 lg:px-10 lg:pt-20 lg:pb-12">
     <div class="mx-auto max-w-6xl">
       <header class="mb-8 sm:mb-10 lg:mb-14">
         <h2 class="m-0 text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">Nos réalisations</h2>
@@ -57,7 +57,7 @@ const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
 
 <style scoped>
 .projects-section {
-  background-color: #0d0021;
+  background-color: #0c0020;
 }
 
 .projects-grid {

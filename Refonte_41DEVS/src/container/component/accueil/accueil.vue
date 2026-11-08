@@ -2,6 +2,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { gsap } from 'gsap'
 import headerIcon from '@/asset/icons/ic_header_acceuil.svg'
+import acc from '@/asset/images/img_acceuil.webp'
 import middlesponsors from './Middle_acceuil_Sponsors.vue'
 import expertises from './expertises.vue'
 import ProjectsSection from './ProjectsSection.vue'
@@ -58,7 +59,7 @@ function startReveal(slideIndex: number) {
         }
       }
     }, 85)
-  }, 180)
+  }, 200)
 }
 
 function onSlideSelect(index: number) {
@@ -119,15 +120,22 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
+    <div>
+    <section class="home-scroll-reveal home-scroll-page--hero">
     <div
         ref="hero"
-        class="home-hero relative isolate grid items-center justify-center overflow-hidden text-center font-family-[Neue Haas Grotesk Display Pro] font-semibold text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl gap-y-1 pt-28 pb-12 sm:pt-32 sm:pb-16 md:pt-36 md:pb-24 lg:pt-40 lg:pb-32 px-4 sm:px-6 bg-[linear-gradient(180deg,#2A0D45_0%,#180819_50%,#09090D_100%)]"
+        class="home-hero relative isolate grid min-h-[100svh] content-center items-center justify-center overflow-hidden text-center font-family-[Neue Haas Grotesk Display Pro] font-semibold text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl gap-y-0 py-20 sm:py-24 md:py-24 lg:py-24 px-4 sm:px-6 bg-[linear-gradient(180deg,#2A0D45_0%,#180819_50%,#09090D_100%)]"
         :class="{ 'home-intro-pending': !introComplete, 'home-intro-complete': introComplete }"
     >
         <div class="home-hero-light" aria-hidden="true"></div>
+        <div class="home-hero-rings" aria-hidden="true">
+            <div class="home-hero-ring home-hero-ring--small"></div>
+            <div class="home-hero-ring home-hero-ring--medium"></div>
+            <div class="home-hero-ring home-hero-ring--large"></div>
+        </div>
         <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-40 sm:opacity-75 lg:opacity-100" aria-hidden="true">
             <!-- Left icons cluster (staircase grid from edge inwards) -->
-            <div class="absolute bottom-0 left-0 -ml-4 sm:-ml-6 lg:-ml-8 grid grid-cols-3 gap-3 sm:gap-4 lg:gap-5 w-max pointer-events-none">
+            <div class="home-icon-cluster absolute bottom-0 left-0 -ml-4 sm:-ml-6 lg:-ml-8 grid grid-cols-3 gap-3 sm:gap-4 lg:gap-5 w-max pointer-events-none">
                 <!-- Row 1: 1 cube on the edge -->
                 <div class="col-start-1 row-start-1 w-20 sm:w-28 md:w-36 lg:w-40 h-auto">
                     <img :src="headerIcon" class="home-hero-icon w-full h-auto pointer-events-auto cursor-pointer transition-transform duration-300 ease-out hover:-translate-y-4 hover:scale-105 hover:brightness-125 hover:drop-shadow-[0_15px_25px_rgba(168,85,247,0.55)] select-none" alt="">
@@ -151,7 +159,7 @@ onBeforeUnmount(() => {
                 </div>
             </div>
             <!-- Right icons cluster (mirrored staircase grid) -->
-            <div class="absolute bottom-0 right-0 -mr-4 sm:-mr-6 lg:-mr-8 grid grid-cols-3 gap-3 sm:gap-4 lg:gap-5 w-max pointer-events-none scale-x-[-1]">
+            <div class="home-icon-cluster absolute bottom-0 right-0 -mr-4 sm:-mr-6 lg:-mr-8 grid grid-cols-3 gap-3 sm:gap-4 lg:gap-5 w-max pointer-events-none scale-x-[-1]">
                 <!-- Row 1: 1 cube on the edge -->
                 <div class="col-start-1 row-start-1 w-20 sm:w-28 md:w-36 lg:w-40 h-auto">
                     <img :src="headerIcon" class="home-hero-icon w-full h-auto pointer-events-auto cursor-pointer transition-transform duration-300 ease-out hover:-translate-y-4 hover:scale-105 hover:brightness-125 hover:drop-shadow-[0_15px_25px_rgba(168,85,247,0.55)] select-none" alt="">
@@ -179,10 +187,10 @@ onBeforeUnmount(() => {
             <div class="home-curtain-folds"></div>
             <div class="home-curtain-hem"></div>
         </div>
-        <div class="home-hero-copy relative z-10 bg-[linear-gradient(90deg,#999999_0%,#ffffff_35%,#ffffff_100%)] bg-clip-text text-transparent py-1 sm:py-2 md:py-3 lg:py-5">
+        <div class="home-hero-copy relative z-10 leading-[0.95] bg-[linear-gradient(90deg,#999999_0%,#ffffff_35%,#ffffff_100%)] bg-clip-text text-transparent py-0 sm:py-1 md:py-1 lg:py-2">
             Nous accompagnons la
         </div>
-        <div class="home-hero-copy relative z-10 bg-[linear-gradient(90deg,#999999_0%,#ffffff_35%,#ffffff_100%)] bg-clip-text text-transparent py-1 sm:py-2 md:py-3 lg:py-5">
+        <div class="home-hero-copy relative z-10 leading-[0.95] bg-[linear-gradient(90deg,#999999_0%,#ffffff_35%,#ffffff_100%)] bg-clip-text text-transparent py-0 sm:py-1 md:py-1 lg:py-2">
             transformation digitale des
         </div>
         <div class="home-hero-word relative z-10">
@@ -192,7 +200,7 @@ onBeforeUnmount(() => {
                 loop
                 :autoplay="carouselAutoplay"
                 :items="items"
-                :ui="{ container: 'h-50' }"
+                :ui="{ container: 'h-28' }"
                 class="flex justify-center items-center"
                 @select="onSlideSelect"
             >
@@ -211,9 +219,20 @@ onBeforeUnmount(() => {
             </UCarousel>
         </div>
     </div>
-    <middlesponsors />
-    <expertises />
-    <ProjectsSection />
+    </section>
+    <section class="home-scroll-reveal home-scroll-page--image">
+        <img :src="acc" alt="" class="home-showcase-image" fetchpriority="high">
+    </section>
+    <section class="home-scroll-reveal home-scroll-page--middle">
+        <middlesponsors />
+    </section>
+    <section class="home-scroll-reveal home-scroll-page--expertise">
+        <expertises />
+    </section>
+    <section class="home-scroll-reveal home-scroll-page--projects">
+        <ProjectsSection />
+    </section>
+    </div>
 </template>
 
 <style scoped>
@@ -233,6 +252,61 @@ onBeforeUnmount(() => {
     inset: 0;
     pointer-events: none;
     background: radial-gradient(circle at 50% 8%, rgba(165, 94, 255, 0.45), transparent 30%);
+}
+
+.home-hero-rings {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 50%;
+    width: min(120vw, 1100px);
+    aspect-ratio: 1;
+    pointer-events: none;
+    transform: translateX(-50%);
+}
+
+.home-hero-ring {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    aspect-ratio: 1;
+    border: 1px solid rgb(226 204 255 / 0.16);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scaleX(1.35);
+}
+
+.home-hero-ring::after {
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg 300deg,
+        rgb(213 173 255 / 0.08) 320deg,
+        rgb(255 255 255 / 0.8) 345deg,
+        rgb(213 173 255 / 0.08) 360deg
+    );
+    content: '';
+    mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+    animation: home-ring-light-sweep 12s linear infinite;
+}
+
+.home-hero-ring--small {
+    width: 26%;
+}
+
+.home-hero-ring--medium {
+    width: 53%;
+}
+
+.home-hero-ring--large {
+    width: 80%;
+}
+
+@keyframes home-ring-light-sweep {
+    to {
+        rotate: 360deg;
+    }
 }
 
 .home-intro-complete .home-hero-light {
@@ -285,6 +359,18 @@ onBeforeUnmount(() => {
     will-change: transform, opacity;
 }
 
+.home-icon-cluster > div:nth-child(odd) {
+    rotate: -5deg;
+}
+
+.home-icon-cluster > div:nth-child(even) {
+    rotate: 4deg;
+}
+
+.home-icon-cluster {
+    translate: 0 -20px;
+}
+
 .home-hero-icon:hover {
     animation: home-icon-hover 1.8s ease-in-out infinite;
     translate: none !important;
@@ -322,6 +408,42 @@ onBeforeUnmount(() => {
     will-change: transform, opacity;
 }
 
+.home-scroll-reveal {
+    width: 100%;
+    min-height: 100svh;
+    background: #fff;
+}
+
+.home-scroll-page--hero,
+.home-scroll-page--image,
+.home-scroll-page--projects {
+    background: #0c0020;
+}
+
+.home-scroll-page--image {
+    overflow: hidden;
+}
+
+.home-showcase-image {
+    display: block;
+    width: 100%;
+    height: 100svh;
+    object-fit: cover;
+    object-position: center;
+}
+
+.home-scroll-page--middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: transparent;
+}
+
+.home-scroll-page--expertise {
+    background: #f7f7fc;
+}
+
+
 @media (prefers-reduced-motion: reduce) {
     .home-intro-complete .home-hero-light {
         animation: none;
@@ -330,5 +452,10 @@ onBeforeUnmount(() => {
     .home-hero-icon:hover {
         animation: none;
     }
+
+    .home-hero-ring::after {
+        animation: none;
+    }
+
 }
 </style>

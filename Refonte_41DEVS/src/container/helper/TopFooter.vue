@@ -3,8 +3,8 @@ import headerIcon from '@/asset/icons/ic_header_acceuil.svg'
 </script>
 
 <template>
-    <div class="bg-[#0C0020] justify-center items-center py-6 sm:py-10">
-        <div class="relative isolate overflow-hidden bg-gradient-to-b from-[#0a0314] via-[#1a0736] to-[#5914bd] items-center justify-center text-center rounded-2xl sm:rounded-3xl lg:rounded-4xl py-14 sm:py-24 md:py-36 lg:py-50 px-4 sm:px-8 grid gap-6 sm:gap-8 lg:gap-10">
+    <div class="bg-[#0C0020] justify-center items-center pt-0 pb-6 sm:pb-10 lg:pb-16">
+        <div class="relative isolate overflow-hidden bg-gradient-to-b from-[#0a0314] via-[#1a0736] to-[#5914bd] items-center justify-center text-center rounded-2xl sm:rounded-3xl lg:rounded-4xl py-14 sm:py-20 md:py-22 lg:py-24 px-4 sm:px-8 grid gap-6 sm:gap-8 lg:gap-6">
             <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-40 sm:opacity-75 lg:opacity-100" aria-hidden="true">
                 <!-- Left icons cluster (staircase grid from edge inwards) -->
                 <div class="absolute bottom-0 left-0 -ml-4 sm:-ml-6 lg:-ml-8 grid grid-cols-3 gap-3 sm:gap-4 lg:gap-5 w-max pointer-events-none">
@@ -55,10 +55,10 @@ import headerIcon from '@/asset/icons/ic_header_acceuil.svg'
                     </div>
                 </div>
             </div>
-            <div class="relative z-10 justify-center items-center font-family-[Neue Haas Grotesk Display Pro] font-semibold text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-[#FFFFFF]">
+            <div class="relative z-10 justify-center items-center font-family-[Neue Haas Grotesk Display Pro] font-semibold text-3xl sm:text-5xl md:text-6xl lg:text-6xl text-[#FFFFFF]">
                 Vous avez un projet ?
             </div>
-            <div class="relative z-10 justify-center items-center grid gap-6 sm:gap-8 lg:gap-10">
+            <div class="relative z-10 justify-center items-center grid gap-6 sm:gap-8 lg:gap-6">
                 <div class="font-family-[PP Neue Montreal] font-normal text-base sm:text-lg md:text-xl text-[#FFFFFF] max-w-2xl mx-auto px-4">
                     Les projets nous les aimons, nous serons heureux de le rendre mémorable
                 </div>
