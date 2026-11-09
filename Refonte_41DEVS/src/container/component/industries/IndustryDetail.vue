@@ -290,9 +290,44 @@ function toggleProject(projectName: string) {
 }
 
 .solution-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   min-height: 150px;
   padding: 18px;
   background: #f7f7fa;
+  transition: color 1.2s ease-in-out;
+}
+
+.solution-card::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: #5c2f8c;
+  content: '';
+  pointer-events: none;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 1.2s ease-in-out;
+}
+
+.solution-card:hover::before {
+  transform: scaleY(1);
+}
+
+.solution-card h3,
+.solution-card p,
+.solution-icon-box {
+  transition: color 1.2s ease-in-out, border-color 1.2s ease-in-out;
+}
+
+.solution-card:hover h3,
+.solution-card:hover p {
+  color: #fff;
+}
+
+.solution-card:hover .solution-icon-box {
+  border-color: rgb(255 255 255 / 0.7);
 }
 
 .solution-icon-box {
@@ -309,6 +344,11 @@ function toggleProject(projectName: string) {
   height: 15px;
   object-fit: contain;
   filter: brightness(0) saturate(100%) invert(38%) sepia(69%) saturate(1053%) hue-rotate(232deg) brightness(94%) contrast(90%);
+  transition: filter 1.2s ease-in-out;
+}
+
+.solution-card:hover .solution-icon {
+  filter: brightness(0) invert(1);
 }
 
 .solution-card h3 {
@@ -449,6 +489,17 @@ function toggleProject(projectName: string) {
 @media (max-width: 480px) {
   .solutions-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solution-card,
+  .solution-card::before,
+  .solution-card h3,
+  .solution-card p,
+  .solution-icon-box,
+  .solution-icon {
+    transition: none;
   }
 }
 </style>

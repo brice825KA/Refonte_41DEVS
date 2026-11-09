@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import infrastructureService1 from '@/asset/icons/ic_infrastructre_acceuil1.svg'
 import infrastructureService2 from '@/asset/icons/ic_infrastructre_acceuil2.svg'
@@ -125,6 +125,47 @@ const expertise = computed(() => expertisePages[String(route.params.expertise)])
 const clientTrack = [...clients, ...clients]
 const reverseClientTrack = [...clients].reverse()
   .concat([...clients].reverse())
+const rotatingMethodSteps = computed(() => {
+  const steps = expertise.value?.methodSteps.map((step) => step.title) ?? []
+  return [...steps, ...steps]
+})
+const activeMethodStepIndex = ref(0)
+const animateMethodSteps = ref(true)
+const methodStepTrackStyle = computed(() => ({
+  transform: `translateY(-${activeMethodStepIndex.value * 2.2}rem)`,
+}))
+let methodStepInterval: ReturnType<typeof setInterval> | undefined
+
+onMounted(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+  methodStepInterval = setInterval(() => {
+    activeMethodStepIndex.value += 1
+  }, 2600)
+})
+
+onUnmounted(() => {
+  if (methodStepInterval) clearInterval(methodStepInterval)
+})
+
+watch(() => route.params.expertise, () => {
+  activeMethodStepIndex.value = 0
+})
+
+function resetMethodStepRotation(event: TransitionEvent) {
+  const stepCount = expertise.value?.methodSteps.length ?? 0
+  if (
+    event.target !== event.currentTarget ||
+    !stepCount ||
+    activeMethodStepIndex.value < stepCount
+  ) return
+
+  animateMethodSteps.value = false
+  activeMethodStepIndex.value = 0
+  requestAnimationFrame(() => {
+    animateMethodSteps.value = true
+  })
+}
 </script>
 
 <template>
@@ -161,12 +202,41 @@ const reverseClientTrack = [...clients].reverse()
           <p>Une approche structurée et collaborative pour faire de vos projets une réussite durable.</p>
         </div>
         <div class="methodology-content">
-          <img
-            :src="expertise.methodImage"
-            :alt="expertise.title"
-            class="methodology-image"
-            loading="lazy"
+          <div
+            class="methodology-image-card"
+            tabindex="0"
+            :aria-label="`Méthodologie ${expertise.title}`"
           >
+            <div class="methodology-image-flipper">
+              <div class="methodology-image-face methodology-image-front">
+                <img
+                  :src="expertise.methodImage"
+                  :alt="expertise.title"
+                  class="methodology-image"
+                  loading="lazy"
+                >
+              </div>
+              <div class="methodology-image-face methodology-image-back" aria-hidden="true">
+                <div class="methodology-step-window">
+                  <div
+                    class="methodology-step-labels"
+                    :class="{ 'is-moving': animateMethodSteps }"
+                    :style="methodStepTrackStyle"
+                    @transitionend="resetMethodStepRotation"
+                  >
+                    <span
+                      v-for="(step, index) in rotatingMethodSteps"
+                      :key="`${step}-${index}`"
+                      class="methodology-step-label"
+                      :class="{ 'is-active': index === activeMethodStepIndex + 2 }"
+                    >
+                      {{ step }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <ol class="methodology-steps">
             <li v-for="step in expertise.methodSteps" :key="step.title" class="methodology-step">
               <span class="step-marker" aria-hidden="true"></span>
@@ -377,15 +447,90 @@ const reverseClientTrack = [...clients].reverse()
   gap: clamp(32px, 7vw, 90px);
 }
 
-.methodology-image {
-  display: block;
+.methodology-image-card {
+  position: relative;
   width: 100%;
   max-height: 440px;
   aspect-ratio: 1 / 1;
   align-self: start;
   border: 1px solid rgb(255 255 255 / 0.2);
   border-radius: 8px;
+  perspective: 1200px;
+}
+
+.methodology-image-card:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+.methodology-image-flipper {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  transform-style: preserve-3d;
+  transition: transform 800ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.methodology-image-card:hover .methodology-image-flipper,
+.methodology-image-card:focus .methodology-image-flipper {
+  transform: rotateY(180deg);
+}
+
+.methodology-image-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  backface-visibility: hidden;
+}
+
+.methodology-image {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+}
+
+.methodology-image-back {
+  display: flex;
+  align-items: flex-end;
+  padding: 1.25rem 1.375rem;
+  background: linear-gradient(145deg, #7c3aed, #4c1d95);
+  transform: rotateY(180deg);
+}
+
+.methodology-step-window {
+  display: flex;
+  height: 6.6rem;
+  overflow: hidden;
+}
+
+.methodology-step-labels {
+  display: flex;
+  flex-direction: column;
+}
+
+.methodology-step-labels.is-moving {
+  transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.methodology-step-label {
+  display: flex;
+  flex: 0 0 2.2rem;
+  align-items: center;
+  color: rgb(255 255 255 / 0.48);
+  font-family: 'PP Neue Montreal', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  transition: color 500ms ease, font-size 500ms ease, font-weight 500ms ease;
+}
+
+.methodology-step-label.is-active {
+  color: #fff;
+  font-size: clamp(24px, 3vw, 41px);
+  font-weight: 700;
+  line-height: 0.9;
 }
 
 .methodology-steps {
@@ -565,7 +710,7 @@ const reverseClientTrack = [...clients].reverse()
     gap: 24px;
   }
 
-  .methodology-image {
+  .methodology-image-card {
     width: min(100%, 420px);
     max-height: none;
   }
@@ -587,6 +732,12 @@ const reverseClientTrack = [...clients].reverse()
 @media (prefers-reduced-motion: reduce) {
   .client-track {
     animation: none;
+  }
+
+  .methodology-image-flipper,
+  .methodology-step-labels.is-moving,
+  .methodology-step-label {
+    transition: none;
   }
 }
 </style>

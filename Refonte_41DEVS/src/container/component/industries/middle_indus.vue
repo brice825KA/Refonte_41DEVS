@@ -22,6 +22,7 @@ const industries = [
         icon: insuranceIcon,
         backdrop: insuranceBackdrop,
         layout: 'insurance',
+        iconAnimation: 'rotate-y',
     },
     {
         slug: 'banque-finance',
@@ -31,6 +32,7 @@ const industries = [
         icon: financeIcon,
         backdrop: financeBackdrop,
         layout: 'finance',
+        iconAnimation: 'rotate-wheel',
     },
     {
         slug: 'secteur-public',
@@ -40,6 +42,7 @@ const industries = [
         icon: publicIcon,
         backdrop: publicBackdrop,
         layout: 'public',
+        iconAnimation: 'rotate-x',
     },
     {
         slug: 'sante-pharmaceutique',
@@ -49,6 +52,7 @@ const industries = [
         icon: healthIcon,
         backdrop: healthBackdrop,
         layout: 'health',
+        iconAnimation: 'rotate-wheel',
     },
     {
         slug: 'divertissement',
@@ -58,6 +62,7 @@ const industries = [
         icon: entertainmentIcon,
         backdrop: entertainmentBackdrop,
         layout: 'entertainment',
+        iconAnimation: 'rotate-wheel',
     },
     {
         slug: 'securite',
@@ -67,6 +72,7 @@ const industries = [
         icon: securityIcon,
         backdrop: securityBackdrop,
         layout: 'security',
+        iconAnimation: 'rotate-y',
     },
 ]
 </script>
@@ -82,8 +88,19 @@ const industries = [
                 :class="industry.layout"
                 :style="{ backgroundColor: industry.color, color: industry.textColor }"
             >
-                <img :src="industry.backdrop" alt="" aria-hidden="true" class="industry-backdrop">
-                <img :src="industry.icon" alt="" aria-hidden="true" class="industry-icon">
+                <img
+                    :src="industry.backdrop"
+                    alt=""
+                    aria-hidden="true"
+                    class="industry-backdrop"
+                >
+                <img
+                    :src="industry.icon"
+                    alt=""
+                    aria-hidden="true"
+                    class="industry-icon"
+                    :class="industry.iconAnimation && `industry-icon--${industry.iconAnimation}`"
+                >
                 <span class="industry-title">
                     <span v-for="line in industry.name" :key="line" class="block">{{ line }}</span>
                 </span>
@@ -98,9 +115,41 @@ const industries = [
     overflow: hidden;
 }
 
+.industry-card::after {
+    position: absolute;
+    z-index: 3;
+    top: -40%;
+    left: -55%;
+    width: 40%;
+    height: 180%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgb(255 255 255 / 0.2) 35%,
+        rgb(255 255 255 / 0.82) 48%,
+        rgb(255 255 255 / 0.95) 50%,
+        rgb(255 255 255 / 0.82) 52%,
+        rgb(255 255 255 / 0.2) 65%,
+        transparent 100%
+    );
+    content: '';
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(-120%, -60%, 0) rotate(35deg);
+    transition:
+        transform 3s ease-in-out,
+        opacity 3s ease-in-out;
+}
+
+.industry-card:hover::after,
+.industry-card:focus-visible::after {
+    opacity: 1;
+    transform: translate3d(520%, 140%, 0) rotate(35deg);
+}
+
 .industry-title {
     position: absolute;
-    z-index: 2;
+    z-index: 4;
     top: 26%;
     left: 7.5%;
     max-width: 75%;
@@ -111,6 +160,7 @@ const industries = [
     font-style: normal;
     line-height: 44.72px;
     letter-spacing: 0;
+    transition: color 1.2s ease-in-out;
 }
 
 @media (max-width: 1023px) {
@@ -139,24 +189,48 @@ const industries = [
 }
 
 .industry-icon {
-    z-index: 1;
+    z-index: 2;
+    transform-style: preserve-3d;
+    backface-visibility: visible;
+    transform-origin: center;
+    transition: transform 1.4s ease-in-out;
+}
+
+.industry-card:hover .industry-icon--rotate-y,
+.industry-card:focus-visible .industry-icon--rotate-y {
+    transform: perspective(700px) rotateY(360deg);
+}
+
+.industry-card:hover .industry-icon--rotate-x,
+.industry-card:focus-visible .industry-icon--rotate-x {
+    transform: perspective(700px) rotateX(360deg);
+}
+
+.industry-card:hover .industry-icon--rotate-wheel,
+.industry-card:focus-visible .industry-icon--rotate-wheel {
+    transform: rotate(360deg);
+}
+
+.industry-card.finance:hover .industry-icon--rotate-wheel,
+.industry-card.finance:focus-visible .industry-icon--rotate-wheel {
+    transform: rotate(360deg) scale(0.7);
 }
 
 .insurance .industry-backdrop {
     top: 37%;
     right: -3%;
-    width: 38%;
+    width: 30%;
 }
 
 .insurance .industry-icon {
     top: 12%;
-    right: -1%;
+    right: -6%;
     width: 38%;
 }
 
 .finance .industry-backdrop {
     top: 38%;
-    right: 7%;
+    right: -1%;
     width: 39%;
 }
 
@@ -212,5 +286,15 @@ const industries = [
     top: 12%;
     right: -4%;
     width: 38%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .industry-icon {
+        transition: none;
+    }
+
+    .industry-card::after {
+        display: none;
+    }
 }
 </style>
