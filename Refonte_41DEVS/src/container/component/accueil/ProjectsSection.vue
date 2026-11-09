@@ -31,12 +31,20 @@ const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
           class="project-card"
           :class="project.layout"
         >
-          <img
-            :src="project.image"
-            :alt="`Projet ${project.name}`"
-            class="project-image"
-            loading="lazy"
-          >
+          <div class="project-image-wrap">
+            <img
+              :src="project.image"
+              :alt="`Projet ${project.name}`"
+              class="project-image"
+              loading="lazy"
+            >
+            <span class="project-view" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M19 12H5m0 0 6 6m-6-6 6-6" />
+              </svg>
+              <span>Voir</span>
+            </span>
+          </div>
           <div class="project-caption">
             <h3 class="m-0 text-base font-semibold sm:text-xl lg:text-2xl">{{ project.name }}</h3>
             <div class="project-categories" aria-label="Catégories du projet">
@@ -72,11 +80,60 @@ const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
   min-width: 0;
 }
 
+.project-image-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
 .project-image {
   display: block;
   width: 100%;
   height: auto;
   object-fit: cover;
+  transition: filter 500ms ease;
+}
+
+.project-view {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid rgb(255 255 255 / 0.25);
+  border-radius: 999px;
+  color: #fff;
+  background: rgb(70 70 70 / 0.58);
+  backdrop-filter: blur(8px);
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(180%, -50%);
+  transition:
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 500ms ease;
+}
+
+.project-view svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.project-card:hover .project-view,
+.project-card:focus-within .project-view {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.project-card:hover .project-image,
+.project-card:focus-within .project-image {
+  filter: brightness(0.78);
 }
 
 .project-caption {
@@ -165,7 +222,7 @@ const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
     column-gap: 24px;
   }
 
-  .grh .project-image {
+  .grh .project-image-wrap {
     grid-column: 1 / -1;
   }
 
@@ -185,6 +242,13 @@ const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
   .project-categories {
     gap: 4px;
     font-size: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-image,
+  .project-view {
+    transition: none;
   }
 }
 </style>

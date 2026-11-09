@@ -29,14 +29,13 @@ const shapes = [
     aria-hidden="true"
   >
     <div
-      v-for="(shape, index) in shapes"
+      v-for="shape in shapes"
       :key="`${shape.column}-${shape.row}`"
       class="decorative-shape-item"
       :class="{
         'home-hero-icon': variant === 'hero',
         'footer-hero-icon': variant === 'footer',
         'decorative-shape-item--intro-pending': variant === 'hero' && introPending,
-        'decorative-shape-item--odd': index % 2 === 0,
       }"
       :style="{ gridColumn: shape.column, gridRow: shape.row }"
     >
@@ -85,14 +84,6 @@ const shapes = [
   pointer-events: auto;
   filter: drop-shadow(0 0 1rem rgb(112 35 221 / 0.32));
   transition: filter 300ms ease;
-}
-
-.decorative-shape-item--odd {
-  rotate: -5deg;
-}
-
-.decorative-shape-item:not(.decorative-shape-item--odd) {
-  rotate: 4deg;
 }
 
 .decorative-shape-item:hover {

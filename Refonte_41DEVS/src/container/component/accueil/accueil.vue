@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { gsap } from 'gsap'
 import acc from '@/asset/images/img_acceuil.webp'
 import middlesponsors from './Middle_acceuil_Sponsors.vue'
@@ -19,13 +19,46 @@ const items = [
 ]
 
 const activeIndex = ref(0)
+const visibleCharacters = ref(0)
+const activeWordCharacters = computed(() => Array.from(items[activeIndex.value] ?? ''))
 let carouselTimer: ReturnType<typeof setInterval> | null = null
+let revealTimer: ReturnType<typeof setTimeout> | null = null
+let typingTimer: ReturnType<typeof setInterval> | null = null
 
-function startCarousel() {
+function revealActiveWord(delay: number) {
+  if (revealTimer) clearTimeout(revealTimer)
+  if (typingTimer) clearInterval(typingTimer)
+  visibleCharacters.value = 0
+
+  const wordLength = activeWordCharacters.value.length
+  revealTimer = setTimeout(() => {
+    typingTimer = setInterval(() => {
+      visibleCharacters.value++
+
+      if (visibleCharacters.value >= wordLength) {
+        if (typingTimer) clearInterval(typingTimer)
+        typingTimer = null
+      }
+    }, 85)
+  }, delay)
+}
+
+function startCarousel(animateTyping = true) {
   if (carouselTimer) clearInterval(carouselTimer)
+  if (animateTyping) {
+    revealActiveWord(0)
+  } else {
+    visibleCharacters.value = activeWordCharacters.value.length
+  }
+
   carouselTimer = setInterval(() => {
     activeIndex.value = (activeIndex.value + 1) % items.length
-  }, 3000)
+    if (animateTyping) {
+      revealActiveWord(400)
+    } else {
+      visibleCharacters.value = activeWordCharacters.value.length
+    }
+  }, 4000)
 }
 
 onMounted(() => {
@@ -34,7 +67,7 @@ onMounted(() => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     introComplete.value = true
     gsap.set(curtain.value, { yPercent: -105 })
-    startCarousel()
+    startCarousel(false)
     return
   }
 
@@ -73,6 +106,8 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   if (carouselTimer) clearInterval(carouselTimer)
+  if (revealTimer) clearTimeout(revealTimer)
+  if (typingTimer) clearInterval(typingTimer)
   introContext?.revert()
 })
 </script>
@@ -110,8 +145,17 @@ onBeforeUnmount(() => {
                 <div
                     :key="items[activeIndex]"
                     class="home-hero-word-label bg-[linear-gradient(90deg,#999999_0%,#ffffff_35%,#ffffff_100%)] bg-clip-text text-transparent text-center"
+                    :aria-label="items[activeIndex]"
                 >
-                    {{ items[activeIndex] }}
+                    <span
+                        v-for="(character, characterIndex) in activeWordCharacters"
+                        :key="characterIndex"
+                        class="inline-block transition-opacity duration-150"
+                        :class="characterIndex < visibleCharacters ? 'opacity-100' : 'opacity-0'"
+                        aria-hidden="true"
+                    >
+                        {{ character }}
+                    </span>
                 </div>
             </Transition>
         </div>
@@ -220,15 +264,15 @@ onBeforeUnmount(() => {
 }
 
 .home-hero-ring--small {
-    width: 26%;
+    width: 23%;
 }
 
 .home-hero-ring--medium {
-    width: 53%;
+    width: 47%;
 }
 
 .home-hero-ring--large {
-    width: 80%;
+    width: 72%;
 }
 
 @keyframes home-ring-light-sweep {
