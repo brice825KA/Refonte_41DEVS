@@ -82,6 +82,7 @@ const shapes = [
   position: relative;
   width: var(--shape-size, 5rem);
   aspect-ratio: 97 / 99;
+  pointer-events: auto;
   filter: drop-shadow(0 0 1rem rgb(112 35 221 / 0.32));
   transition: filter 300ms ease;
 }
