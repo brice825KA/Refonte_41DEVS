@@ -5,7 +5,7 @@ import headerIcon from '@/asset/icons/ic_header_acceuil.svg'
 <template>
     <div class="bg-[#0C0020] justify-center items-center pt-0 pb-6 sm:pb-10 lg:pb-16">
         <div class="relative isolate overflow-hidden bg-gradient-to-b from-[#0a0314] via-[#1a0736] to-[#5914bd] items-center justify-center text-center rounded-2xl sm:rounded-3xl lg:rounded-4xl py-14 sm:py-20 md:py-22 lg:py-24 px-4 sm:px-8 grid gap-6 sm:gap-8 lg:gap-6">
-            <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-40 sm:opacity-75 lg:opacity-100" aria-hidden="true">
+            <div class="footer-icons absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-40 sm:opacity-75 lg:opacity-100" aria-hidden="true">
                 <!-- Left icons cluster (staircase grid from edge inwards) -->
                 <div class="absolute bottom-0 left-0 -ml-4 sm:-ml-6 lg:-ml-8 grid grid-cols-3 gap-3 sm:gap-4 lg:gap-5 w-max pointer-events-none">
                     <!-- Row 1: 1 cube on the edge -->
@@ -69,3 +69,44 @@ import headerIcon from '@/asset/icons/ic_header_acceuil.svg'
         </div>
     </div>
 </template>
+
+<style scoped>
+.footer-icons img:hover {
+    animation: footer-icon-hover 1.8s ease-in-out infinite;
+    translate: none !important;
+    scale: none !important;
+}
+
+@keyframes footer-icon-hover {
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0) scale(1);
+    }
+
+    16% {
+        transform: translate(-12px, -16px) rotate(-5deg) scale(1.04);
+    }
+
+    33% {
+        transform: translate(16px, -10px) rotate(5deg) scale(1.06);
+    }
+
+    50% {
+        transform: translate(14px, 16px) rotate(-4deg) scale(1.04);
+    }
+
+    67% {
+        transform: translate(-16px, 12px) rotate(5deg) scale(1.06);
+    }
+
+    84% {
+        transform: translate(-10px, -14px) rotate(-4deg) scale(1.03);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .footer-icons img:hover {
+        animation: none;
+    }
+}
+</style>

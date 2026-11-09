@@ -25,23 +25,16 @@ const repeatedSponsors = Array.from({ length: 4 }, (_, repetition) =>
     sponsors.map((src, index) => ({ src, key: `${repetition}-${index}` })),
 ).flat()
 
-const sponsorCarousels = Array.from({ length: 4 }, (_, index) => ({
+const sponsorCarousels = Array.from({ length: 5 }, (_, index) => ({
     id: index,
     delay: `${-index * 1.1}s`,
 }))
 
 onMounted(() => {
-    if (!sponsorCard.value) return
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        gsap.set(sponsorCard.value, { clearProps: 'all' })
-        gsap.set(sponsorCard.value.querySelectorAll('.sponsor-card-content'), { clearProps: 'all' })
-        return
-    }
+    if (!sponsorCard.value || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     revealContext = gsap.context(() => {
         const content = sponsorCard.value?.querySelectorAll<HTMLElement>('.sponsor-card-content') ?? []
-
         const timeline = gsap.timeline({
             scrollTrigger: {
                 trigger: sponsorCard.value,
@@ -52,16 +45,16 @@ onMounted(() => {
             },
         })
 
-        timeline
-            .fromTo(
-                content,
-                { y: 40, autoAlpha: 0 },
-                { y: 0, autoAlpha: 1, duration: 1, stagger: 0.15, ease: 'power2.out' },
-            )
+        timeline.fromTo(
+            content,
+            { y: 40, autoAlpha: 0 },
+            { y: 0, autoAlpha: 1, duration: 1, stagger: 0.15, ease: 'power2.out' },
+        )
     }, sponsorCard.value)
 })
 
 onBeforeUnmount(() => revealContext?.revert())
+
 </script>
 
 <template>
@@ -107,7 +100,6 @@ onBeforeUnmount(() => revealContext?.revert())
 <style scoped>
 .sponsor-showcase-card {
     margin-inline: clamp(2rem, 5.8vw, 5rem);
-    will-change: transform, opacity;
 }
 
 .sponsor-carousels {
@@ -170,6 +162,12 @@ onBeforeUnmount(() => revealContext?.revert())
     .sponsor-carousels {
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .sponsor-carousels {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 }
 

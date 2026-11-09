@@ -61,8 +61,8 @@ const sente3 = [
 </script>
 
 <template>
-    <div class="mx-4 sm:mx-8 md:mx-16 lg:mx-32 xl:mx-65 justify-center py-8 sm:py-12 lg:py-15 grid gap-12 sm:gap-16 lg:gap-25">
-        <div class="flex flex-wrap gap-2 font-[Neue Haas Grotesk Display Pro] font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#000000]">
+    <div class="mx-4 sm:mx-8 md:mx-16 lg:mx-32 xl:mx-65 justify-center py-8 sm:py-12 lg:py-15 grid gap-10 sm:gap-16 lg:gap-20">
+        <div class="flex flex-wrap gap-2 font-[Neue Haas Grotesk Display Pro] font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#000000] pt-30">
             Nos<div class="text-[#5C308C]">expertises</div>
         </div>
 
@@ -70,23 +70,27 @@ const sente3 = [
         <div>
             <div class="flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-25" id="exp1">
                 <div class="expertise-image w-full max-w-lg lg:max-w-none lg:w-1/2">
-                    <img :src="exp1" alt="Expertise 1" class="w-full h-auto object-cover" />
-                    <div class="expertise-image-overlay" aria-hidden="true">
-                        <div class="expertise-label-window">
-                            <div
-                                class="expertise-labels"
-                                :class="{ 'is-moving': animateLabels }"
-                                :style="labelTrackStyle"
-                                @transitionend="resetLabelRotation"
-                            >
-                                <span
-                                    v-for="(label, index) in rotatingLabels"
-                                    :key="`${label}-${index}`"
-                                    class="expertise-label"
-                                    :class="{ 'is-active': index === activeLabelIndex + 2 }"
+                    <div class="expertise-image-flipper">
+                        <div class="expertise-image-face expertise-image-front">
+                            <img :src="exp1" alt="Expertise 1" class="w-full h-auto object-cover" />
+                        </div>
+                        <div class="expertise-image-face expertise-image-back" aria-hidden="true">
+                            <div class="expertise-label-window">
+                                <div
+                                    class="expertise-labels"
+                                    :class="{ 'is-moving': animateLabels }"
+                                    :style="labelTrackStyle"
+                                    @transitionend="resetLabelRotation"
                                 >
-                                    {{ label }}
-                                </span>
+                                    <span
+                                        v-for="(label, index) in rotatingLabels"
+                                        :key="`${label}-${index}`"
+                                        class="expertise-label"
+                                        :class="{ 'is-active': index === activeLabelIndex + 2 }"
+                                    >
+                                        {{ label }}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -136,23 +140,27 @@ const sente3 = [
                     </div>
                 </div>
                 <div class="expertise-image w-full max-w-lg lg:max-w-none lg:w-1/2">
-                    <img :src="exp2" alt="Expertise 2" class="w-full h-auto object-cover" />
-                    <div class="expertise-image-overlay" aria-hidden="true">
-                        <div class="expertise-label-window">
-                            <div
-                                class="expertise-labels"
-                                :class="{ 'is-moving': animateLabels }"
-                                :style="labelTrackStyle"
-                                @transitionend="resetLabelRotation"
-                            >
-                                <span
-                                    v-for="(label, index) in rotatingLabels"
-                                    :key="`${label}-${index}`"
-                                    class="expertise-label"
-                                    :class="{ 'is-active': index === activeLabelIndex + 2 }"
+                    <div class="expertise-image-flipper">
+                        <div class="expertise-image-face expertise-image-front">
+                            <img :src="exp2" alt="Expertise 2" class="w-full h-auto object-cover" />
+                        </div>
+                        <div class="expertise-image-face expertise-image-back" aria-hidden="true">
+                            <div class="expertise-label-window">
+                                <div
+                                    class="expertise-labels"
+                                    :class="{ 'is-moving': animateLabels }"
+                                    :style="labelTrackStyle"
+                                    @transitionend="resetLabelRotation"
                                 >
-                                    {{ label }}
-                                </span>
+                                    <span
+                                        v-for="(label, index) in rotatingLabels"
+                                        :key="`${label}-${index}`"
+                                        class="expertise-label"
+                                        :class="{ 'is-active': index === activeLabelIndex + 2 }"
+                                    >
+                                        {{ label }}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -164,23 +172,27 @@ const sente3 = [
         <div>
             <div class="flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-25" id="exp3">
                 <div class="expertise-image w-full max-w-lg lg:max-w-none lg:w-1/2">
-                    <img :src="exp3" alt="Expertise 3" class="w-full h-auto object-cover" />
-                    <div class="expertise-image-overlay" aria-hidden="true">
-                        <div class="expertise-label-window">
-                            <div
-                                class="expertise-labels"
-                                :class="{ 'is-moving': animateLabels }"
-                                :style="labelTrackStyle"
-                                @transitionend="resetLabelRotation"
-                            >
-                                <span
-                                    v-for="(label, index) in rotatingLabels"
-                                    :key="`${label}-${index}`"
-                                    class="expertise-label"
-                                    :class="{ 'is-active': index === activeLabelIndex + 2 }"
+                    <div class="expertise-image-flipper">
+                        <div class="expertise-image-face expertise-image-front">
+                            <img :src="exp3" alt="Expertise 3" class="w-full h-auto object-cover" />
+                        </div>
+                        <div class="expertise-image-face expertise-image-back" aria-hidden="true">
+                            <div class="expertise-label-window">
+                                <div
+                                    class="expertise-labels"
+                                    :class="{ 'is-moving': animateLabels }"
+                                    :style="labelTrackStyle"
+                                    @transitionend="resetLabelRotation"
                                 >
-                                    {{ label }}
-                                </span>
+                                    <span
+                                        v-for="(label, index) in rotatingLabels"
+                                        :key="`${label}-${index}`"
+                                        class="expertise-label"
+                                        :class="{ 'is-active': index === activeLabelIndex + 2 }"
+                                    >
+                                        {{ label }}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -216,20 +228,78 @@ const sente3 = [
     background-color: rgba(0, 0, 0, 0.19);
 }
 
+.expertise-copy {
+    position: relative;
+    isolation: isolate;
+    border-radius: 1.25rem;
+}
+
+.expertise-copy::before {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    border-radius: inherit;
+    background-color: #d3beff;
+    content: '';
+    pointer-events: none;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 450ms ease;
+}
+
+.expertise-copy > * {
+    position: relative;
+    z-index: 1;
+}
+
+.expertise-copy:hover::before {
+    transform: scaleX(1);
+}
+
 .expertise-image {
     position: relative;
-    overflow: hidden;
     border-radius: 1rem;
+    perspective: 1200px;
     box-shadow: 0 1px 2px rgb(0 0 0 / 0.1);
 }
 
-.expertise-image-overlay {
+.expertise-image-flipper {
+    position: relative;
+    border-radius: inherit;
+    transform-style: preserve-3d;
+    transition: transform 800ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.expertise-image:hover .expertise-image-flipper,
+.expertise-image:focus-within .expertise-image-flipper {
+    transform: rotateY(180deg);
+}
+
+.expertise-image-face {
+    overflow: hidden;
+    border-radius: inherit;
+    backface-visibility: hidden;
+}
+
+.expertise-image-front {
+    position: relative;
+}
+
+.expertise-image-front img {
+    display: block;
+}
+
+.expertise-image-back {
     position: absolute;
-    inset: 34% 0 0;
+    inset: 0;
     display: flex;
     align-items: flex-end;
     padding: 1.25rem 1.375rem;
-    background: linear-gradient(180deg, transparent 0%, rgb(0 0 0 / 0.82) 100%);
+    background: linear-gradient(145deg, #7c3aed, #4c1d95);
+    transform: rotateY(180deg);
+}
+
+.expertise-image-back .expertise-label-window {
     pointer-events: none;
 }
 
@@ -279,6 +349,14 @@ const sente3 = [
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .expertise-image-flipper {
+        transition: none;
+    }
+
+    .expertise-copy::before {
+        transition: none;
+    }
+
     .expertise-label,
     .expertise-labels.is-moving {
         transition: none;

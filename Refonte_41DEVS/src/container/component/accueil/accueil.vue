@@ -121,7 +121,7 @@ onBeforeUnmount(() => {
 
 <template>
     <div>
-    <section class="home-scroll-reveal home-scroll-page--hero">
+    <section class="home-section home-scroll-page--hero">
     <div
         ref="hero"
         class="home-hero relative isolate grid min-h-[100svh] content-center items-center justify-center overflow-hidden text-center font-family-[Neue Haas Grotesk Display Pro] font-semibold text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl gap-y-0 py-20 sm:py-24 md:py-24 lg:py-24 px-4 sm:px-6 bg-[linear-gradient(180deg,#2A0D45_0%,#180819_50%,#09090D_100%)]"
@@ -135,7 +135,7 @@ onBeforeUnmount(() => {
         </div>
         <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-40 sm:opacity-75 lg:opacity-100" aria-hidden="true">
             <!-- Left icons cluster (staircase grid from edge inwards) -->
-            <div class="home-icon-cluster absolute bottom-0 left-0 -ml-4 sm:-ml-6 lg:-ml-8 grid grid-cols-3 gap-3 sm:gap-4 lg:gap-5 w-max pointer-events-none">
+            <div class="home-icon-cluster absolute left-0 -ml-4 sm:-ml-6 lg:-ml-8 grid grid-cols-3 gap-3 sm:gap-4 lg:gap-5 w-max pointer-events-none">
                 <!-- Row 1: 1 cube on the edge -->
                 <div class="col-start-1 row-start-1 w-20 sm:w-28 md:w-36 lg:w-40 h-auto">
                     <img :src="headerIcon" class="home-hero-icon w-full h-auto pointer-events-auto cursor-pointer transition-transform duration-300 ease-out hover:-translate-y-4 hover:scale-105 hover:brightness-125 hover:drop-shadow-[0_15px_25px_rgba(168,85,247,0.55)] select-none" alt="">
@@ -159,7 +159,7 @@ onBeforeUnmount(() => {
                 </div>
             </div>
             <!-- Right icons cluster (mirrored staircase grid) -->
-            <div class="home-icon-cluster absolute bottom-0 right-0 -mr-4 sm:-mr-6 lg:-mr-8 grid grid-cols-3 gap-3 sm:gap-4 lg:gap-5 w-max pointer-events-none scale-x-[-1]">
+            <div class="home-icon-cluster absolute right-0 -mr-4 sm:-mr-6 lg:-mr-8 grid grid-cols-3 gap-3 sm:gap-4 lg:gap-5 w-max pointer-events-none scale-x-[-1]">
                 <!-- Row 1: 1 cube on the edge -->
                 <div class="col-start-1 row-start-1 w-20 sm:w-28 md:w-36 lg:w-40 h-auto">
                     <img :src="headerIcon" class="home-hero-icon w-full h-auto pointer-events-auto cursor-pointer transition-transform duration-300 ease-out hover:-translate-y-4 hover:scale-105 hover:brightness-125 hover:drop-shadow-[0_15px_25px_rgba(168,85,247,0.55)] select-none" alt="">
@@ -220,16 +220,16 @@ onBeforeUnmount(() => {
         </div>
     </div>
     </section>
-    <section class="home-scroll-reveal home-scroll-page--image">
+    <section class="home-section home-scroll-page--image">
         <img :src="acc" alt="" class="home-showcase-image" fetchpriority="high">
     </section>
-    <section class="home-scroll-reveal home-scroll-page--middle">
+    <section class="home-section home-scroll-page--middle">
         <middlesponsors />
     </section>
-    <section class="home-scroll-reveal home-scroll-page--expertise">
+    <section class="home-section home-scroll-page--expertise">
         <expertises />
     </section>
-    <section class="home-scroll-reveal home-scroll-page--projects">
+    <section class="home-section home-scroll-page--projects">
         <ProjectsSection />
     </section>
     </div>
@@ -369,6 +369,7 @@ onBeforeUnmount(() => {
 
 .home-icon-cluster {
     translate: 0 -20px;
+    bottom: -9rem;
 }
 
 .home-hero-icon:hover {
@@ -408,9 +409,8 @@ onBeforeUnmount(() => {
     will-change: transform, opacity;
 }
 
-.home-scroll-reveal {
+.home-section {
     width: 100%;
-    min-height: 100svh;
     background: #fff;
 }
 

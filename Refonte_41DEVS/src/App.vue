@@ -10,41 +10,30 @@ import { RouterView } from 'vue-router'
 const route = useRoute()
 const routeContent = ref<HTMLElement | null>(null)
 const footerReveal = ref<HTMLElement | null>(null)
-let scrollRevealContext: gsap.Context | undefined
+let homeScrollContext: gsap.Context | undefined
 
 gsap.registerPlugin(ScrollTrigger)
 
-function setupScrollReveal() {
-  scrollRevealContext?.revert()
+function setupHomeScrollAnimations() {
+  homeScrollContext?.revert()
+  homeScrollContext = undefined
 
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+  if (
+    route.name !== 'accueil' ||
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  ) return
 
   const content = routeContent.value
-  if (!content) return
+  const sections = content
+    ? [...content.querySelectorAll<HTMLElement>('.home-section')]
+    : []
+  if (!sections.length) return
 
-  const homeSections = [...content.querySelectorAll<HTMLElement>('.home-scroll-reveal')]
-  let sections = homeSections
-
-  if (!sections.length) {
-    const pageRoots = [...content.children].filter(
-      (element): element is HTMLElement => element instanceof HTMLElement,
-    )
-
-    if (pageRoots.length > 1) {
-      sections = pageRoots
-    } else {
-      sections = [
-        ...content.querySelectorAll<HTMLElement>('main > section, main > div, #FirstCol, #SecondCol'),
-      ]
-      if (!sections.length && pageRoots[0]) sections = [pageRoots[0]]
-    }
-  }
-
-  scrollRevealContext = gsap.context(() => {
+  homeScrollContext = gsap.context(() => {
     sections.forEach((section, index) => {
-      const isLongSection =
-        section.scrollHeight > window.innerHeight ||
-        section.matches('.home-scroll-page--expertise, .home-scroll-page--projects')
+      const isLongSection = section.matches(
+        '.home-scroll-page--expertise, .home-scroll-page--projects',
+      )
       const isMiddleSection = section.matches('.home-scroll-page--middle')
       const isProjectsSection = section.matches('.home-scroll-page--projects')
       const revealTarget = isMiddleSection
@@ -63,18 +52,15 @@ function setupScrollReveal() {
 
       if (isMiddleSection || isProjectsSection) gsap.set(section, { clipPath: 'none' })
 
-      const hiddenState = isMiddleSection
-        ? { yPercent: 100 }
-        : { clipPath: 'inset(100% 0 0)' }
-      const visibleState = isMiddleSection
-        ? { yPercent: 0 }
-        : { clipPath: 'inset(0% 0 0)' }
-
       gsap.fromTo(
         revealTarget,
-        hiddenState,
+        isMiddleSection
+          ? { yPercent: 100 }
+          : { clipPath: 'inset(100% 0 0)' },
         {
-          ...visibleState,
+          ...(isMiddleSection
+            ? { yPercent: 0 }
+            : { clipPath: 'inset(0% 0 0)' }),
           ease: 'none',
           scrollTrigger: {
             trigger: section,
@@ -87,46 +73,39 @@ function setupScrollReveal() {
       )
     })
 
-    if (footerReveal.value) {
-      const footerContent = footerReveal.value.querySelector<HTMLElement>('footer')
-
-      if (footerContent) {
-        gsap.fromTo(
-          footerContent,
-          { autoAlpha: 0, y: 32 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: footerReveal.value,
-              start: 'top bottom',
-              end: 'top 75%',
-              scrub: 0.8,
-              invalidateOnRefresh: true,
-            },
+    const footer = footerReveal.value?.querySelector<HTMLElement>('footer')
+    if (footer && footerReveal.value) {
+      gsap.fromTo(
+        footer,
+        { autoAlpha: 0, y: 32 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: footerReveal.value,
+            start: 'top bottom',
+            end: 'top 75%',
+            scrub: 0.8,
+            invalidateOnRefresh: true,
           },
-        )
-      }
+        },
+      )
     }
   })
 
   ScrollTrigger.refresh()
 }
 
-function scheduleScrollReveal() {
+function scheduleHomeScrollAnimations() {
   requestAnimationFrame(() => {
-    void nextTick(setupScrollReveal)
+    void nextTick(setupHomeScrollAnimations)
   })
 }
 
-watch(
-  () => route.fullPath,
-  scheduleScrollReveal,
-)
-
-onMounted(scheduleScrollReveal)
-onBeforeUnmount(() => scrollRevealContext?.revert())
+watch(() => route.fullPath, scheduleHomeScrollAnimations)
+onMounted(scheduleHomeScrollAnimations)
+onBeforeUnmount(() => homeScrollContext?.revert())
 </script>
 
 <template>
