@@ -21,14 +21,33 @@ const sponsors = [
     sponsors5
 ]
 
-const repeatedSponsors = Array.from({ length: 4 }, (_, repetition) =>
-    sponsors.map((src, index) => ({ src, key: `${repetition}-${index}` })),
-).flat()
+// Distribution aléatoire au chargement pour une variété constante
+const shuffledSponsors = [...sponsors].sort(() => Math.random() - 0.5)
 
-const sponsorCarousels = Array.from({ length: 5 }, (_, index) => ({
-    id: index,
-    delay: `${-index * 1.1}s`,
-}))
+// Matrice en carré latin : garantit que chaque colonne affiche TOUJOURS un logo différent sur la même ligne
+const patterns: number[][] = [
+    [0, 1, 2, 3, 4],
+    [2, 3, 4, 0, 1],
+    [4, 0, 1, 2, 3],
+    [1, 2, 3, 4, 0],
+    [3, 4, 0, 1, 2],
+]
+
+// Légers décalages pour un effet de cascade naturel et asynchrone
+const delays = ['0.12s', '0.45s', '0s', '0.3s', '0.6s']
+
+const sponsorCarousels = patterns.map((pattern, index) => {
+    // 2 cycles complets + premier élément répété pour une boucle infinie parfaitement fluide
+    const wrapItem = pattern[0] ?? 0
+    const sequence = [...pattern, ...pattern, wrapItem]
+    return {
+        id: index,
+        delay: delays[index] ?? '0s',
+        items: sequence.map((sponsorIdx: number) => ({
+            src: shuffledSponsors[sponsorIdx] ?? sponsors[0],
+        })),
+    }
+})
 
 onMounted(() => {
     if (!sponsorCard.value || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -84,12 +103,12 @@ onBeforeUnmount(() => revealContext?.revert())
             >
                 <div class="sponsor-carousel-track" :style="{ animationDelay: carousel.delay }">
                     <div
-                        v-for="sponsor in repeatedSponsors"
-                        :key="`${carousel.id}-${sponsor.key}`"
+                        v-for="(item, itemIndex) in carousel.items"
+                        :key="`${carousel.id}-${itemIndex}`"
                         class="sponsor-carousel-item"
                         aria-hidden="true"
                     >
-                        <img :src="sponsor.src" alt="" class="h-8 sm:h-10 lg:h-12 w-auto max-w-full object-contain">
+                        <img :src="item.src" alt="" class="h-8 sm:h-10 lg:h-12 w-auto max-w-full object-contain">
                     </div>
                 </div>
             </div>
@@ -99,7 +118,7 @@ onBeforeUnmount(() => revealContext?.revert())
 
 <style scoped>
 .sponsor-showcase-card {
-    margin-inline: clamp(2rem, 5.8vw, 5rem);
+    margin-inline: clamp(2rem, 7.4vw, 6rem);
 }
 
 .sponsor-carousels {
@@ -118,6 +137,7 @@ onBeforeUnmount(() => revealContext?.revert())
     display: flex;
     flex-direction: column;
     animation: sponsor-carousel-scroll 20s infinite;
+    animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .sponsor-carousel-item {

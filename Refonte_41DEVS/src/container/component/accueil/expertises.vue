@@ -9,7 +9,7 @@ const rotatingLabels = [...expertiseLabels, ...expertiseLabels]
 const activeLabelIndex = ref(0)
 const animateLabels = ref(true)
 const labelTrackStyle = computed(() => ({
-    transform: `translateY(-${activeLabelIndex.value * 2.2}rem)`,
+    transform: `translateY(-${activeLabelIndex.value * 4.17}rem)`,
 }))
 let labelInterval: ReturnType<typeof setInterval> | undefined
 
@@ -86,16 +86,39 @@ const sente3 = [
                                         v-for="(label, index) in rotatingLabels"
                                         :key="`${label}-${index}`"
                                         class="expertise-label"
-                                        :class="{ 'is-active': index === activeLabelIndex + 2 }"
+                                        :class="{
+                                            'is-active': index === activeLabelIndex + 2,
+                                            'is-medium': index === activeLabelIndex + 1,
+                                        }"
                                     >
                                         {{ label }}
                                     </span>
                                 </div>
                             </div>
                         </div>
+                        <div class="expertise-label-window expertise-label-window--front" aria-hidden="true">
+                            <div
+                                class="expertise-labels"
+                                :class="{ 'is-moving': animateLabels }"
+                                :style="labelTrackStyle"
+                                @transitionend="resetLabelRotation"
+                            >
+                                <span
+                                    v-for="(label, index) in rotatingLabels"
+                                    :key="`${label}-${index}`"
+                                    class="expertise-label"
+                                    :class="{
+                                        'is-active': index === activeLabelIndex + 2,
+                                        'is-medium': index === activeLabelIndex + 1,
+                                    }"
+                                >
+                                    {{ label }}
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="flex gap-4 sm:gap-6 lg:gap-10 w-full lg:w-1/2">
+                <div class="expertise-text-group flex gap-4 sm:gap-6 lg:gap-10 w-full lg:w-1/2">
                     <div class="expertise-divider hidden sm:block self-stretch shrink-0"></div>
                     <div class="expertise-copy w-full">
                         <div class="grid gap-6 lg:gap-10">
@@ -120,7 +143,7 @@ const sente3 = [
         <!--Second Expertise-->
         <div>
             <div class="flex flex-col-reverse lg:flex-row items-center lg:items-stretch gap-8 lg:gap-25" id="exp2">
-                <div class="flex gap-4 sm:gap-6 lg:gap-10 w-full lg:w-1/2">
+                <div class="expertise-text-group flex gap-4 sm:gap-6 lg:gap-10 w-full lg:w-1/2">
                     <div class="expertise-divider hidden sm:block self-stretch shrink-0"></div>
                     <div class="expertise-copy w-full">
                         <div class="grid gap-6 lg:gap-10">
@@ -156,11 +179,34 @@ const sente3 = [
                                         v-for="(label, index) in rotatingLabels"
                                         :key="`${label}-${index}`"
                                         class="expertise-label"
-                                        :class="{ 'is-active': index === activeLabelIndex + 2 }"
+                                        :class="{
+                                            'is-active': index === activeLabelIndex + 2,
+                                            'is-medium': index === activeLabelIndex + 1,
+                                        }"
                                     >
                                         {{ label }}
                                     </span>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="expertise-label-window expertise-label-window--front" aria-hidden="true">
+                            <div
+                                class="expertise-labels"
+                                :class="{ 'is-moving': animateLabels }"
+                                :style="labelTrackStyle"
+                                @transitionend="resetLabelRotation"
+                            >
+                                <span
+                                    v-for="(label, index) in rotatingLabels"
+                                    :key="`${label}-${index}`"
+                                    class="expertise-label"
+                                    :class="{
+                                        'is-active': index === activeLabelIndex + 2,
+                                        'is-medium': index === activeLabelIndex + 1,
+                                    }"
+                                >
+                                    {{ label }}
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -188,16 +234,39 @@ const sente3 = [
                                         v-for="(label, index) in rotatingLabels"
                                         :key="`${label}-${index}`"
                                         class="expertise-label"
-                                        :class="{ 'is-active': index === activeLabelIndex + 2 }"
+                                        :class="{
+                                            'is-active': index === activeLabelIndex + 2,
+                                            'is-medium': index === activeLabelIndex + 1,
+                                        }"
                                     >
                                         {{ label }}
                                     </span>
                                 </div>
                             </div>
                         </div>
+                        <div class="expertise-label-window expertise-label-window--front" aria-hidden="true">
+                            <div
+                                class="expertise-labels"
+                                :class="{ 'is-moving': animateLabels }"
+                                :style="labelTrackStyle"
+                                @transitionend="resetLabelRotation"
+                            >
+                                <span
+                                    v-for="(label, index) in rotatingLabels"
+                                    :key="`${label}-${index}`"
+                                    class="expertise-label"
+                                    :class="{
+                                        'is-active': index === activeLabelIndex + 2,
+                                        'is-medium': index === activeLabelIndex + 1,
+                                    }"
+                                >
+                                    {{ label }}
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="flex gap-4 sm:gap-6 lg:gap-10 w-full lg:w-1/2">
+                <div class="expertise-text-group flex gap-4 sm:gap-6 lg:gap-10 w-full lg:w-1/2">
                     <div class="expertise-divider hidden sm:block self-stretch shrink-0"></div>
                     <div class="expertise-copy w-full">
                         <div class="grid gap-6 lg:gap-10">
@@ -223,18 +292,21 @@ const sente3 = [
 
 <style scoped>
 .expertise-divider {
+    position: relative;
+    z-index: 1;
     width: 1px;
-    border-radius: 20px;
+    border-radius: 999px;
     background-color: rgba(0, 0, 0, 0.19);
+    transition: background-color 450ms ease;
 }
 
-.expertise-copy {
+.expertise-text-group {
     position: relative;
     isolation: isolate;
     border-radius: 1.25rem;
 }
 
-.expertise-copy::before {
+.expertise-text-group::before {
     position: absolute;
     z-index: 0;
     inset: 0;
@@ -242,18 +314,26 @@ const sente3 = [
     background-color: #d3beff;
     content: '';
     pointer-events: none;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 450ms ease;
+    clip-path: inset(0 100% 0 0 round 1.25rem);
+    transition: clip-path 450ms ease;
+}
+
+.expertise-copy {
+    position: relative;
+    z-index: 1;
+}
+
+.expertise-text-group:hover::before {
+    clip-path: inset(0 0 0 0 round 1.25rem);
+}
+
+.expertise-text-group:hover .expertise-divider {
+    background-color: #5c308c;
 }
 
 .expertise-copy > * {
     position: relative;
     z-index: 1;
-}
-
-.expertise-copy:hover::before {
-    transform: scaleX(1);
 }
 
 .expertise-image {
@@ -289,30 +369,48 @@ const sente3 = [
     display: block;
 }
 
+.expertise-image-front::after {
+    position: absolute;
+    inset: 50% 0 0;
+    background: linear-gradient(transparent, rgb(0 0 0 / 0.72));
+    content: '';
+    pointer-events: none;
+}
+
 .expertise-image-back {
     position: absolute;
     inset: 0;
     display: flex;
     align-items: flex-end;
-    padding: 1.25rem 1.375rem;
+    padding: 2.375rem 2.125rem;
     background: linear-gradient(145deg, #7c3aed, #4c1d95);
     transform: rotateY(180deg);
 }
 
-.expertise-image-back .expertise-label-window {
+.expertise-label-window--front {
+    position: absolute;
+    z-index: 2;
+    bottom: 2.375rem;
+    left: 2.125rem;
     pointer-events: none;
+    transition: opacity 200ms ease;
+}
+
+.expertise-image:hover .expertise-label-window--front,
+.expertise-image:focus-within .expertise-label-window--front {
+    opacity: 0;
 }
 
 .expertise-label-window {
     display: flex;
-    height: 6.6rem;
+    height: 10.51rem;
     overflow: hidden;
 }
 
 .expertise-labels {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 2rem;
 }
 
 .expertise-labels.is-moving {
@@ -321,7 +419,7 @@ const sente3 = [
 
 .expertise-label {
     display: flex;
-    flex: 0 0 2.2rem;
+    flex: 0 0 2.17rem;
     align-items: center;
     color: rgb(255 255 255 / 0.48);
     font-family: 'PP Neue Montreal', sans-serif;
@@ -331,6 +429,13 @@ const sente3 = [
     line-height: 1;
     letter-spacing: 0;
     transition: color 500ms ease, font-size 500ms ease, font-weight 500ms ease;
+    white-space: nowrap;
+}
+
+.expertise-label.is-medium {
+    font-size: 28.3px;
+    font-weight: 500;
+    line-height: 34.73px;
 }
 
 .expertise-label.is-active {
@@ -353,7 +458,12 @@ const sente3 = [
         transition: none;
     }
 
-    .expertise-copy::before {
+    .expertise-label-window--front {
+        transition: none;
+    }
+
+    .expertise-text-group::before,
+    .expertise-divider {
         transition: none;
     }
 

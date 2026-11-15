@@ -1,12 +1,14 @@
 <script lang="js" setup>
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import ic_headers from "@/asset/icons/ic_41DEVS.svg"
+import ic_headers_purple from "@/asset/icons/ic_41DEVS.svg"
+import ic_headers_white from "@/asset/icons/ic_41DEVS_white.svg"
 
 const route = useRoute()
 const isMobileMenuOpen = ref(false)
 const isScrolled = ref(false)
 const isContactPage = computed(() => route.name === 'contact')
+const isLogoPurple = computed(() => isScrolled.value || isContactPage.value)
 
 function updateScrollState() {
     isScrolled.value = window.scrollY > 0
@@ -31,8 +33,20 @@ onUnmounted(() => {
         <div class="flex items-center justify-between py-4 sm:py-6 lg:py-5 px-10 sm:px-8 md:px-14 lg:px-20">
             <!-- Logo leading to Accueil -->
             <div class="shrink-0">
-                <router-link to="/" @click="closeMenu">
-                    <img :src="ic_headers" alt="41DEVS" class="h-7 sm:h-9 lg:h-auto w-auto">
+                <router-link to="/" @click="closeMenu" class="block relative">
+                    <img 
+                        :src="ic_headers_white" 
+                        alt="41DEVS" 
+                        class="h-7 sm:h-9 lg:h-auto w-auto block transition-opacity duration-300"
+                        :class="isLogoPurple ? 'opacity-0' : 'opacity-100'"
+                    >
+                    <img 
+                        :src="ic_headers_purple" 
+                        alt="" 
+                        aria-hidden="true"
+                        class="absolute inset-0 h-full w-full object-contain transition-opacity duration-300"
+                        :class="isLogoPurple ? 'opacity-100' : 'opacity-0'"
+                    >
                 </router-link>
             </div>
 

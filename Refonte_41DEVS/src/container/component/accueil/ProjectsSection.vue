@@ -21,7 +21,7 @@ const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
     <div class="mx-auto max-w-6xl">
       <header class="mb-8 sm:mb-10 lg:mb-14">
         <h2 class="m-0 text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">Nos réalisations</h2>
-        <div class="mt-3 h-px w-4 bg-white/40" aria-hidden="true"></div>
+        <div class="projects-header-line mt-3 h-px w-4 bg-white/40" aria-hidden="true"></div>
       </header>
 
       <div class="projects-grid">

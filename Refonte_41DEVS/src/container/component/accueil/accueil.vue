@@ -161,15 +161,17 @@ onBeforeUnmount(() => {
         </div>
     </div>
     </section>
-    <section class="home-section home-scroll-page--image">
-        <img :src="acc" alt="" class="home-showcase-image" fetchpriority="high">
-    </section>
-    <section class="home-section home-scroll-page--middle">
-        <middlesponsors />
-    </section>
-    <section class="home-section home-scroll-page--expertise">
-        <expertises />
-    </section>
+    <div class="home-showcase-container">
+        <section class="home-section home-scroll-page--image">
+            <img :src="acc" alt="" class="home-showcase-image" fetchpriority="high">
+        </section>
+        <section class="home-section home-scroll-page--middle">
+            <middlesponsors />
+        </section>
+        <section class="home-section home-scroll-page--expertise">
+            <expertises />
+        </section>
+    </div>
     <section class="home-section home-scroll-page--projects">
         <ProjectsSection />
     </section>
@@ -332,33 +334,57 @@ onBeforeUnmount(() => {
     background: #fff;
 }
 
-.home-scroll-page--hero,
-.home-scroll-page--image,
-.home-scroll-page--projects {
+.home-scroll-page--hero {
+    position: relative;
     background: #0c0020;
 }
 
 .home-scroll-page--image {
+    position: sticky;
+    top: 0;
+    height: 60svh;
+    z-index: 20;
+    background: #0c0020;
     overflow: hidden;
 }
 
 .home-showcase-image {
     display: block;
     width: 100%;
-    height: 100svh;
+    height: 60svh;
     object-fit: cover;
     object-position: center;
 }
 
 .home-scroll-page--middle {
+    position: relative;
+    z-index: 30;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background: transparent;
+    pointer-events: none;
+    margin-top: -1.5rem;
+}
+
+.home-scroll-page--middle > * {
+    pointer-events: auto;
+}
+
+.home-showcase-container {
+    position: relative;
+    width: 100%;
 }
 
 .home-scroll-page--expertise {
+    position: relative;
+    z-index: 25;
     background: #f7f7fc;
+}
+
+.home-scroll-page--projects {
+    position: relative;
+    background: #0c0020;
 }
 
 
