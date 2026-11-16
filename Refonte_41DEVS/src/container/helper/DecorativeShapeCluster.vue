@@ -77,6 +77,10 @@ const shapes = [
   bottom: -9rem;
 }
 
+.decorative-shape-cluster--footer.decorative-shape-cluster--right {
+  margin-right: 0;
+}
+
 .decorative-shape-item {
   position: relative;
   width: var(--shape-size, 5rem);

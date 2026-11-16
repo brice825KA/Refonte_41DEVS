@@ -77,9 +77,9 @@ onBeforeUnmount(() => revealContext?.revert())
 </script>
 
 <template>
-    <div ref="sponsorCard" class="sponsor-showcase-card relative z-10 flex flex-col justify-center bg-white shadow-2xl px-5 sm:px-8 md:px-12 lg:px-24 py-8 sm:py-12">
+    <div ref="sponsorCard" class="sponsor-showcase-card relative z-10 flex flex-col justify-center bg-white shadow-2xl px-5 sm:px-8 md:px-12 lg:mx-5 lg:px-30 py-8 sm:py-12">
         <!-- Top text row: Title on left, Paragraph on right -->
-        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 lg:gap-12 xl:gap-16">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 lg:gap-10 xl:gap-16">
             <!-- Left Headline -->
             <div class="sponsor-card-content font-['Neue_Haas_Grotesk_Display_Pro',sans-serif] font-bold text-3xl sm:text-4xl md:text-5xl lg:text-[50px] xl:text-[56px] leading-[1.12] text-black shrink-0 tracking-tight">
                 <div class="sm:whitespace-nowrap">
@@ -118,13 +118,13 @@ onBeforeUnmount(() => revealContext?.revert())
 
 <style scoped>
 .sponsor-showcase-card {
-    margin-inline: clamp(2rem, 7.4vw, 6rem);
+    margin-inline: clamp(7.5rem, 7.4vw, 6rem);
 }
 
 .sponsor-carousels {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
+    gap: 3rem;
     margin-top: 2.5rem;
 }
 

@@ -30,7 +30,7 @@ onUnmounted(() => {
 
 <template>
     <nav class="transition-colors duration-300" :class="{ 'nav-scrolled': isScrolled, 'nav-contact-page': isContactPage }">
-        <div class="flex items-center justify-between py-4 sm:py-6 lg:py-5 px-10 sm:px-8 md:px-14 lg:px-20">
+        <div class="flex items-center justify-between py-4 sm:py-6 lg:py-5 px-10 sm:px-8 md:px-14 lg:px-30">
             <!-- Logo leading to Accueil -->
             <div class="shrink-0">
                 <router-link to="/" @click="closeMenu" class="block relative">

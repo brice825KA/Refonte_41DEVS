@@ -14,11 +14,26 @@ const projects = [
 ]
 
 const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
+
+function moveProjectCursor(event: PointerEvent) {
+  if (event.pointerType === 'touch') return
+
+  const image = event.currentTarget as HTMLElement
+  const bounds = image.getBoundingClientRect()
+  image.style.setProperty('--pointer-x', `${event.clientX - bounds.left}px`)
+  image.style.setProperty('--pointer-y', `${event.clientY - bounds.top}px`)
+  image.classList.add('is-pointer-active')
+}
+
+function hideProjectCursor(event: PointerEvent) {
+  const image = event.currentTarget as HTMLElement
+  image.classList.remove('is-pointer-active')
+}
 </script>
 
 <template>
   <section class="projects-section px-5 pb-8 text-white sm:px-8 sm:pt-16 sm:pb-10 lg:px-10 lg:pt-20 lg:pb-12 pt-30">
-    <div class="mx-auto max-w-6xl">
+    <div class="mx-auto max-w-[1572px]">
       <header class="mb-8 sm:mb-10 lg:mb-14">
         <h2 class="m-0 text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">Nos réalisations</h2>
         <div class="projects-header-line mt-3 h-px w-4 bg-white/40" aria-hidden="true"></div>
@@ -31,7 +46,11 @@ const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
           class="project-card"
           :class="project.layout"
         >
-          <div class="project-image-wrap">
+          <div
+            class="project-image-wrap"
+            @pointermove="moveProjectCursor"
+            @pointerleave="hideProjectCursor"
+          >
             <img
               :src="project.image"
               :alt="`Projet ${project.name}`"
@@ -54,9 +73,10 @@ const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
               </template>
             </div>
           </div>
-          <p v-if="project.layout === 'grh'" class="project-description">
-            Hipster ipsum tattooed brunch I'm baby. Rights heard kombucha photo roof meh lomo sartorial organic.
-          </p>
+          <div v-if="project.layout === 'grh'" class="project-description">
+            <div>Hipster ipsum tattooed brunch I'm baby. Rights heard</div>
+            <div>kombucha photo roof meh lomo sartorial organic.</div>
+          </div>
         </article>
       </div>
     </div>
@@ -70,8 +90,7 @@ const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 14px;
+  grid-template-columns: minmax(0, 1fr);
   row-gap: 28px;
   align-items: start;
 }
@@ -83,26 +102,50 @@ const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
 .project-image-wrap {
   position: relative;
   overflow: hidden;
+  aspect-ratio: 1 / 1;
 }
 
 .project-image {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
   transition: filter 500ms ease;
 }
 
+.afg-bank .project-image-wrap {
+  aspect-ratio: 804 / 653;
+}
+
+.oremi .project-image-wrap {
+  aspect-ratio: 713 / 754;
+}
+
+.grh .project-image-wrap {
+  aspect-ratio: 1572 / 732;
+}
+
+.etchite .project-image-wrap {
+  aspect-ratio: 581 / 741;
+}
+
+.assurance .project-image-wrap {
+  aspect-ratio: 937 / 653;
+}
+
 .project-view {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: var(--pointer-y, 50%);
+  left: var(--pointer-x, 50%);
   display: inline-flex;
+  width: 88px;
+  height: 88px;
+  flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.75rem 1.25rem;
+  justify-content: center;
+  gap: 0.25rem;
   border: 1px solid rgb(255 255 255 / 0.25);
-  border-radius: 999px;
+  border-radius: 50%;
   color: #fff;
   background: rgb(70 70 70 / 0.58);
   backdrop-filter: blur(8px);
@@ -110,9 +153,8 @@ const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
   font-weight: 500;
   opacity: 0;
   pointer-events: none;
-  transform: translate(180%, -50%);
+  transform: translate(-50%, -50%);
   transition:
-    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 500ms ease;
 }
 
@@ -125,10 +167,8 @@ const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
   stroke-width: 1.8;
 }
 
-.project-card:hover .project-view,
-.project-card:focus-within .project-view {
+.project-image-wrap.is-pointer-active .project-view {
   opacity: 1;
-  transform: translate(-50%, -50%);
 }
 
 .project-card:hover .project-image,
@@ -140,21 +180,33 @@ const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
   margin-top: 8px;
 }
 
+.project-caption h3 {
+  font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.27;
+}
+
 .project-categories {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 6px;
+  gap: 4px 8px;
   margin-top: 4px;
   color: #fff;
-  font-size: 7px;
-  line-height: 1.4;
-  white-space: nowrap;
+  font-family: 'PP Neue Montreal', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.7;
+  text-transform: uppercase;
 }
 
 .category-dot {
-  width: 3px;
-  height: 3px;
-  flex: 0 0 3px;
+  width: 4px;
+  height: 4px;
+  flex: 0 0 4px;
   border-radius: 50%;
   background-color: #fff;
 }
@@ -162,51 +214,63 @@ const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
 .project-description {
   margin: 8px 0 0;
   color: #fff;
-  font-size: 8px;
-  line-height: 1.5;
-}
-
-.grh {
-  grid-column: 1 / -1;
+  font-family: 'PP Neue Montreal', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.7;
 }
 
 @media (min-width: 768px) {
   .projects-grid {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: 24px;
+    grid-template-columns: minmax(0, 1fr);
     row-gap: 48px;
   }
 
   .afg-bank {
-    grid-column: 1 / 7;
+    grid-column: 1;
+    grid-row: 1;
+    width: 51.15%;
   }
 
   .oremi {
-    grid-column: 7 / -1;
-    margin-top: 18px;
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: end;
+    width: 45.35%;
+    margin-top: 7px;
   }
 
   .grh {
-    grid-column: 1 / -1;
+    grid-column: 1;
+    grid-row: 2;
   }
 
   .etchite {
-    grid-column: 1 / 5;
+    grid-column: 1;
+    grid-row: 3;
+    width: 36.96%;
   }
 
   .assurance {
-    grid-column: 5 / -1;
-    margin-top: 10px;
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: end;
+    width: 59.6%;
   }
 
   .project-caption {
     margin-top: 12px;
   }
 
+  .project-caption h3 {
+    font-size: 36px;
+  }
+
   .project-categories {
-    gap: 10px;
+    gap: 4px 10px;
     margin-top: 6px;
-    font-size: 10px;
+    font-size: 18px;
   }
 
   .category-dot {
@@ -217,9 +281,9 @@ const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
 
   .grh {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    align-items: end;
-    column-gap: 24px;
+    grid-template-columns: minmax(0, 2.15fr) minmax(0, 1fr);
+    align-items: start;
+    column-gap: 32px;
   }
 
   .grh .project-image-wrap {
@@ -232,16 +296,41 @@ const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
 
   .project-description {
     grid-column: 2;
-    margin: 12px 0 0;
-    text-align: right;
-    font-size: 10px;
+    margin: 20px 0 0;
+    text-align: left;
+    font-size: 20px;
+    line-height: 34px;
   }
 }
 
-@media (max-width: 420px) {
+@media (min-width: 1200px) {
+  .project-caption h3 {
+    font-size: 48px;
+  }
+
   .project-categories {
-    gap: 4px;
-    font-size: 6px;
+    font-size: 22.32px;
+    line-height: 37.97px;
+  }
+}
+
+@media (max-width: 767px) {
+  .project-card {
+    grid-column: 1;
+    grid-row: auto;
+    width: 100%;
+  }
+
+  .project-image-wrap {
+    aspect-ratio: auto;
+  }
+
+  .project-image {
+    height: auto;
+  }
+
+  .project-description {
+    font-size: 16px;
   }
 }
 
