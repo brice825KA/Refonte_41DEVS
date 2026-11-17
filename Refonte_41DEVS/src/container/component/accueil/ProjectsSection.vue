@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router'
 import afgBankImage from '@/asset/images/img_AFG_Bank_accuil_realise.webp'
 import oremiImage from '@/asset/images/img_oremi_acceuil_realise.webp'
 import grhImage from '@/asset/images/img_presidence_grh_acceuil_realise.webp'
@@ -10,7 +11,7 @@ const projects = [
   { name: 'Oremi', image: oremiImage, layout: 'oremi' },
   { name: 'Présidence GRH', image: grhImage, layout: 'grh' },
   { name: 'ETCHITÉ', image: etchiteImage, layout: 'etchite' },
-  { name: 'Mon Assurance', image: assuranceImage, layout: 'assurance' },
+  { name: 'Mon Assurance', image: assuranceImage, layout: 'assurance', route: 'mon-assurance-project' },
 ]
 
 const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
@@ -40,9 +41,11 @@ function hideProjectCursor(event: PointerEvent) {
       </header>
 
       <div class="projects-grid">
-        <article
+        <component
           v-for="project in projects"
           :key="project.name"
+          :is="project.route || project.layout === 'oremi' ? RouterLink : 'article'"
+          :to="project.route ? { name: project.route } : project.layout === 'oremi' ? { name: 'oremi-project' } : undefined"
           class="project-card"
           :class="project.layout"
         >
@@ -77,7 +80,7 @@ function hideProjectCursor(event: PointerEvent) {
             <div>Hipster ipsum tattooed brunch I'm baby. Rights heard</div>
             <div>kombucha photo roof meh lomo sartorial organic.</div>
           </div>
-        </article>
+        </component>
       </div>
     </div>
   </section>
@@ -96,7 +99,15 @@ function hideProjectCursor(event: PointerEvent) {
 }
 
 .project-card {
+  display: block;
   min-width: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-card:focus-visible {
+  outline: 2px solid #a875ed;
+  outline-offset: 6px;
 }
 
 .project-image-wrap {

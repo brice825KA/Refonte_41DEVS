@@ -7,7 +7,7 @@ import ic_headers_white from "@/asset/icons/ic_41DEVS_white.svg"
 const route = useRoute()
 const isMobileMenuOpen = ref(false)
 const isScrolled = ref(false)
-const isContactPage = computed(() => route.name === 'contact')
+const isContactPage = computed(() => route.name === 'contact' || route.name === 'oremi-project' || route.name === 'mon-assurance-project')
 const isLogoPurple = computed(() => isScrolled.value || isContactPage.value)
 
 function updateScrollState() {

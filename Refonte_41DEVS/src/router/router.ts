@@ -58,6 +58,16 @@ const routes = [
     }
   },
   {
+    path: '/realisations/oremi',
+    name: 'oremi-project',
+    component: () => import('@/container/component/accueil/OremiProject.vue')
+  },
+  {
+    path: '/realisations/mon-assurance',
+    name: 'mon-assurance-project',
+    component: () => import('@/container/component/accueil/MonAssuranceProject.vue')
+  },
+  {
     path: '/contact',
     name: 'contact',
     component: contact
