@@ -73,6 +73,11 @@ const routes = [
     component: () => import('@/container/component/accueil/CarexProject.vue')
   },
   {
+    path: '/realisations/rema',
+    name: 'rema-project',
+    component: () => import('@/container/component/accueil/RemaProject.vue')
+  },
+  {
     path: '/contact',
     name: 'contact',
     component: contact

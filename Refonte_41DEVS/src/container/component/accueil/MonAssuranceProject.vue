@@ -11,6 +11,7 @@ import afgBankImage from '@/asset/images/img_AFG_Bank_accuil_realise.webp'
 import oremiImage from '@/asset/images/img_oremi_acceuil_realise.webp'
 import etchiteImage from '@/asset/images/img_etchite_acceuil_realise.webp'
 import carexImage from '@/asset/images/carex7.webp'
+import remaImage from '@/asset/images/img_rema.webp'
 
 const features = [
   'Comparateur de devis',
@@ -39,6 +40,7 @@ const relatedProjects = [
   { name: 'Oremi', image: oremiImage, category: 'Assurance', route: 'oremi-project' },
   { name: 'ETCHITÉ', image: etchiteImage, category: 'Application mobile' },
   { name: 'Carex', image: carexImage, category: 'Santé', route: 'carex-project' },
+  { name: 'Rema', image: remaImage, category: 'Santé', route: 'rema-project' },
 ]
 
 const relatedTrack = ref<HTMLElement | null>(null)

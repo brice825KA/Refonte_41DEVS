@@ -11,6 +11,7 @@ import oremiImage from '@/asset/images/img_oremi_acceuil_realise.webp'
 import assuranceImage from '@/asset/images/img_assurance_acceuil_realise.webp'
 import etchiteImage from '@/asset/images/img_etchite_acceuil_realise.webp'
 import carexPhoto from '@/asset/images/careX.webp'
+import remaImage from '@/asset/images/img_rema.webp'
 
 const features = ['Forums', 'Messagerie privée', 'Rappels de prise', 'Articles et astuces', 'Calendrier menstruel', 'Suivi personnalisé']
 const services = ['Audit', 'Recherche UX', 'Design UI/UX', 'Développement web', 'Développement mobile', 'Maintenance']
@@ -20,6 +21,7 @@ const relatedProjects = [
   { name: 'Oremi', image: oremiImage, category: 'Assurance', route: 'oremi-project' },
   { name: 'Mon Assurance', image: assuranceImage, category: 'Assurance', route: 'mon-assurance-project' },
   { name: 'ETCHITÉ', image: etchiteImage, category: 'Application mobile' },
+  { name: 'Rema', image: remaImage, category: 'Santé', route: 'rema-project' },
 ]
 
 const track = ref<HTMLElement | null>(null)
