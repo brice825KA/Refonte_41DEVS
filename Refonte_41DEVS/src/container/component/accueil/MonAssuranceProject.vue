@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import dashboardImage from '@/asset/images/Mockupddf 1(1).png'
 import clientBanner from '@/asset/images/monassurance-client-banner.jpg'
 import quoteImage from '@/asset/images/Style_06.png'
@@ -9,6 +10,7 @@ import tabletImage from '@/asset/images/Frame 1000002185.png'
 import afgBankImage from '@/asset/images/img_AFG_Bank_accuil_realise.webp'
 import oremiImage from '@/asset/images/img_oremi_acceuil_realise.webp'
 import etchiteImage from '@/asset/images/img_etchite_acceuil_realise.webp'
+import carexImage from '@/asset/images/carex7.webp'
 
 const features = [
   'Comparateur de devis',
@@ -36,7 +38,27 @@ const relatedProjects = [
   { name: 'AFG Bank', image: afgBankImage, category: 'Banque et finance' },
   { name: 'Oremi', image: oremiImage, category: 'Assurance', route: 'oremi-project' },
   { name: 'ETCHITÉ', image: etchiteImage, category: 'Application mobile' },
+  { name: 'Carex', image: carexImage, category: 'Santé', route: 'carex-project' },
 ]
+
+const relatedTrack = ref<HTMLElement | null>(null)
+const canScrollBack = ref(false)
+const canScrollForward = ref(true)
+
+function updateCarouselControls() {
+  const track = relatedTrack.value
+  if (!track) return
+  canScrollBack.value = track.scrollLeft > 2
+  canScrollForward.value = track.scrollLeft + track.clientWidth < track.scrollWidth - 2
+}
+
+function scrollRelatedProjects(direction: -1 | 1) {
+  const track = relatedTrack.value
+  const card = track?.querySelector<HTMLElement>('.related-project')
+  if (!track || !card) return
+  const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0
+  track.scrollBy({ left: direction * (card.offsetWidth + gap), behavior: 'smooth' })
+}
 </script>
 
 <template>
@@ -133,22 +155,37 @@ const relatedProjects = [
 
       <section class="related-projects">
         <h2>Autres projets</h2>
-        <div class="related-projects-track" role="list" aria-label="Autres réalisations">
-          <component
-            :is="project.route ? 'RouterLink' : 'article'"
-            v-for="project in relatedProjects"
-            :key="project.name"
-            :to="project.route ? { name: project.route } : undefined"
-            class="related-project"
-            role="listitem"
+        <div class="related-projects-carousel">
+          <button type="button" class="carousel-arrow" :disabled="!canScrollBack" aria-label="Voir les projets précédents" @click="scrollRelatedProjects(-1)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7" /></svg>
+          </button>
+          <div
+            ref="relatedTrack"
+            class="related-projects-track"
+            role="region"
+            aria-label="Autres réalisations"
+            tabindex="0"
+            @scroll.passive="updateCarouselControls"
           >
-            <img :src="project.image" :alt="`Projet ${project.name}`" loading="lazy">
-            <div class="related-project-caption">
-              <h3>{{ project.name }}</h3>
-              <span>{{ project.category }}</span>
-              <span v-if="project.route" class="related-project-more">Voir plus</span>
-            </div>
-          </component>
+            <component
+              :is="project.route ? 'RouterLink' : 'article'"
+              v-for="project in relatedProjects"
+              :key="project.name"
+              :to="project.route ? { name: project.route } : undefined"
+              class="related-project"
+              role="listitem"
+            >
+              <img :src="project.image" :alt="`Projet ${project.name}`" loading="lazy">
+              <div class="related-project-caption">
+                <h3>{{ project.name }}</h3>
+                <span>{{ project.category }}</span>
+                <span v-if="project.route" class="related-project-more">Voir plus</span>
+              </div>
+            </component>
+          </div>
+          <button type="button" class="carousel-arrow" :disabled="!canScrollForward" aria-label="Voir les projets suivants" @click="scrollRelatedProjects(1)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7" /></svg>
+          </button>
         </div>
       </section>
     </div>
@@ -400,13 +437,58 @@ const relatedProjects = [
   border-top: 1px solid #dedede;
 }
 
+.related-projects-carousel {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 40px;
+  align-items: center;
+  gap: 12px;
+}
+
+.carousel-arrow {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  color: #6741c7;
+  background: #f1edff;
+  cursor: pointer;
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.carousel-arrow svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
 .related-projects-track {
   display: flex;
   gap: 24px;
   overflow-x: auto;
+  overscroll-behavior-x: contain;
   padding: 8px 0 12px;
   scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
+  scrollbar-width: none;
+  outline: none;
+}
+
+.related-projects-track::-webkit-scrollbar {
+  display: none;
+}
+
+.related-projects-track:focus-visible {
+  outline: 2px solid #5c308c;
+  outline-offset: 5px;
 }
 
 .related-project {

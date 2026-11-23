@@ -7,6 +7,7 @@ import contractScreen from '@/asset/images/Img lines grp i 3.svg'
 import afgBankImage from '@/asset/images/img_AFG_Bank_accuil_realise.webp'
 import etchiteImage from '@/asset/images/img_etchite_acceuil_realise.webp'
 import assuranceImage from '@/asset/images/img_assurance_acceuil_realise.webp'
+import carexImage from '@/asset/images/carex7.webp'
 
 const features = [
   'Estimation de devis',
@@ -29,6 +30,7 @@ const otherProjects = [
   { name: 'AFG Bank', image: afgBankImage, category: 'Banque et finance' },
   { name: 'ETCHITÉ', image: etchiteImage, category: 'Application mobile' },
   { name: 'Mon Assurance', image: assuranceImage, category: 'Assurance', route: 'mon-assurance-project' },
+  { name: 'Carex', image: carexImage, category: 'Santé', route: 'carex-project' },
 ]
 
 const otherProjectsTrack = ref<HTMLElement | null>(null)

@@ -51,7 +51,7 @@ onUnmounted(() => {
             </div>
 
             <!-- Desktop Links -->
-            <div class="nav-links-pill hidden md:flex items-center justify-center lg:gap-5 rounded-full px-9 py-6 w-3xs h-12">
+            <div class="nav-links-pill hidden md:flex items-center justify-center rounded-full px-9 py-6 w-3xs h-12">
                 <div class="nav-link font-family-[Gilroy] font-normal text-xl lg:text-2xl transition-colors">
                     <router-link to="/companies">Expertise</router-link>
                 </div>
@@ -117,6 +117,8 @@ onUnmounted(() => {
 }
 
 .nav-links-pill {
+    --nav-links-gap: 1.25rem;
+    gap: var(--nav-links-gap);
     border: 1px solid transparent;
     backdrop-filter: blur(8px);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 2px 10px rgba(0, 0, 0, 0.08);
