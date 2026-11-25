@@ -11,7 +11,7 @@ const projects = [
   { name: 'AFG Bank', image: afgBankImage, layout: 'afg-bank' },
   { name: 'Oremi', image: oremiImage, layout: 'oremi' },
   { name: 'Présidence GRH', image: grhImage, layout: 'grh' },
-  { name: 'ETCHITÉ', image: etchiteImage, layout: 'etchite' },
+  { name: 'ETCHITÉ', image: etchiteImage, layout: 'etchite', route: 'etchite-project' },
   { name: 'Mon Assurance', image: assuranceImage, layout: 'assurance', route: 'mon-assurance-project' },
 ]
 

@@ -14,7 +14,8 @@ const isProjectPage = computed(() =>
     route.name === 'carex-project' ||
     route.name === 'rema-project' ||
     route.name === 'grh-finance-project' ||
-    route.name === 'asa-pv-project'
+    route.name === 'asa-pv-project' ||
+    route.name === 'etchite-project'
 )
 const isLogoPurple = computed(() => isScrolled.value || isProjectPage.value)
 

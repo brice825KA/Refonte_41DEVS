@@ -24,7 +24,7 @@ const projects = [
   { name: 'Mon Assurance', image: assuranceImage, category: 'Assurance', route: 'mon-assurance-project' },
   { name: 'Carex', image: carexImage, category: 'Santé', route: 'carex-project' },
   { name: 'REMA', image: remaImage, category: 'E-commerce', route: 'rema-project' },
-  { name: 'ETCHITÉ', image: etchiteImage, category: 'Application mobile' },
+  { name: 'ETCHITÉ', image: etchiteImage, category: 'Application mobile', route: 'etchite-project' },
   { name: 'ASA-PV', image: asaPvImage, category: 'Assurance', route: 'asa-pv-project' },
 ]
 

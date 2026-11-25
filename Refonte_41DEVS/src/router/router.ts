@@ -78,6 +78,11 @@ const routes = [
     component: () => import('@/container/component/accueil/RemaProject.vue')
   },
   {
+    path: '/realisations/etchite',
+    name: 'etchite-project',
+    component: () => import('@/container/component/accueil/EtchiteProject.vue')
+  },
+  {
     path: '/contact',
     name: 'contact',
     component: contact

@@ -29,7 +29,7 @@ const otherProjects = [
   { name: 'Carex', image: carexImage, category: 'Santé', route: 'carex-project' },
   { name: 'REMA', image: remaImage, category: 'E-commerce', route: 'rema-project' },
   { name: 'GRH Finance', image: grhImage, category: 'Ressources humaines', route: 'grh-finance-project' },
-  { name: 'ETCHITÉ', image: etchiteImage, category: 'Application mobile' },
+  { name: 'ETCHITÉ', image: etchiteImage, category: 'Application mobile', route: 'etchite-project' },
 ]
 
 const track = ref<HTMLElement | null>(null)

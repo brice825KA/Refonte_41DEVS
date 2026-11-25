@@ -22,7 +22,7 @@ const relatedProjects = [
   { name: 'AFG Bank', image: afgBankImage, category: 'Banque et finance' },
   { name: 'Oremi', image: oremiImage, category: 'Assurance', route: 'oremi-project' },
   { name: 'Mon Assurance', image: assuranceImage, category: 'Assurance', route: 'mon-assurance-project' },
-  { name: 'ETCHITÉ', image: etchiteImage, category: 'Application mobile' },
+  { name: 'ETCHITÉ', image: etchiteImage, category: 'Application mobile', route: 'etchite-project' },
   { name: 'Rema', image: remaImage, category: 'Santé', route: 'rema-project' },
   { name: 'GRH Finance', image: grhImage, category: 'Finance', route: 'grh-finance-project' },
   { name: 'ASA-PV', image: asaPvImage, category: 'Assurance', route: 'asa-pv-project' },
