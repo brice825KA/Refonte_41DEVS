@@ -160,8 +160,8 @@ const solutions2 = [
           <div><img :src="grh5" alt="Tableau de bord de la plateforme de gestion des ressources humaines" class="block h-auto w-full"></div>
         </div>
         <div class="mx-4 grid gap-5 py-10 sm:mx-8 md:mx-16 lg:mx-90 lg:gap-10">
-          <div><img :src="grh6" alt="" class="block h-auto w-full"></div>
-          <div class="mt-5 font-[PP_Neue_Montreal] text-[18px] font-normal leading-[29px] text-[#000000] md:mt-10 md:text-2xl md:leading-[38px]">
+          <div><img :src="grh6" alt="" class="relative left-70"></div>
+          <div class="relative left-70 mt-5 font-[PP_Neue_Montreal] text-[18px] font-normal leading-[29px] text-[#000000] md:mt-10 md:text-2xl md:leading-[38px]">
             <div>GRH Finances optimise la gestion administrative, financière et des </div>
             <div>ressources humaines en se conformant aux normes propres à </div>
             <div>l’administration publique.</div>
