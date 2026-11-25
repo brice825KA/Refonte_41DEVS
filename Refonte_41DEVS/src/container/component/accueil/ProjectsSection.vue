@@ -6,16 +6,13 @@ import grhImage from '@/asset/images/img_presidence_grh_acceuil_realise.webp'
 import etchiteImage from '@/asset/images/img_etchite_acceuil_realise.webp'
 import assuranceImage from '@/asset/images/img_assurance_acceuil_realise.webp'
 import remaImage from '@/asset/images/img_rema.webp'
-import asaPvImage from '@/asset/images/image_asa-pv2.webp'
 
 const projects = [
   { name: 'AFG Bank', image: afgBankImage, layout: 'afg-bank' },
   { name: 'Oremi', image: oremiImage, layout: 'oremi' },
-  { name: 'GRH Finance', image: grhImage, layout: 'grh', route: 'grh-finance-project' },
+  { name: 'Présidence GRH', image: grhImage, layout: 'grh' },
   { name: 'ETCHITÉ', image: etchiteImage, layout: 'etchite' },
   { name: 'Mon Assurance', image: assuranceImage, layout: 'assurance', route: 'mon-assurance-project' },
-  { name: 'REMA', image: remaImage, layout: 'rema', route: 'rema-project' },
-  { name: 'ASA-PV', image: asaPvImage, layout: 'asa-pv', route: 'asa-pv-project' },
 ]
 
 const projectCategories = ['UX DESIGN', 'AUDIT', 'DÉVELOPPEMENT']
@@ -150,10 +147,6 @@ function hideProjectCursor(event: PointerEvent) {
 
 .rema .project-image-wrap {
   aspect-ratio: 800 / 600;
-}
-
-.asa-pv .project-image-wrap {
-  aspect-ratio: 1920 / 686;
 }
 
 .project-view {
