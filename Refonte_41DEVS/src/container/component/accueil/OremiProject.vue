@@ -1,14 +1,20 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import heroImage from '@/asset/images/Rectangle 9017.png'
-import clientBanner from '@/asset/images/Group 1000001213.png'
+import clientBanner from '@/asset/images/img_rema.webp'
 import quoteScreen from '@/asset/images/Frame 1000002122.svg'
-import contractScreen from '@/asset/images/Img lines grp i 3.svg'
+import oremi1 from '@/asset/images/image_oremi1.png'
+import oremi2 from '@/asset/images/image_oremi2.webp'
+import oremi3 from '@/asset/images/image_oremi3.webp'
+import oremi4 from '@/asset/images/image_oremi4.webp'
+import contractScreen from '@/asset/images/carex6.webp'
 import afgBankImage from '@/asset/images/img_AFG_Bank_accuil_realise.webp'
 import etchiteImage from '@/asset/images/img_etchite_acceuil_realise.webp'
 import assuranceImage from '@/asset/images/img_assurance_acceuil_realise.webp'
 import carexImage from '@/asset/images/carex7.webp'
 import remaImage from '@/asset/images/img_rema.webp'
+import grhImage from '@/asset/images/img_presidence_grh_acceuil_realise.webp'
+import asaPvImage from '@/asset/images/image_asa-pv2.webp'
 
 const features = [
   'Estimation de devis',
@@ -33,6 +39,8 @@ const otherProjects = [
   { name: 'Mon Assurance', image: assuranceImage, category: 'Assurance', route: 'mon-assurance-project' },
   { name: 'Carex', image: carexImage, category: 'Santé', route: 'carex-project' },
   { name: 'Rema', image: remaImage, category: 'E-commerce', route: 'rema-project' },
+  { name: 'GRH Finance', image: grhImage, category: 'Ressources humaines', route: 'grh-finance-project' },
+  { name: 'ASA-PV', image: asaPvImage, category: 'Assurance', route: 'asa-pv-project' },
 ]
 
 const otherProjectsTrack = ref<HTMLElement | null>(null)
@@ -108,7 +116,7 @@ function scrollOtherProjects(direction: -1 | 1) {
       </section>
 
       <img
-        :src="clientBanner"
+        :src="oremi1"
         alt="Oremi, une expérience d’assurance pensée pour ses clients"
         class="client-banner"
         loading="lazy"
@@ -142,8 +150,18 @@ function scrollOtherProjects(direction: -1 | 1) {
 
       <section class="product-screens" aria-label="Écrans de l’application Oremi">
         <img :src="quoteScreen" alt="Écran de sélection des produits d’assurance Oremi" loading="lazy">
-        <img :src="contractScreen" alt="Écran de consultation d’un contrat d’assurance Oremi" loading="lazy">
+        <img :src="oremi2" alt="Écran de consultation d’un contrat d’assurance Oremi" loading="lazy">
       </section>
+
+      <div class="my-10 pl-80">
+        <img :src="oremi3" alt="Écran de gestion des sinistres Oremi" loading="lazy" class="">
+        <div class="pt-5 text-2xl font-normal text-[#333333] font-family-[PP Neue Montreal]">
+          <div class="">La plateforme permet aux utilisateurs de comparer en quelques clics</div>
+          <div class="">plusieurs devis d’assurance et de souscrire à celui qui répond le mieux à </div>
+          <div class="">leurs besoins.</div>
+        </div>
+      </div>
+      <div class="py-10"><img :src="oremi4" alt="Écran de gestion des sinistres Oremi" loading="lazy"></div>
 
       <section class="other-projects">
         <div class="other-projects-heading">
@@ -224,7 +242,7 @@ function scrollOtherProjects(direction: -1 | 1) {
 }
 
 .oremi-container {
-  width: min(100% - 48px, 1180px);
+  width: min(100% - 32px, 1180px);
   margin-inline: auto;
 }
 
@@ -247,21 +265,39 @@ function scrollOtherProjects(direction: -1 | 1) {
 }
 
 .project-heading h1,
-.project-story h2,
+.project-story h2 {
+  font-family: 'PP Neue Montreal', sans-serif;
+  font-size: 60px;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #000;
+}
+
 .other-projects h2 {
+  margin: 0;
   font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+  font-size: 70px;
   font-weight: 600;
+  line-height: 80px;
+  letter-spacing: -0.02em;
+  color: #000;
 }
 
 .project-heading h1 {
-  font-size: 34px;
+  font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+  font-size: 72px;
+  font-weight: 600;
   line-height: 1.15;
+  color: #000;
 }
 
 .project-heading p {
-  margin-top: 7px;
-  color: #414141;
-  font-size: 16px;
+  margin-top: 12px;
+  color: #000;
+  font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+  font-size: 30px;
+  line-height: 1.2;
 }
 
 .project-facts {
@@ -274,25 +310,32 @@ function scrollOtherProjects(direction: -1 | 1) {
 
 .project-fact h2,
 .client-about h2 {
-  font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
-  font-size: 17px;
-  font-weight: 600;
-  line-height: 1.4;
+  font-family: 'PP Neue Montreal', sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #000;
 }
 
 .project-fact p,
 .project-fact ul,
-.project-fact a {
-  margin-top: 7px;
-  color: #777;
+.project-fact a,
+.client-about p,
+.project-story p,
+.project-story li {
+  color: #333;
   font-family: 'PP Neue Montreal', sans-serif;
-  font-size: 13px;
-  line-height: 1.55;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 38px;
+  letter-spacing: 0.03em;
 }
 
 .project-fact ul,
 .project-story ul {
-  padding-left: 17px;
+  list-style: square;
+  padding-left: 28px;
 }
 
 .project-fact ul {
@@ -321,21 +364,22 @@ function scrollOtherProjects(direction: -1 | 1) {
 }
 
 .client-about {
-  max-width: 820px;
+  max-width: 1180px;
   padding: 34px 0 28px;
 }
 
 .client-about p,
 .project-story p,
 .project-story li {
-  color: #666;
+  color: #333;
   font-family: 'PP Neue Montreal', sans-serif;
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: 24px;
+  line-height: 38px;
+  letter-spacing: 0.03em;
 }
 
 .client-about p {
-  margin-top: 9px;
+  margin-top: 20px;
 }
 
 .client-banner {
@@ -349,15 +393,23 @@ function scrollOtherProjects(direction: -1 | 1) {
 .project-story {
   display: grid;
   gap: 38px;
-  width: min(100%, 760px);
+  width: min(100%, 1000px);
   margin: 34px auto 42px;
 }
 
-.project-story h2,
-.other-projects h2 {
-  margin-bottom: 8px;
-  font-size: 24px;
-  line-height: 1.25;
+.project-story h2 {
+  margin-bottom: 20px;
+  font-family: 'PP Neue Montreal', sans-serif;
+  font-size: 60px;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #000;
+}
+
+.project-story > section {
+  width: min(100%, 1000px);
+  margin-inline: auto;
 }
 
 .project-story p + p {
@@ -452,7 +504,7 @@ function scrollOtherProjects(direction: -1 | 1) {
 }
 
 .other-project {
-  flex: 0 0 clamp(240px, 28vw, 340px);
+  flex: 0 0 633.6906127929688px;
   min-width: 0;
   scroll-snap-align: start;
 }
@@ -460,8 +512,8 @@ function scrollOtherProjects(direction: -1 | 1) {
 .other-project > img {
   display: block;
   width: 100%;
-  aspect-ratio: 1.35;
-  border-radius: 6px;
+  height: 501px;
+  border-radius: 16px;
   background: #eef4fa;
   object-fit: cover;
 }
@@ -475,9 +527,11 @@ function scrollOtherProjects(direction: -1 | 1) {
 }
 
 .other-project-caption h3 {
-  font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
+  font-family: 'PP Neue Montreal', sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0;
 }
 
 .other-project-caption span {
@@ -489,7 +543,7 @@ function scrollOtherProjects(direction: -1 | 1) {
 
 @media (max-width: 760px) {
   .oremi-container {
-    width: min(100% - 32px, 560px);
+    width: min(100% - 32px, 1180px);
   }
 
   .oremi-hero img {
@@ -547,28 +601,40 @@ function scrollOtherProjects(direction: -1 | 1) {
   }
 
   .project-heading h1 {
-    font-size: 30px;
+    font-size: 40px;
+  }
+
+  .project-heading p {
+    font-size: 22px;
+  }
+
+  .other-projects h2 {
+    font-size: 40px;
+    line-height: 48px;
   }
 
   .project-facts {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 22px 12px;
   }
 
-  .project-fact h2 {
-    font-size: 15px;
+  .project-fact h2,
+  .client-about h2 {
+    font-size: 24px;
   }
 
   .project-fact p,
   .project-fact ul,
-  .project-fact a {
-    font-size: 12px;
-  }
-
+  .project-fact a,
   .client-about p,
   .project-story p,
   .project-story li {
-    font-size: 13px;
+    font-size: 18px;
+    line-height: 29px;
+  }
+
+  .project-story h2 {
+    font-size: 40px;
   }
 
   .product-screens {

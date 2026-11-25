@@ -12,6 +12,8 @@ import assuranceImage from '@/asset/images/img_assurance_acceuil_realise.webp'
 import etchiteImage from '@/asset/images/img_etchite_acceuil_realise.webp'
 import carexPhoto from '@/asset/images/careX.webp'
 import remaImage from '@/asset/images/img_rema.webp'
+import grhImage from '@/asset/images/img_presidence_grh_acceuil_realise.webp'
+import asaPvImage from '@/asset/images/image_asa-pv2.webp'
 
 const features = ['Forums', 'Messagerie privée', 'Rappels de prise', 'Articles et astuces', 'Calendrier menstruel', 'Suivi personnalisé']
 const services = ['Audit', 'Recherche UX', 'Design UI/UX', 'Développement web', 'Développement mobile', 'Maintenance']
@@ -22,6 +24,8 @@ const relatedProjects = [
   { name: 'Mon Assurance', image: assuranceImage, category: 'Assurance', route: 'mon-assurance-project' },
   { name: 'ETCHITÉ', image: etchiteImage, category: 'Application mobile' },
   { name: 'Rema', image: remaImage, category: 'Santé', route: 'rema-project' },
+  { name: 'GRH Finance', image: grhImage, category: 'Finance', route: 'grh-finance-project' },
+  { name: 'ASA-PV', image: asaPvImage, category: 'Assurance', route: 'asa-pv-project' },
 ]
 
 const track = ref<HTMLElement | null>(null)
@@ -50,55 +54,55 @@ function scrollProjects(direction: -1 | 1) {
 
     <div class="w-[calc(100%-32px)] max-w-[1180px] mx-auto md:w-[calc(100%-48px)]">
       <header class="py-[26px] border-b border-[#e8e8e8]">
-        <h1 class="m-0 font-sans text-[34px] md:text-[34px] font-semibold leading-[1.15]">Carex</h1>
-        <p class="m-0 mt-[7px] text-[16px] text-[#414141]">Application digitale pour le bien-être féminin</p>
+        <h1 class="m-0 font-family-[Neue Haas Grotesk Display Pro] text-[72px] max-md:text-[40px] font-semibold leading-[1.15] text-[#000000]">Carex</h1>
+        <p class="m-0 mt-3 text-[30px] max-md:text-[22px] leading-[1.2] text-[#000000]">Application digitale pour le bien-être féminin</p>
       </header>
 
       <section class="grid grid-cols-2 gap-x-[18px] gap-y-[24px] py-[32px] border-b border-[#e8e8e8] md:grid-cols-[.9fr_1.25fr_1fr_.8fr] md:gap-x-[30px] md:py-[32px_38px]" aria-label="Informations du projet Carex">
         <div>
-          <h2 class="m-0 font-sans text-[17px] font-semibold">Industrie</h2>
-          <p class="mt-[7px] m-0 font-sans text-[14px] leading-[1.65] text-[#666]">Santé</p>
+          <h2 class="m-0 font-[PP_Neue_Montreal] text-[32px] font-medium leading-none text-[#000000]">Industrie</h2>
+          <p class="mt-[20px] m-0 font-[PP_Neue_Montreal] text-[24px] font-normal leading-[38px] tracking-[0.03em] text-[#333333]">Santé</p>
         </div>
         <div>
-          <h2 class="m-0 font-sans text-[17px] font-semibold">Fonctionnalités</h2>
-          <ul class="mt-[7px] mb-0 pl-[17px] font-sans text-[14px] leading-[1.65] text-[#666]">
+          <h2 class="m-0 font-[PP_Neue_Montreal] text-[32px] font-medium leading-none text-[#000000]">Fonctionnalités</h2>
+          <ul class="mt-[20px] mb-0 list-[square] pl-7 font-[PP_Neue_Montreal] text-[24px] max-md:text-[18px] font-normal leading-[38px] max-md:leading-[29px] tracking-[0.03em] text-[#333333]">
             <li v-for="feature in features" :key="feature">{{ feature }}</li>
           </ul>
         </div>
         <div>
-          <h2 class="m-0 font-sans text-[17px] font-semibold">Services fournis</h2>
-          <ul class="mt-[7px] mb-0 pl-[17px] font-sans text-[14px] leading-[1.65] text-[#666]">
+          <h2 class="m-0 font-[PP_Neue_Montreal] text-[32px] font-medium leading-none text-[#000000]">Services fournis</h2>
+          <ul class="mt-[20px] mb-0 list-[square] pl-7 font-[PP_Neue_Montreal] text-[24px] font-normal leading-[38px] tracking-[0.03em] text-[#333333]">
             <li v-for="service in services" :key="service">{{ service }}</li>
           </ul>
         </div>
         <div>
-          <h2 class="m-0 font-sans text-[17px] font-semibold">Plateforme</h2>
-          <p class="mt-[7px] m-0 font-sans text-[14px] leading-[1.65] text-[#666]">Application mobile</p>
+          <h2 class="m-0 font-[PP_Neue_Montreal] text-[32px] font-medium leading-none text-[#000000]">Plateforme</h2>
+          <p class="mt-[20px] m-0 font-[PP_Neue_Montreal] text-[24px] font-normal leading-[38px] tracking-[0.03em] text-[#333333]">Application mobile</p>
         </div>
       </section>
 
-      <section class="max-w-[820px] py-[34px_28px]">
-        <h2 class="m-0 font-sans text-[17px] font-semibold">À propos du projet</h2>
-        <p class="mt-[9px] mb-0 font-sans text-[14px] leading-[1.65] text-[#666]">
+      <section class="max-w-[1180px] py-[34px_28px]">
+        <h2 class="m-0 font-[PP_Neue_Montreal] text-[32px] font-medium leading-none text-[#000000]">À propos du projet</h2>
+        <p class="mt-[20px] mb-0 font-[PP_Neue_Montreal] text-[24px] font-normal leading-[38px] tracking-[0.03em] text-[#333333]">
           Carex est une plateforme digitale qui accompagne les femmes dans le suivi de leur santé et de leur bien-être intime. Elle centralise les informations utiles, les outils de suivi et les échanges communautaires dans une expérience simple, rassurante et accessible.
         </p>
       </section>
 
       <img :src="clientBanner" alt="Communauté d’utilisatrices Carex" class="block w-full aspect-[1560/573] rounded-[8px] object-cover" loading="lazy">
 
-      <div class="grid grid-cols-1 gap-[20px] w-full max-w-[760px] mx-auto my-[34px_42px]">
+      <div class="grid grid-cols-1 gap-[38px] w-[calc(100%-32px)] max-w-[1000px] mx-auto my-[34px_42px] md:w-full">
         <section>
-          <h2 class="mb-[8px] m-0 font-sans text-[24px] font-semibold leading-[1.25]">Le problème</h2>
-          <p class="m-0 font-sans text-[14px] leading-[1.65] text-[#666]">
+          <h2 class="mb-[20px] m-0 font-[PP_Neue_Montreal] text-[60px] max-md:text-[40px] font-medium leading-none text-[#000000]">Le problème</h2>
+          <p class="m-0 font-[PP_Neue_Montreal] text-[24px] max-md:text-[18px] font-normal leading-[38px] max-md:leading-[29px] tracking-[0.03em] text-[#333333]">
             L’accès à des informations fiables sur la santé sexuelle et reproductive reste compliqué pour de nombreuses femmes et adolescentes. Les ressources sont souvent dispersées et les outils existants ne permettent pas toujours un accompagnement adapté au quotidien.
           </p>
         </section>
         <section>
-          <h2 class="mb-[8px] m-0 font-sans text-[24px] font-semibold leading-[1.25]">La solution</h2>
-          <p class="m-0 font-sans text-[14px] leading-[1.65] text-[#666]">
+          <h2 class="mb-[20px] m-0 font-[PP_Neue_Montreal] text-[60px] max-md:text-[40px] font-medium leading-none text-[#000000]">La solution</h2>
+          <p class="m-0 font-[PP_Neue_Montreal] text-[24px] max-md:text-[18px] font-normal leading-[38px] max-md:leading-[29px] tracking-[0.03em] text-[#333333]">
             Carex propose un espace complet pour suivre son cycle menstruel, retrouver des contenus fiables, poser ses questions dans des forums et échanger avec une communauté bienveillante.
           </p>
-          <ul class="my-[8px_12px] pl-[17px] font-sans text-[14px] leading-[1.65] text-[#666]">
+          <ul class="my-[20px_12px] list-[square] pl-7 font-[PP_Neue_Montreal] text-[24px] max-md:text-[18px] font-normal leading-[38px] max-md:leading-[29px] tracking-[0.03em] text-[#333333]">
             <li>Suivi personnalisé du calendrier menstruel</li>
             <li>Rappels et notifications</li>
             <li>Forums thématiques</li>
@@ -131,7 +135,7 @@ function scrollProjects(direction: -1 | 1) {
       </section>
 
       <section class="mt-[54px] pt-[30px] border-t border-[#dedede]">
-        <h2 class="mb-[8px] m-0 font-sans text-[24px] font-semibold leading-[1.25]">Autres projets</h2>
+        <h2 class="mb-[20px] m-0 font-[Neue_Haas_Grotesk_Display_Pro] text-[40px] md:text-[70px] font-semibold leading-[48px] md:leading-[80px] tracking-[-0.02em] text-[#000000]">Autres projets</h2>
         <div class="grid grid-cols-[34px_minmax(0,1fr)_34px] md:grid-cols-[40px_minmax(0,1fr)_40px] items-center gap-[8px] md:gap-[12px]">
           <button type="button" class="grid w-[34px] h-[34px] md:w-[40px] md:h-[40px] place-items-center rounded-full border-0 text-[#087ac7] bg-[#edf7ff] cursor-pointer disabled:opacity-[.35] disabled:cursor-default" :disabled="!canBack" aria-label="Voir les projets précédents" @click="scrollProjects(-1)">
             <svg viewBox="0 0 24 24" class="w-[18px] h-[18px] fill-none stroke-current stroke-[1.5] stroke-linecap-round stroke-linejoin-round" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg>
@@ -142,11 +146,11 @@ function scrollProjects(direction: -1 | 1) {
               v-for="project in relatedProjects"
               :key="project.name"
               :to="project.route ? { name: project.route } : undefined"
-              class="carex-related-project flex-[0_0_clamp(230px,28vw,330px)] min-w-0 text-inherit no-underline snap-start"
+              class="carex-related-project flex-[0_0_633.6906127929688px] max-md:flex-[0_0_calc(100%-16px)] min-w-0 text-inherit no-underline snap-start"
             >
-              <img :src="project.image" :alt="`Projet ${project.name}`" class="block w-full aspect-[1.35] rounded-[6px] object-cover bg-[#eef0fa]" loading="lazy">
+              <img :src="project.image" :alt="`Projet ${project.name}`" class="block w-full h-[501px] max-md:h-[280px] rounded-[16px] object-cover bg-[#eef0fa]" loading="lazy">
               <div class="flex items-baseline justify-between gap-[8px] pt-[10px]">
-                <h3 class="m-0 font-sans text-[15px] font-semibold">{{ project.name }}</h3>
+                <h3 class="m-0 font-[PP_Neue_Montreal] text-[32px] font-medium leading-none text-[#000000]">{{ project.name }}</h3>
                 <span class="text-[11px] text-[#777]">{{ project.category }}</span>
               </div>
             </component>

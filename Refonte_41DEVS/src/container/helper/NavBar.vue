@@ -7,8 +7,16 @@ import ic_headers_white from "@/asset/icons/ic_41DEVS_white.svg"
 const route = useRoute()
 const isMobileMenuOpen = ref(false)
 const isScrolled = ref(false)
-const isContactPage = computed(() => route.name === 'contact' || route.name === 'oremi-project' || route.name === 'mon-assurance-project')
-const isLogoPurple = computed(() => isScrolled.value || isContactPage.value)
+const isProjectPage = computed(() =>
+    route.name === 'contact' ||
+    route.name === 'oremi-project' ||
+    route.name === 'mon-assurance-project' ||
+    route.name === 'carex-project' ||
+    route.name === 'rema-project' ||
+    route.name === 'grh-finance-project' ||
+    route.name === 'asa-pv-project'
+)
+const isLogoPurple = computed(() => isScrolled.value || isProjectPage.value)
 
 function updateScrollState() {
     isScrolled.value = window.scrollY > 0
@@ -29,7 +37,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <nav class="transition-colors duration-300" :class="{ 'nav-scrolled': isScrolled, 'nav-contact-page': isContactPage }">
+    <nav class="transition-colors duration-300" :class="{ 'nav-scrolled': isScrolled, 'nav-project-page': isProjectPage }">
         <div class="flex items-center justify-between py-4 sm:py-6 lg:py-5 px-10 sm:px-8 md:px-14 lg:px-30">
             <!-- Logo leading to Accueil -->
             <div class="shrink-0">
@@ -140,11 +148,11 @@ onUnmounted(() => {
     color: #584074;
 }
 
-.nav-contact-page:not(.nav-scrolled) .nav-link {
+.nav-project-page:not(.nav-scrolled) .nav-link {
     color: #584074;
 }
 
-.nav-contact-page:not(.nav-scrolled) .nav-links-pill {
+.nav-project-page:not(.nav-scrolled) .nav-links-pill {
     border-color: rgba(92, 47, 140, 0.14);
     background: rgba(255, 255, 255, 0.82);
     box-shadow: 0 2px 12px rgba(34, 18, 54, 0.08);
@@ -159,12 +167,12 @@ onUnmounted(() => {
     background-color: #eee;
 }
 
-.nav-contact-page:not(.nav-scrolled) .nav-contact-button {
+.nav-project-page:not(.nav-scrolled) .nav-contact-button {
     background-color: #5c2f8c;
     color: #fff;
 }
 
-.nav-contact-page:not(.nav-scrolled) .nav-contact-button:hover {
+.nav-project-page:not(.nav-scrolled) .nav-contact-button:hover {
     background-color: #492272;
 }
 

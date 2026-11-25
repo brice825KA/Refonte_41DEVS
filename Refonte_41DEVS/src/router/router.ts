@@ -89,6 +89,16 @@ const routes = [
     component: ContactStatus
   },
   {
+    path: '/realisations/grh-finance',
+    name: 'grh-finance-project',
+    component: () => import('@/container/component/accueil/GrhFinanceProject.vue')
+  },
+  {
+    path: '/realisations/asa-pv',
+    name: 'asa-pv-project',
+    component: () => import('@/container/component/accueil/AsaPvProject.vue')
+  },
+  {
     path: '/:pathMatch(.*)*',
     redirect: '/'
   }
