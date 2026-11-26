@@ -53,9 +53,11 @@ onBeforeUnmount(() => revealContext?.revert())
                 <div class="top-footer-description top-footer-copy text-[#FFFFFF] max-w-2xl mx-auto px-4">
                     Les projets nous les aimons, nous serons heureux de le rendre mémorable
                 </div>
-                <div class="top-footer-copy top-footer-button font-family-[Helvetica Neue] font-medium text-xs sm:text-sm lg:text-xs text-[#0C0020] mx-auto flex h-[68px] w-[354px] items-center justify-center gap-[10px] rounded-[16px] bg-[linear-gradient(180deg,#FFFFFF_0%,rgba(255,255,255,0.88)_100%)] px-[138px] py-[22px] backdrop-blur-[4px] shadow-[0px_3px_20px_4px_rgba(248,245,255,0.56)]">
-                    <router-link to="/contact" class="top-footer-button-link flex h-full w-full items-center justify-center rounded-[16px] text-[#0C0020]">Parlons-en</router-link>
+                <router-link to="/contact" class="top-footer-button-link flex h-full w-full items-center justify-center rounded-[16px] text-[#0C0020]">
+                <div class="top-footer-copy top-footer-button font-family-[Helvetica Neue] font-medium text-xs sm:text-sm lg:text-2xl text-[#0C0020] mx-auto flex items-center justify-center gap-[10px] rounded-[16px] bg-[linear-gradient(180deg,#FFFFFF_0%,rgba(255,255,255,0.88)_100%)] px-[138px] py-[22px] backdrop-blur-[4px] shadow-[0px_3px_20px_4px_rgba(248,245,255,0.56)]">
+                Parlons-en
                 </div>
+                </router-link>
             </div>
         </div>
     </div>
