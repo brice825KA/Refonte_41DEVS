@@ -53,8 +53,8 @@ onBeforeUnmount(() => revealContext?.revert())
                 <div class="top-footer-description top-footer-copy text-[#FFFFFF] max-w-2xl mx-auto px-4">
                     Les projets nous les aimons, nous serons heureux de le rendre mémorable
                 </div>
-                <div class="top-footer-copy font-family-[Helvetica Neue] font-medium text-xs sm:text-sm lg:text-xs text-[#0C0020] mx-auto flex h-[42px] w-[212px] items-center justify-center rounded-xl hover:bg-purple-600 hover:text-white transition-all bg-[linear-gradient(180deg,#FFFFFF_0%,rgba(255,255,255,0.88)_100%)] backdrop-blur-[4px] shadow-[0px_3px_20px_4px_rgba(248,245,255,0.56)]">
-                    <router-link to="/contact" class="flex h-full w-full items-center justify-center text-[#0C0020] transition-colors hover:text-white">Parlons-en</router-link>
+                <div class="top-footer-copy top-footer-button font-family-[Helvetica Neue] font-medium text-xs sm:text-sm lg:text-xs text-[#0C0020] mx-auto flex h-[68px] w-[354px] items-center justify-center gap-[10px] rounded-[16px] bg-[linear-gradient(180deg,#FFFFFF_0%,rgba(255,255,255,0.88)_100%)] px-[138px] py-[22px] backdrop-blur-[4px] shadow-[0px_3px_20px_4px_rgba(248,245,255,0.56)]">
+                    <router-link to="/contact" class="top-footer-button-link flex h-full w-full items-center justify-center rounded-[16px] text-[#0C0020]">Parlons-en</router-link>
                 </div>
             </div>
         </div>
@@ -79,6 +79,46 @@ onBeforeUnmount(() => revealContext?.revert())
     line-height: 1.5;
     letter-spacing: 0.03em;
     text-align: center;
+}
+
+.top-footer-button {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    transition: scale 300ms ease-out;
+}
+
+.top-footer-button::before {
+    position: absolute;
+    z-index: -1;
+    background: #9333ea;
+    content: '';
+    inset: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 300ms ease-out;
+}
+
+.top-footer-button:hover,
+.top-footer-button:focus-within {
+    scale: 1.05;
+}
+
+.top-footer-button:hover::before,
+.top-footer-button:focus-within::before {
+    transform: scaleX(1);
+}
+
+.top-footer-button-link {
+    position: relative;
+    z-index: 1;
+    color: #0c0020;
+    transition: color 0ms 300ms;
+}
+
+.top-footer-button:hover .top-footer-button-link,
+.top-footer-button:focus-within .top-footer-button-link {
+    color: #fff;
 }
 
 @media (min-width: 640px) {

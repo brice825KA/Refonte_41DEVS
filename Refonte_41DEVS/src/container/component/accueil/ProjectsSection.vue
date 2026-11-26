@@ -122,7 +122,6 @@ function hideProjectCursor(event: PointerEvent) {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: filter 500ms ease;
 }
 
 .afg-bank .project-image-wrap {
@@ -185,11 +184,6 @@ function hideProjectCursor(event: PointerEvent) {
 
 .project-image-wrap.is-pointer-active .project-view {
   opacity: 1;
-}
-
-.project-card:hover .project-image,
-.project-card:focus-within .project-image {
-  filter: brightness(0.78);
 }
 
 .project-caption {

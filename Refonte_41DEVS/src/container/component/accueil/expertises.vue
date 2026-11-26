@@ -303,7 +303,7 @@ const sente3 = [
 .expertise-text-group {
     position: relative;
     isolation: isolate;
-    border-radius: 1.25rem;
+    border-radius: 0 1.25rem 1.25rem 0;
 }
 
 .expertise-text-group::before {
@@ -314,7 +314,7 @@ const sente3 = [
     background-color: #d3beff;
     content: '';
     pointer-events: none;
-    clip-path: inset(0 100% 0 0 round 1.25rem);
+    clip-path: inset(0 100% 0 0 round 0 1.25rem 1.25rem 0);
     transition: clip-path 450ms ease;
 }
 
@@ -324,7 +324,7 @@ const sente3 = [
 }
 
 .expertise-text-group:hover::before {
-    clip-path: inset(0 0 0 0 round 1.25rem);
+    clip-path: inset(0 0 0 0 round 0 1.25rem 1.25rem 0);
 }
 
 .expertise-text-group:hover .expertise-divider {
