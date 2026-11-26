@@ -145,25 +145,25 @@ function scrollRelatedProjects(direction: -1 | 1) {
         </section>
       </div>
 
-      <section class="" aria-label="Tableau de bord Monassurance.bj">
-        <img :src="dashboardDetailImage" alt="Tableau de bord et statistiques Monassurance.bj" loading="lazy">
+      <section class="w-[1560px] h-[716px] flex items-center justify-center relative right-45" aria-label="Tableau de bord Monassurance.bj">
+        <img :src="dashboardDetailImage" alt="Tableau de bord et statistiques Monassurance.bj" loading="lazy" class="">
       </section>
 
       <section class="" aria-label="Écrans des services Monassurance.bj">
-        <div class="flex gap-10 items-center justify-center py-10">
-        <img :src="quoteImage" alt="Sélection d’un produit pour déclarer un sinistre" loading="lazy">
-        <img :src="contractsImage" alt="Gestion des contrats et des offres d’assurance" loading="lazy">
+        <div class="flex items-center justify-center items-center gap-8 py-10 sm:gap-15">
+        <img :src="quoteImage" alt="Sélection d’un produit pour déclarer un sinistre" loading="lazy" class="">
+        <img :src="contractsImage" alt="Gestion des contrats et des offres d’assurance" loading="lazy" class="">
       </div>
       <section class="" aria-label="L’expérience Monassurance.bj sur tablette">
-        <div class="relative right-45 pt-15"><img :src="assu2" alt=""></div> 
-        <div class="relative left-130 py-15 font-family-[PP Neue Montreal] font-normal text-2xl text-[#333333]">
+        <div class="relative pt-8 sm:right-45 sm:pt-15"><img :src="assu2" alt="" class="block h-auto max-w-full"></div>
+        <div class=" relative left-100 py-8 font-family-[PP Neue Montreal] text-2xl font-normal text-[#333333] sm:py-15">
           <div class="">
             La plateforme permet aux utilisateurs de comparer en quelques clics plusieurs devis
           </div>
           <div class="">d’assurance et de souscrire à celui qui répond le mieux à leurs besoins.</div>
           </div>
       </section>
-        <img :src="managementImage" alt="Consultation des assurances depuis un téléphone" loading="lazy" class="relative right-45">
+        <img :src="managementImage" alt="Consultation des assurances depuis un téléphone" loading="lazy" class="relative right-50 sm:-right-30">
       </section>
   
       <section class="related-projects">
