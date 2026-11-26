@@ -142,8 +142,8 @@ const another = [
       </div>
       <div class="pt-5 md:pt-10"><img :src="etchite3" alt="Présentation de l’application E-Tchité" class="block h-auto w-full max-w-full object-cover"></div>
       <div class="grid gap-10">
-        <div class="relative left-0 lg:left-75"><img :src="etchite4" alt="Écran de gestion E-Tchité" class="block h-auto w-full max-w-full object-cover"></div>
-        <div class="relative left-0 font-family-[PP Neue Montreal] text-lg font-normal leading-[29px] text-[#333333] lg:left-75 md:text-2xl md:leading-9">
+        <div><img :src="etchite4" alt="Écran de gestion E-Tchité" class="block h-auto w-full max-w-full object-cover"></div>
+        <div class="font-family-[PP Neue Montreal] text-lg font-normal leading-[29px] text-[#333333] md:text-2xl md:leading-9">
           <div v-for="line in another" :key="line">{{ line }}</div>
         </div>
         <div><img :src="etchite5" alt="Écrans de l’application E-Tchité" class="block h-auto w-full max-w-full object-cover"></div>

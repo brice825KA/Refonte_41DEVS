@@ -141,13 +141,13 @@ const closingDescription = [
       <div v-for="line in securityDescription" :key="line">{{ line }}</div>
     </div>
     <div class="relative">
-      <div class="grid gap-3 sm:flex sm:gap-2">
+      <div class="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-[repeat(3,minmax(0,1fr))] sm:gap-2">
         <img
           v-for="benefit in securityBenefits"
           :key="benefit.label"
           :src="benefit.image"
           :alt="benefit.label"
-          class="block aspect-[1.394] w-full rounded-xl object-cover"
+          class="block aspect-[1.394] min-w-0 max-w-full w-full rounded-xl object-cover"
         >
       </div>
     </div>

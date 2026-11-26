@@ -374,6 +374,7 @@ onBeforeUnmount(() => {
 .home-showcase-container {
     position: relative;
     width: 100%;
+    overflow-x: clip;
 }
 
 .home-scroll-page--expertise {

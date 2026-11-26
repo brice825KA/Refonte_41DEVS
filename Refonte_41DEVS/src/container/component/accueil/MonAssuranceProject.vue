@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import dashboardImage from '@/asset/images/Mockupddf 1(1).png'
+import dashboardImage from '@/asset/images/image_assurance1.webp'
+import assu2 from '@/asset/images/image_assurance2.webp'
 import clientBanner from '@/asset/images/monassurance-client-banner.jpg'
 import quoteImage from '@/asset/images/Style_06.png'
 import contractsImage from '@/asset/images/Style_16(1).png'
@@ -144,21 +145,27 @@ function scrollRelatedProjects(direction: -1 | 1) {
         </section>
       </div>
 
-      <section class="dashboard-showcase" aria-label="Tableau de bord Monassurance.bj">
+      <section class="" aria-label="Tableau de bord Monassurance.bj">
         <img :src="dashboardDetailImage" alt="Tableau de bord et statistiques Monassurance.bj" loading="lazy">
       </section>
 
-      <section class="product-screens" aria-label="Écrans des services Monassurance.bj">
+      <section class="" aria-label="Écrans des services Monassurance.bj">
+        <div class="flex gap-10 items-center justify-center py-10">
         <img :src="quoteImage" alt="Sélection d’un produit pour déclarer un sinistre" loading="lazy">
         <img :src="contractsImage" alt="Gestion des contrats et des offres d’assurance" loading="lazy">
-        <img :src="managementImage" alt="Consultation des assurances depuis un téléphone" loading="lazy">
+      </div>
+      <section class="" aria-label="L’expérience Monassurance.bj sur tablette">
+        <div class="relative right-45 pt-15"><img :src="assu2" alt=""></div> 
+        <div class="relative left-130 py-15 font-family-[PP Neue Montreal] font-normal text-2xl text-[#333333]">
+          <div class="">
+            La plateforme permet aux utilisateurs de comparer en quelques clics plusieurs devis
+          </div>
+          <div class="">d’assurance et de souscrire à celui qui répond le mieux à leurs besoins.</div>
+          </div>
       </section>
-
-      <section class="closing-showcase" aria-label="L’expérience Monassurance.bj sur tablette">
-        <img :src="tabletImage" alt="Une utilisatrice présente l’application Monassurance.bj sur tablette" loading="lazy">
-        <p>La plateforme permet aux utilisateurs de comparer les offres, souscrire et gérer leurs assurances simplement.</p>
+        <img :src="managementImage" alt="Consultation des assurances depuis un téléphone" loading="lazy" class="relative right-45">
       </section>
-
+  
       <section class="related-projects">
         <h2>Autres projets</h2>
         <div class="related-projects-carousel">
@@ -604,6 +611,13 @@ function scrollRelatedProjects(direction: -1 | 1) {
 
   .related-project {
     flex-basis: min(78vw, 633.6906127929688px);
+  }
+}
+
+@media (max-width: 900px) {
+  .project-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 18px;
   }
 }
 

@@ -118,7 +118,7 @@ const projectSolution = [
       <div><img :src="expertSecu5" alt="Prise de service par QR code dans l’application ExpertSecu" class="block h-full max-h-[560px] w-full rounded-xl object-cover"></div>
       <div><img :src="expertSecu6" alt="Gestion des sites dans la plateforme ExpertSecu" class="block h-full max-h-[560px] w-full rounded-xl object-cover"></div>
     </div>
-    <div class="mx-auto w-full md:w-[82%] relative -right-40">
+    <div class="mx-auto min-w-0 w-full md:w-[82%]">
       <img :src="expertSecu7" alt="Agent de sécurité sur le terrain" class="block h-auto w-full rounded-xl object-cover">
     </div>
   </div>

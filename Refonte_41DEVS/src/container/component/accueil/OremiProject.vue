@@ -221,6 +221,7 @@ function scrollOtherProjects(direction: -1 | 1) {
 <style scoped>
 .oremi-page {
   min-height: 100vh;
+  overflow-x: clip;
   padding-top: 82px;
   padding-bottom: 88px;
   background: #fff;
@@ -587,6 +588,13 @@ function scrollOtherProjects(direction: -1 | 1) {
 
   .other-project-caption span {
     text-align: left;
+  }
+}
+
+@media (max-width: 900px) {
+  .project-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 18px;
   }
 }
 

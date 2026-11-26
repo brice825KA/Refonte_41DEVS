@@ -35,9 +35,9 @@ const projectSolution =
 <template>
   <div class="py-25">
     <div><img :src="oho1" alt="Présentation du projet OHO Les lunettes ERP" class="block h-auto w-full object-cover"></div>
-    <div class="text-[#000000] mx-50">
-      <div class="font-family-[Neue Haas Grotesk Display Pro] font-semibold text-[76px]">OHO Les lunettes Erp</div>
-      <div class="font-family-[PP Neue Montreal] font-medium text-4xl">Objets Hospitaliers et d’Optiques</div>
+    <div class="mx-4 grid gap-2 text-[#000000] sm:mx-8 md:mx-16 lg:mx-50">
+      <div class="break-words font-family-[Neue Haas Grotesk Display Pro] text-4xl font-semibold sm:text-5xl md:text-7xl">OHO Les lunettes Erp</div>
+      <div class="font-family-[PP Neue Montreal] text-xl font-medium sm:text-2xl md:text-4xl">Objets Hospitaliers et d’Optiques</div>
     </div>
   </div>
 
@@ -78,8 +78,8 @@ const projectSolution =
       <div >tout le Bénin, des franchises, des partenariats forts et stratégiques ainsi que des alliances solides bâties au fil du temps.</div>
     </div>
   </div>
-  <div class="grid mx-50 py-15">
-    <div class=""><img :src="oho2"></div>
+  <div class="mx-4 grid min-w-0 py-10 sm:mx-8 md:mx-16 md:py-15 lg:mx-50">
+    <div><img :src="oho2" alt="Présentation de l’entreprise OHO Les lunettes" class="block h-auto w-full max-w-full"></div>
   </div>
 
   <div class="mx-auto grid w-[calc(100%-32px)] max-w-[820px] gap-12 py-8 sm:w-[calc(100%-48px)] md:gap-16 md:py-12">
@@ -92,20 +92,20 @@ const projectSolution =
       <div class="font-family-[PP_Neue_Montreal] text-lg font-normal leading-[29px] text-[#333333] md:text-[18px] md:leading-[30px]">{{ projectSolution }}</div>
     </div>
   </div>
-  <div class="mx-50 grid gap-15">
-    <div class=""><img :src="oho3"></div>
-    <div class=""><img :src="oho4"></div>
-    <div class=""><img :src="oho5"></div>
-    <div class="flex gap-10">
-      <div class=""><img :src="oho6"></div>
-      <div class=""><img :src="oho7"></div>
+  <div class="mx-4 grid min-w-0 gap-8 py-8 sm:mx-8 md:mx-16 md:gap-10 lg:mx-50">
+    <div><img :src="oho3" alt="Écran de gestion OHO ERP" class="block h-auto w-full max-w-full"></div>
+    <div><img :src="oho4" alt="Écran de gestion OHO ERP" class="block h-auto w-full max-w-full"></div>
+    <div><img :src="oho5" alt="Écran de gestion OHO ERP" class="block h-auto w-full max-w-full"></div>
+    <div class="grid min-w-0 grid-cols-1 gap-5 sm:grid-cols-2 md:gap-10">
+      <div><img :src="oho6" alt="Interface OHO ERP" class="block h-auto w-full max-w-full"></div>
+      <div><img :src="oho7" alt="Interface OHO ERP" class="block h-auto w-full max-w-full"></div>
     </div>
-    <div class=""><img :src="oho8"></div>
+    <div><img :src="oho8" alt="Interface OHO ERP" class="block h-auto w-full max-w-full"></div>
     <div class="font-family-[PP Neue Montreal] font-normal text-2xl leading-9 text-[#333333]">
       <div class="">ERP OHO Les lunettes assure la gestion optimisée des opérations de</div>
       <div class="">l’entreprise.</div>
     </div>
-    <div class=""><img :src="oho9"></div>
+    <div><img :src="oho9" alt="Interface OHO ERP" class="block h-auto w-full max-w-full"></div>
   </div>
 
   <ProjectCarousel current-project="oho-erp-project" />

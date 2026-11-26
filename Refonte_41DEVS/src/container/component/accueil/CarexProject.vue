@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import heroImage from '@/asset/images/carex3.webp'
+import car10 from '@/asset/images/carex10.webp'
 import clientBanner from '@/asset/images/carex2.webp'
 import calendarImage from '@/asset/images/carex4.webp'
 import onboardingImage from '@/asset/images/carex5.webp'
@@ -58,7 +59,7 @@ function scrollProjects(direction: -1 | 1) {
         <p class="m-0 mt-3 text-[30px] max-md:text-[22px] leading-[1.2] text-[#000000]">Application digitale pour le bien-être féminin</p>
       </header>
 
-      <section class="grid grid-cols-2 gap-x-[18px] gap-y-[24px] py-[32px] border-b border-[#e8e8e8] md:grid-cols-[.9fr_1.25fr_1fr_.8fr] md:gap-x-[30px] md:py-[32px_38px]" aria-label="Informations du projet Carex">
+      <section class="grid grid-cols-1 gap-x-[18px] gap-y-[24px] border-b border-[#e8e8e8] py-[32px] sm:grid-cols-2 md:gap-x-[30px] md:py-[32px_38px] lg:grid-cols-[.9fr_1.25fr_1fr_.8fr]" aria-label="Informations du projet Carex">
         <div>
           <h2 class="m-0 font-[PP_Neue_Montreal] text-[32px] font-medium leading-none text-[#000000]">Industrie</h2>
           <p class="mt-[20px] m-0 font-[PP_Neue_Montreal] text-[24px] font-normal leading-[38px] tracking-[0.03em] text-[#333333]">Santé</p>
@@ -111,13 +112,12 @@ function scrollProjects(direction: -1 | 1) {
         </section>
       </div>
 
-      <section class="grid grid-cols-1 gap-[24px] min-h-[390px] mt-[24px] md:grid-cols-[minmax(0,2fr)_minmax(280px,1fr)]" aria-label="Écrans de l’application Carex">
-        <div class="relative min-h-[360px] md:min-h-[390px] overflow-hidden rounded-[7px] bg-[linear-gradient(135deg,#fff2df_0%,#fff2df_58%,#ffdfb9_58%,#ffdfb9_100%)]">
-          <img :src="onboardingImage" alt="Création du calendrier menstruel Carex" class="absolute z-[2] block left-[5%] md:left-[8%] bottom-[-26px] w-[48%] md:w-[43%] h-[330px] md:h-[365px] object-cover rounded-[16px] -rotate-[8deg]" loading="lazy">
-          <img :src="calendarImage" alt="Mon calendrier dans l’application Carex" class="absolute z-[1] block right-[4%] bottom-[-26px] w-[48%] md:w-[43%] h-[330px] md:h-[365px] object-cover rounded-[16px] -rotate-[12deg]" loading="lazy">
+      <section class="flex gap-[24px] min-h-[390px] mt-[24px]" aria-label="Écrans de l’application Carex">
+        <div class="relative">
+          <img :src="car10" alt="Création du calendrier menstruel Carex" class="" loading="lazy">
         </div>
-        <div class="grid min-h-[380px] md:min-h-[390px] place-items-center overflow-hidden rounded-[7px] bg-[#ddedf5]">
-          <img :src="forumImage" alt="Forums de la communauté Carex" class="w-[74%] h-[350px] object-cover rounded-[10px]" loading="lazy">
+        <div class="grid place-items-center">
+          <img :src="forumImage" alt="Forums de la communauté Carex" class="" loading="lazy">
         </div>
       </section>
 
@@ -125,7 +125,7 @@ function scrollProjects(direction: -1 | 1) {
         <img :src="carexPhoto" alt="Une utilisatrice présente l’application Carex sur téléphone" class="block w-full h-auto aspect-[1561/602] object-cover object-center" loading="lazy">
       </section>
 
-      <div class="max-w-[760px] mt-[15px] text-[#666] font-sans text-[13px] leading-[1.55]">
+      <div class="mt-[15px] text-[#333333] font-sans text-2xl leading-[1.55]">
         <div>L’application mobile offre aux jeunes femmes la possibilité de discuter de leurs problèmes</div>
         <div>de sexualité avec des professionnels de santé en toute confidentialité.</div>
       </div>
