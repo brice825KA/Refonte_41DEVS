@@ -17,7 +17,7 @@ import etchite5 from '@/asset/images/image_etchite5.webp'
 
 
 const otherProjects = [
-  { name: 'AFG Bank', image: afgBankImage, category: 'Banque et finance' },
+  { name: 'AFG e-Bank', image: afgBankImage, category: 'Banque et finance', route: 'afg-bank-project' },
   { name: 'Oremi', image: oremiImage, category: 'Assurance', route: 'oremi-project' },
   { name: 'Mon Assurance', image: assuranceImage, category: 'Assurance', route: 'mon-assurance-project' },
   { name: 'Carex', image: carexImage, category: 'Santé', route: 'carex-project' },
@@ -80,24 +80,85 @@ const another = [
 </script>
 
 <template>
-  <div class="py-25 grid">
-    <div class=""><img :src="etchite1" alt=""></div>
-    <div class="">
-      <div class="font-family-[Neue Haas Grotesk Display Pro] font-semibold text-7xl text-[#000000]">E-Tchité</div>
-      <div class="font-family-[PP Neue Montreal] font-medium text-4xl text-[#000000]">Chambre du Commerce et d’Industrie du Bénin</div>
+  <div class="grid py-12 md:py-25">
+    <div><img :src="etchite1" alt="Présentation de l’application E-Tchité" class="block h-auto w-full object-cover"></div>
+    <div class="mx-4 grid gap-3 pt-5 sm:mx-8 md:mx-16 md:gap-5 lg:mx-30">
+      <div class="font-family-[Neue Haas Grotesk Display Pro] text-4xl font-semibold text-[#000000] sm:text-5xl md:text-7xl">E-Tchité</div>
+      <div class="font-family-[PP Neue Montreal] text-xl font-medium text-[#000000] sm:text-2xl md:text-4xl">Chambre du Commerce et d’Industrie du Bénin</div>
     </div>
   </div>
 
+  <div class="mx-4 border-t border-[#dedede] pt-8 sm:mx-8 md:mx-16 md:pt-[68px] lg:mx-30" aria-label="Informations du projet E-Tchité">
+    <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-[1fr_1.25fr_1fr_.85fr] lg:gap-x-10">
+      <div>
+        <div class="font-[PP_Neue_Montreal] text-2xl font-medium leading-[100%] tracking-[0] text-black md:text-[32px]">Industrie</div>
+        <div class="mt-3 font-[PP_Neue_Montreal] text-lg font-normal leading-[29px] tracking-[0.03em] text-[#333] md:mt-5 md:text-[24px] md:leading-[38px]">Commerce et services</div>
+      </div>
+      <div>
+        <div class="font-[PP_Neue_Montreal] text-2xl font-medium leading-[100%] tracking-[0] text-black md:text-[32px]">Fonctionnalités</div>
+        <div class="mt-3 grid gap-y-0 font-[PP_Neue_Montreal] text-lg font-normal leading-[29px] tracking-[0.03em] text-[#333] md:mt-5 md:text-[24px] md:leading-[38px]">
+          <div v-for="feature in ['Gestion des clients', 'Catalogue de produits', 'Facturation', 'Comptabilité', 'Gestion de stock', 'Statistiques']" :key="feature" class="grid grid-cols-[8px_minmax(0,1fr)] items-baseline gap-4">
+            <div class="size-[4px] translate-y-[-3px] bg-[#333]"></div>
+            <div>{{ feature }}</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="font-[PP_Neue_Montreal] text-2xl font-medium leading-[100%] tracking-[0] text-black md:text-[32px]">Services fournis</div>
+        <div class="mt-3 grid gap-y-0 font-[PP_Neue_Montreal] text-lg font-normal leading-[29px] tracking-[0.03em] text-[#333] md:mt-5 md:text-[24px] md:leading-[38px]">
+          <div v-for="service in ['Étude et optimisation', 'Design UI/UX', 'Développement mobile et web', 'Déploiement', 'Maintenance']" :key="service" class="grid grid-cols-[8px_minmax(0,1fr)] items-baseline gap-4">
+            <div class="size-[4px] translate-y-[-3px] bg-[#333]"></div>
+            <div>{{ service }}</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="font-[PP_Neue_Montreal] text-2xl font-medium leading-[100%] tracking-[0] text-black md:text-[32px]">Plateforme</div>
+        <div class="mt-3 font-[PP_Neue_Montreal] text-lg font-normal leading-[29px] tracking-[0.03em] text-[#333] md:mt-5 md:text-[24px] md:leading-[38px]">e-tchite.bj</div>
+      </div>
+    </div>
+
+    <div class="mt-8 grid gap-5 md:mt-0">
+      <div class="font-family-[PP Neue Montreal] text-2xl font-medium text-[#000000] md:text-3xl">A propos du client</div>
+      <div class="font-family-[PP Neue Montreal] text-lg font-normal leading-[29px] text-[#333333] md:text-2xl md:leading-9">
+        <div v-for="line in about_client" :key="line">{{ line }}</div>
+      </div>
+      <div class="pt-5 md:pt-10"><img :src="etchite2" alt="Identité visuelle E-Tchité" class="block h-auto w-full max-w-full object-cover"></div>
+
+      <div class="grid items-center justify-center gap-8 md:gap-10">
+        <div class="grid gap-5">
+          <div class="font-family-[PP Neue Montreal] text-3xl font-medium leading-tight text-[#000000] md:text-5xl md:leading-14">Le problème</div>
+          <div class="">
+            <div v-for="line in problems" :key="line" class="font-family-[PP Neue Montreal] text-lg font-normal leading-[29px] text-[#333333] md:text-2xl md:leading-9">{{ line }}</div>
+          </div>
+        </div>
+        <div class="grid gap-5">
+          <div class="font-family-[PP Neue Montreal] text-3xl font-medium leading-tight text-[#000000] md:text-5xl md:leading-14">La solution</div>
+          <div class="grid">
+          <div v-for="line in solutions1" :key="line" class="font-family-[PP Neue Montreal] text-lg font-normal leading-[29px] text-[#333333] md:text-2xl md:leading-9">{{ line }}</div>
+          <div v-for="line in solutions2" :key="line" class="font-family-[PP Neue Montreal] text-lg font-normal leading-[29px] text-[#333333] md:text-2xl md:leading-9">{{ line }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-5 md:pt-10"><img :src="etchite3" alt="Présentation de l’application E-Tchité" class="block h-auto w-full max-w-full object-cover"></div>
+      <div class="grid gap-10">
+        <div class="relative left-0 lg:left-75"><img :src="etchite4" alt="Écran de gestion E-Tchité" class="block h-auto w-full max-w-full object-cover"></div>
+        <div class="relative left-0 font-family-[PP Neue Montreal] text-lg font-normal leading-[29px] text-[#333333] lg:left-75 md:text-2xl md:leading-9">
+          <div v-for="line in another" :key="line">{{ line }}</div>
+        </div>
+        <div><img :src="etchite5" alt="Écrans de l’application E-Tchité" class="block h-auto w-full max-w-full object-cover"></div>
+      </div>
+    </div>
+
+  </div>
 
 
-
-
-  <main class="min-h-screen bg-white pb-20 pt-[72px] text-[#141414] md:pt-[82px]">
+  <main class="min-h-screen bg-white pb-20 pt-10 text-[#141414] md:pt-[82px]">
     <div class="mx-auto w-[calc(100%-32px)] max-w-[1180px] md:w-[calc(100%-48px)]">
       <section class="mt-14 border-t border-[#dedede] pt-8 md:mt-[54px] md:pt-[30px]" aria-label="Autres projets">
-        <h1 class="mb-5 mt-0 font-family-[Neue Haas Grotesk Display Pro] text-[40px] font-semibold leading-[1.2] tracking-[-0.02em] text-black md:text-[70px]">
+        <div class="mb-5 mt-0 font-family-[PP_Neue_Montreal] text-[32px] font-medium leading-[100%] tracking-[0] text-black">
           Autres projets
-        </h1>
+        </div>
 
         <div class="grid grid-cols-[36px_minmax(0,1fr)_36px] items-center gap-2 md:grid-cols-[40px_minmax(0,1fr)_40px] md:gap-3">
           <button
@@ -130,12 +191,12 @@ const another = [
               <img
                 :src="project.image"
                 :alt="`Projet ${project.name}`"
-                class="block h-[280px] w-full rounded-2xl bg-[#eef4fa] object-cover md:h-[501px]"
+                class="block h-[220px] w-full rounded-2xl bg-[#eef4fa] object-cover sm:h-[280px] md:h-[501px]"
                 loading="lazy"
               >
               <div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 pt-3">
-                <h2 class="m-0 font-[PP_Neue_Montreal] text-[28px] font-medium leading-tight text-black md:text-[32px]">{{ project.name }}</h2>
-                <span class="font-[PP_Neue_Montreal] text-[12px] leading-tight text-[#777] md:text-[14px]">{{ project.category }}</span>
+                <div class="m-0 font-[PP_Neue_Montreal] text-lg font-medium leading-[100%] tracking-[0] text-black md:text-[24px]">{{ project.name }}</div>
+                <div class="font-[PP_Neue_Montreal] text-sm font-normal leading-6 tracking-[0.03em] text-[#777] md:text-[24px] md:leading-[38px]">{{ project.category }}</div>
               </div>
             </component>
           </div>

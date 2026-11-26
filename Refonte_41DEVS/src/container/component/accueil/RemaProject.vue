@@ -17,7 +17,7 @@ import grhImage from '@/asset/images/img_presidence_grh_acceuil_realise.webp'
 import asaPvImage from '@/asset/images/image_asa-pv2.webp'
 
 const otherProjects = [
-  { name: 'AFG Bank', image: afgBankImage, category: 'Banque et finance' },
+  { name: 'AFG e-Bank', image: afgBankImage, category: 'Banque et finance', route: 'afg-bank-project' },
   { name: 'Oremi', image: oremiImage, category: 'Assurance', route: 'oremi-project' },
   { name: 'Mon Assurance', image: assuranceImage, category: 'Assurance', route: 'mon-assurance-project' },
   { name: 'Carex', image: carexImage, category: 'Santé', route: 'carex-project' },

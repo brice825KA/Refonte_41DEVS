@@ -34,7 +34,7 @@ const services = [
 ]
 
 const otherProjects = [
-  { name: 'AFG Bank', image: afgBankImage, category: 'Banque et finance' },
+  { name: 'AFG e-Bank', image: afgBankImage, category: 'Banque et finance', route: 'afg-bank-project' },
   { name: 'ETCHITÉ', image: etchiteImage, category: 'Application mobile', route: 'etchite-project' },
   { name: 'Mon Assurance', image: assuranceImage, category: 'Assurance', route: 'mon-assurance-project' },
   { name: 'Carex', image: carexImage, category: 'Santé', route: 'carex-project' },

@@ -23,7 +23,7 @@ const features = [
 const services = ['Design UI/UX', 'Développement web', 'Déploiement', 'Maintenance']
 
 const otherProjects = [
-  { name: 'AFG Bank', image: afgBankImage, category: 'Banque et finance' },
+  { name: 'AFG e-Bank', image: afgBankImage, category: 'Banque et finance', route: 'afg-bank-project' },
   { name: 'Oremi', image: oremiImage, category: 'Assurance', route: 'oremi-project' },
   { name: 'Mon Assurance', image: assuranceImage, category: 'Assurance', route: 'mon-assurance-project' },
   { name: 'Carex', image: carexImage, category: 'Santé', route: 'carex-project' },

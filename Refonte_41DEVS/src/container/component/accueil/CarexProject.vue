@@ -19,7 +19,7 @@ const features = ['Forums', 'Messagerie privée', 'Rappels de prise', 'Articles 
 const services = ['Audit', 'Recherche UX', 'Design UI/UX', 'Développement web', 'Développement mobile', 'Maintenance']
 
 const relatedProjects = [
-  { name: 'AFG Bank', image: afgBankImage, category: 'Banque et finance' },
+  { name: 'AFG e-Bank', image: afgBankImage, category: 'Banque et finance', route: 'afg-bank-project' },
   { name: 'Oremi', image: oremiImage, category: 'Assurance', route: 'oremi-project' },
   { name: 'Mon Assurance', image: assuranceImage, category: 'Assurance', route: 'mon-assurance-project' },
   { name: 'ETCHITÉ', image: etchiteImage, category: 'Application mobile', route: 'etchite-project' },

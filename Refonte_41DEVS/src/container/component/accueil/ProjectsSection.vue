@@ -8,7 +8,7 @@ import assuranceImage from '@/asset/images/img_assurance_acceuil_realise.webp'
 import remaImage from '@/asset/images/img_rema.webp'
 
 const projects = [
-  { name: 'AFG Bank', image: afgBankImage, layout: 'afg-bank' },
+  { name: 'AFG e-Bank', image: afgBankImage, layout: 'afg-bank', route: 'afg-bank-project' },
   { name: 'Oremi', image: oremiImage, layout: 'oremi' },
   { name: 'Présidence GRH', image: grhImage, layout: 'grh' },
   { name: 'ETCHITÉ', image: etchiteImage, layout: 'etchite', route: 'etchite-project' },

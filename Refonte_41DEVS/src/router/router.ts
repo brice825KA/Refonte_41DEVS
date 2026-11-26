@@ -83,6 +83,26 @@ const routes = [
     component: () => import('@/container/component/accueil/EtchiteProject.vue')
   },
   {
+    path: '/realisations/afg-e-bank',
+    name: 'afg-bank-project',
+    component: () => import('@/container/component/accueil/AfgBankProject.vue')
+  },
+  {
+    path: '/realisations/oho-erp',
+    name: 'oho-erp-project',
+    component: () => import('@/container/component/accueil/OhoErpProject.vue')
+  },
+  {
+    path: '/realisations/expert-secu',
+    name: 'expert-secu-project',
+    component: () => import('@/container/component/accueil/ExpertSecuProject.vue')
+  },
+  {
+    path: '/realisations/veep',
+    name: 'veep-project',
+    component: () => import('@/container/component/accueil/VeepProject.vue')
+  },
+  {
     path: '/contact',
     name: 'contact',
     component: contact
